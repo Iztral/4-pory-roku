@@ -1,8 +1,10 @@
-local testFont = love.graphics.newFont(24)
+local Gamestate = require "lib.hump.gamestate"
 
-function love.draw()
-    love.graphics.setFont(testFont)
-    love.graphics.printf("Hello World", 0, love.graphics.getHeight() / 2 - 12, love.graphics.getWidth(), "center")
+local pumpkins = require "states.pumpkins"
+
+function love.load()
+    Gamestate.registerEvents()
+    Gamestate.switch(pumpkins)
 end
 
 function love.keypressed(key)
