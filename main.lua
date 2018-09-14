@@ -1,10 +1,14 @@
-local Gamestate = require "lib.hump.gamestate"
+-- libraries
+gamestate = require "lib.hump.gamestate"
+lume = require "lib.lume"
 
-local pumpkins = require "states.pumpkins"
+local states = {
+    pumpkins = require "states.pumpkins"
+}
 
 function love.load()
-    Gamestate.registerEvents()
-    Gamestate.switch(pumpkins)
+    gamestate.registerEvents()
+    gamestate.switch(states.pumpkins)
 end
 
 function love.keypressed(key)
