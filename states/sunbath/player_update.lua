@@ -1,18 +1,18 @@
-return function(player,dt)
+return function(self,player,dt)
 	
 	player.controls:update(dt)
 	local x, y = player.controls:get "move"
 	
 	if player.rotation_old == nil then
-		player.rotation_old = math.atan2(x,y)
+		player.rotation_old = math.atan2(y,x)
 	end
-	
+
 	player.rotation_new = math.atan2(y,x)
 	
 	player.angle_difference = math.deg(player.rotation_new - player.rotation_old)*dt*50
-	
+
 	--grading turn posotive--
-	if turn_direction == -1 then
+	if self.turn_direction == 1 then
 		if player.angle_difference < 0 then
 			player.turn_grade = 0
 		end
@@ -28,7 +28,7 @@ return function(player,dt)
 	end
 	
 	--grading turn negative--
-	if turn_direction == 1 then
+	if self.turn_direction == -1 then
 		if player.angle_difference > 0 then
 			player.turn_grade = 0
 		end
@@ -45,20 +45,20 @@ return function(player,dt)
 	
 	--score increase/decrease 
 	if player.turn_grade == 0 then
-		player.player_score = math.max(player.player_score - 5,0)
+		player.player_score = math.max(player.player_score - 300 * dt,0)
 	end
 	
 	if player.turn_grade == 1 then
-		player.player_score = math.max(player.player_score - 1,0)
+		player.player_score = math.max(player.player_score - 100 * dt,0)
 	end
 	
 	if player.turn_grade == 2 then
-		player.player_score = math.max(player.player_score + 5,0)
+		player.player_score = math.max(player.player_score + 500 * dt,0)
 	end
 	
 	if player.turn_grade == 3 then
-		player.player_score = math.max(player.player_score + 1,0)
+		player.player_score = math.max(player.player_score + 100 * dt,0)
 	end
 	
-	player.rotation_old = math.atan2(y,x)
+	player.rotation_old = player.rotation_new
 end
