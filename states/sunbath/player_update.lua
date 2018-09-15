@@ -45,20 +45,43 @@ return function(self,player,dt)
 	
 	--score increase/decrease 
 	if player.turn_grade == 0 then
-		player.player_score = math.max(player.player_score - 300 * dt,0)
+		player.player_score = math.max(player.player_score - 30 * dt,0)
 	end
 	
 	if player.turn_grade == 1 then
-		player.player_score = math.max(player.player_score - 100 * dt,0)
+		player.player_score = math.max(player.player_score - 10 * dt,0)
 	end
 	
 	if player.turn_grade == 2 then
-		player.player_score = math.max(player.player_score + 500 * dt,0)
+		player.player_score = math.max(player.player_score + 50 * dt,0)
 	end
 	
 	if player.turn_grade == 3 then
-		player.player_score = math.max(player.player_score + 100 * dt,0)
+		player.player_score = math.max(player.player_score + 10 * dt,0)
 	end
 	
 	player.rotation_old = player.rotation_new
+	--turn animation--
+	player.angle = math.max(player.angle + math.abs(player.angle_difference/100),100)
+	
+	
+	
+	if player.angle > 0 and player.angle < 25 then
+	
+	end
+	
+	if player.angle > 25 and player.angle < 50 then
+	
+	end
+	
+	if player.angle > 50 and player.angle < 75 then
+	
+	end
+	
+	if player.angle > 75 and player.angle < 100 then
+	
+	end
+	
+	
+	
 end
