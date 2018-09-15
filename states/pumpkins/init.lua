@@ -28,41 +28,55 @@ return {
                     {y = -22, x = -47}
                 },
                 mouth = {
-                    {y = 4,x = -118},
-                    {y = -14,x = -115},
-                    {y = -27,x = -108},
-                    {y = -38,x = -95},
-                    {y = -43,x = -79},
-                    {y = -45,x = -63},
-                    {y = -46,x = -45},
-                    {y = -45,x = -30},
-                    {y = -41,x = -8},
-                    {y = -39,x = 5},
-                    {y = -35,x = 23},
-                    {y = -32,x = 39},
-                    {y = -34,x = 57},
-                    {y = -37,x = 74},
-                    {y = -38,x = 101},
-                    {y = -32,x = 116},
-                    {y = -19,x = 129},
-                    {y = -4,x = 131},
-                    {y = 10,x = 133},
-                    {y = 23,x = 132},
-                    {y = 33,x = 126},
-                    {y = 38,x = 116},
-                    {y = 37,x = 95},
-                    {y = 35,x = 72},
-                    {y = 32,x = 55},
-                    {y = 31,x = 32},
-                    {y = 23,x = 14},
-                    {y = 25,x = 6},
-                    {y = 31,x = -11},
-                    {y = 38,x = -36},
-                    {y = 39,x = -50},
-                    {y = 43,x = -76},
-                    {y = 43,x = -98},
-                    {y = 40,x = -108},
-                    {y = 26,x = -121}
+                    {y = 4, x = -118},
+                    {y = -14, x = -115},
+                    {y = -27, x = -108},
+                    {y = -38, x = -95},
+                    {y = -43, x = -79},
+                    {y = -45, x = -63},
+                    {y = -46, x = -45},
+                    {y = -45, x = -30},
+                    {y = -41, x = -8},
+                    {y = -39, x = 5},
+                    {y = -35, x = 23},
+                    {y = -32, x = 39},
+                    {y = -34, x = 57},
+                    {y = -37, x = 74},
+                    {y = -38, x = 101},
+                    {y = -32, x = 116},
+                    {y = -19, x = 129},
+                    {y = -4, x = 131},
+                    {y = 10, x = 133},
+                    {y = 23, x = 132},
+                    {y = 33, x = 126},
+                    {y = 38, x = 116},
+                    {y = 37, x = 95},
+                    {y = 35, x = 72},
+                    {y = 32, x = 55},
+                    {y = 31, x = 32},
+                    {y = 23, x = 14},
+                    {y = 25, x = 6},
+                    {y = 31, x = -11},
+                    {y = 38, x = -36},
+                    {y = 39, x = -50},
+                    {y = 43, x = -76},
+                    {y = 43, x = -98},
+                    {y = 40, x = -108},
+                    {y = 26, x = -121}
+                },
+                setting = {
+                    {
+                        name = "eye",
+                        offset = {x = -84, y = -56}
+                    },
+                    {
+                        name = "eye",
+                        offset = {x = 96, y = -56}
+                    },
+                    {
+                        name = "mouth",
+                        offset = {x = -4, y = 84}
+                    }
                 }
             }
         }
@@ -77,28 +91,33 @@ return {
             return newPoints
         end
 
-        self.playerPaths = {
-            player1 = {
-                paths = {
-                    {
-                        initialPoint = {x = 100, y = 140},
-                        points = copyPoints(relativePoints.pumpkin1.eye)
-                    },
-                    {
-                        initialPoint = {x = 250, y = 140},
-                        points = copyPoints(relativePoints.pumpkin1.eye)
-                    },
-                    {
-                        initialPoint = {x = 180, y = 279},
-                        points = copyPoints(relativePoints.pumpkin1.mouth)
-                    }
-                },
+        local createPumpkin = function(pumpkin, center)
+            local newPaths = {}
+
+            for partIndex, part in pairs(pumpkin.setting) do
+                table.insert(newPaths, {
+                    initialPoint = {x = center.x + part.offset.x, y = center.y + part.offset.y},
+                    points = copyPoints(pumpkin[part.name])
+                })
+            end
+
+            return newPaths
+        end
+
+        self.playerPaths = {}
+
+        for playerIndex = 1, 4 do
+            table.insert(self.playerPaths, playerIndex, {
+                paths = createPumpkin(relativePoints.pumpkin1, {
+                    x = love.graphics.getWidth() * (0.25 * playerIndex - 0.125),
+                    y = love.graphics.getHeight() * 0.5
+                }),
                 followInitialIndex = nil,
                 followDirection = nil,
                 followPreviousIndex = nil,
                 followPathIndex = nil
-            }
-        }
+            })
+        end
 
         self.initialPoint = nil
         self.points = {}

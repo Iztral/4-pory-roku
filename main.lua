@@ -5,7 +5,9 @@ lume = require "lib.lume"
 baton = require "lib.baton"
 
 local states = {
-    pumpkins = require "states.pumpkins"
+    pumpkins = require "states.pumpkins",
+
+    summary = require "states.scoreSummary"
 }
 
 function love.load()
@@ -16,5 +18,13 @@ end
 function love.keypressed(key)
     if key == "escape" then
         love.event.quit()
+    end
+
+    if key =="k" then
+        gamestate.switch(states.pumpkins)
+    elseif key == "l" then
+        gamestate.switch(states.summary, {
+            "player2", "player1", "player4", "player3"
+        })
     end
 end
