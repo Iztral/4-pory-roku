@@ -5,7 +5,7 @@ lume = require "lib.lume"
 baton = require "lib.baton"
 anim8 = require "lib.anim8"
 
-local states = {
+states = {
     pumpkins = require "states.pumpkins",
 	sunbath = require "states.sunbath",
 	bazooka = require "states.bazooka",
