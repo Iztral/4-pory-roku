@@ -14,54 +14,37 @@ return function(self,player,dt)
 
 	--grading turn posotive--
 	if self.turn_direction == 1 then
-		if player.angle_difference < 0 then
+		if player.angle_difference <= 0 then
 			player.turn_grade = 0
 		end
-		if player.angle_difference > 0 and player.angle_difference < 4 then
+		if player.angle_difference > 0 then
 			player.turn_grade = 1
-		end
-		if player.angle_difference > 4 and player.angle_difference < 6 then
-			player.turn_grade = 2
-		end
-		if player.angle_difference > 6 then
-			player.turn_grade = 3
 		end
 	end
 	
 	--grading turn negative--
 	if self.turn_direction == -1 then
-		if player.angle_difference > 0 then
+		if player.angle_difference >= 0 then
 			player.turn_grade = 0
 		end
-		if player.angle_difference < 0 and player.angle_difference > -4 then
+		if player.angle_difference < 0 then
 			player.turn_grade = 1
-		end
-		if player.angle_difference < -4 and player.angle_difference > -6 then
-			player.turn_grade = 2
-		end
-		if player.angle_difference < -6 then
-			player.turn_grade = 3
 		end
 	end
 	
 	--score increase/decrease 
 	if player.turn_grade == 0 then
 		player.player_score = math.max(player.player_score - 15 * dt,0)
+		player.alfa = player.alfa + 1*dt
 	end
 	
 	if player.turn_grade == 1 then
-		player.player_score = math.max(player.player_score - 5 * dt,0)
-	end
-	
-	if player.turn_grade == 2 then
 		player.player_score = math.max(player.player_score + 50 * dt,0)
-	end
-	
-	if player.turn_grade == 3 then
-		player.player_score = math.max(player.player_score + 10 * dt,0)
+		player.alfa = math.max(player.alfa - 1*dt,0)
 	end
 	
 	player.rotation_old = player.rotation_new
+	
 	--turn animation--
 	if angle_old == nil then
 		player.angle_old = 0
@@ -76,6 +59,8 @@ return function(self,player,dt)
 		if player.angle_max <= 0 then
 			player.angle_max = 25
 			self.wiosna_main = self["wiosna"..player.order]
+			self.mask_wiosna = self["mask"..player.order]
+			player.alfa = 0
 			if self.turn_direction == 1 then
 				player.order = (player.order+1)%4
 			end
@@ -85,10 +70,11 @@ return function(self,player,dt)
 		end
 	end
 	
-	if player.season == 1 then
+	if player.season == 2 then
 		if player.angle_max <= 0 then
 			player.angle_max = 25
 			self.lato_main = self["lato"..player.order]
+			player.alfa = 0
 			if self.turn_direction == 1 then
 				player.order = (player.order+1)%4
 			end
@@ -98,9 +84,10 @@ return function(self,player,dt)
 		end
 	end
 	
-	if player.season == 1 then
+	if player.season == 3 then
 		if player.angle_max <= 0 then
 			player.angle_max = 25
+			player.alfa = 0
 			self.jesien_main = self["jesien"..player.order]
 			if self.turn_direction == 1 then
 				player.order = (player.order+1)%4
@@ -111,9 +98,10 @@ return function(self,player,dt)
 		end
 	end
 	
-	if player.season == 1 then
+	if player.season == 4 then
 		if player.angle_max <= 0 then
 			player.angle_max = 25
+			player.alfa = 0
 			self.zima_main = self["zima"..player.order]
 			if self.turn_direction == 1 then
 				player.order = (player.order+1)%4
