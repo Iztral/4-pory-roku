@@ -8,6 +8,7 @@ return {
 		player4 = {player_id = 3, player_score = 0, turn_grade = 0, angle_difference = 0, rotation_new = 0, rotation_old = 0},
 		}
 		self.timer = 30
+		
     end,
     draw = require "states.sunbath.draw"
 	update = require "states.sunbath.update"
