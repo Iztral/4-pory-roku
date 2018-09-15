@@ -6,7 +6,9 @@ baton = require "lib.baton"
 
 local states = {
     pumpkins = require "states.pumpkins",
-	sunbath = require "states.sunbath"
+	sunbath = require "states.sunbath",
+	bazooka = require "states.bazooka",
+	race = require "states.race"
 }
 
 function love.load()
