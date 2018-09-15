@@ -11,18 +11,36 @@ return function(player,dt)
 	
 	player.angle_difference = math.deg(player.rotation_new - player.rotation_old)*dt*50
 	
-	--grading turn--
-	if player.angle_difference == 0 then
-		player.turn_grade = 0
+	--grading turn posotive--
+	if turn_direction == -1 then
+		if player.angle_difference < 0 then
+			player.turn_grade = 0
+		end
+		if player.angle_difference > 0 and player.angle_difference < 4 then
+			player.turn_grade = 1
+		end
+		if player.angle_difference > 4 and player.angle_difference < 6 then
+			player.turn_grade = 2
+		end
+		if player.angle_difference > 6 then
+			player.turn_grade = 3
+		end
 	end
-	if player.angle_difference > 0 and player.angle_difference < 4 then
-		player.turn_grade = 1
-	end
-	if player.angle_difference > 4 and player.angle_difference < 6 then
-		player.turn_grade = 2
-	end
-	if player.angle_difference > 6 then
-		player.turn_grade = 3
+	
+	--grading turn negative--
+	if turn_direction == 1 then
+		if player.angle_difference > 0 then
+			player.turn_grade = 0
+		end
+		if player.angle_difference > 0 and player.angle_difference < -4 then
+			player.turn_grade = 1
+		end
+		if player.angle_difference > -4 and player.angle_difference < -6 then
+			player.turn_grade = 2
+		end
+		if player.angle_difference > -6 then
+			player.turn_grade = 3
+		end
 	end
 	
 	--score increase/decrease 
