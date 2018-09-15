@@ -1,4 +1,3 @@
 return function(self)
-    love.graphics.setColor(1, 1, 0)
-    love.graphics.rectangle("fill", 10, 10, 30, 20)
+    love.graphics.setBackgroundColor(0, 0, 0)
 end

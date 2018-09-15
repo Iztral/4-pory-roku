@@ -27,8 +27,10 @@ function love.keypressed(key)
         love.event.quit()
     end
 
-    if key =="k" then
+    if key == "k" then
         gamestate.switch(states.pumpkins)
+    elseif key == "o" then
+        gamestate.switch(states.bazooka)
     elseif key == "l" then
         gamestate.switch(states.summary, {
             "player2", "player1", "player4", "player3"
