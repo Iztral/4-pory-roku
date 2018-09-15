@@ -17,7 +17,7 @@ return {
 		self.wiosna2 = love.graphics.newImage("img/wiosna2.png")
 		self.wiosna3 = love.graphics.newImage("img/wiosna3.png")
 		self.wiosna4 = love.graphics.newImage("img/wiosna4.png")
-		self.wiosna_main = self.wiosna1 = love.graphics.newImage("img/wiosna1.png")
+		self.wiosna_main = self.wiosna1
 		
 		
 		self.players = {

@@ -1,6 +1,8 @@
 -- libraries
 gamestate = require "lib.hump.gamestate"
 signal = require "lib.hump.signal"
+timer = require "lib.hump.timer"
+vector = require "lib.hump.vector"
 lume = require "lib.lume"
 baton = require "lib.baton"
 anim8 = require "lib.anim8"
@@ -16,7 +18,7 @@ states = {
 
 function love.load()
     tick.framerate = 60
-    tick.rate = 0.03
+    tick.rate = 1 / 60
 
     gamestate.registerEvents()
     gamestate.switch(states.sunbath)
