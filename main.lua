@@ -4,6 +4,7 @@ signal = require "lib.hump.signal"
 lume = require "lib.lume"
 baton = require "lib.baton"
 anim8 = require "lib.anim8"
+tick = require "lib.tick"
 
 states = {
     pumpkins = require "states.pumpkins",
@@ -14,6 +15,9 @@ states = {
 }
 
 function love.load()
+    tick.framerate = 60
+    tick.rate = 0.03
+
     gamestate.registerEvents()
     gamestate.switch(states.sunbath)
 end

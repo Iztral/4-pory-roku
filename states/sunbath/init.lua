@@ -54,7 +54,7 @@ return {
                     joystick = love.joystick.getJoysticks()[4]
                 },},
 		}
-		self.timer = 30
+		self.timer = 5
 		
     end,
     draw = require "states.sunbath.draw",
