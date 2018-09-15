@@ -54,7 +54,7 @@ return {
                 joystick = love.joystick.getJoysticks()[4]
             },},
         }
-		self.timer = 5
+		self.timer = 30
 		self.turn_direction = 1
 		self.turn_timer = 5
 		self.bck_timer = 5

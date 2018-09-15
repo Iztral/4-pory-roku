@@ -5,6 +5,5 @@ return function(self)
 	love.graphics.print(string.format("%.0f", self.players.player2.player_score or 0),50,50)
 	love.graphics.print(string.format("%.0f", self.players.player3.player_score or 0),70,70)
 	love.graphics.print(string.format("%.0f", self.players.player4.player_score or 0),90,90)
-	love.graphics.print(self.turn_direction, 120,120)
-	love.graphics.print(self.bck_timer, 150,150)
+	love.graphics.print(string.format("%.0f", self.players.player4.angle_difference or 0),120,120)
 end
