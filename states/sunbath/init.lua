@@ -1,8 +1,15 @@
 return {
     init = function(self)
+	
         self.background1 = love.graphics.newImage("img/tlopiasek1png.png")
 		self.background2 = love.graphics.newImage("img/tlopiasek2png.png")
 		self.background3 = love.graphics.newImage("img/tlopiasek3png.png")
+		
+		self.towel1 = love.graphics.newImage("img/koc1.png")
+		self.towel2 = love.graphics.newImage("img/koc2.png")
+		self.towel3 = love.graphics.newImage("img/koc3.png")
+		self.towel4 = love.graphics.newImage("img/koc4.png")
+		
 		self.sand = self.background1
 		self.players = {
             player1 = {player_score = 0, turn_grade = 0, angle_difference = 0, rotation_new = nil, rotation_old = nil, controls = baton.new {
