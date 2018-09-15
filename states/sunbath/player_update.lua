@@ -3,6 +3,7 @@ return function(self,player,dt)
 	player.controls:update(dt)
 	local x, y = player.controls:get "move"
 	
+	
 	if player.rotation_old == nil then
 		player.rotation_old = math.atan2(y,x)
 	end
@@ -45,11 +46,11 @@ return function(self,player,dt)
 	
 	--score increase/decrease 
 	if player.turn_grade == 0 then
-		player.player_score = math.max(player.player_score - 30 * dt,0)
+		player.player_score = math.max(player.player_score - 15 * dt,0)
 	end
 	
 	if player.turn_grade == 1 then
-		player.player_score = math.max(player.player_score - 10 * dt,0)
+		player.player_score = math.max(player.player_score - 5 * dt,0)
 	end
 	
 	if player.turn_grade == 2 then
@@ -62,26 +63,65 @@ return function(self,player,dt)
 	
 	player.rotation_old = player.rotation_new
 	--turn animation--
-	player.angle = math.max(player.angle + math.abs(player.angle_difference/100),100)
-	
-	
-	
-	if player.angle > 0 and player.angle < 25 then
-	
+	if angle_old == nil then
+		player.angle_old = 0
 	end
 	
-	if player.angle > 25 and player.angle < 50 then
-	
-	end
-	
-	if player.angle > 50 and player.angle < 75 then
-	
-	end
-	
-	if player.angle > 75 and player.angle < 100 then
-	
+	if player.angle_max > 0 then
+		player.angle_max = player.angle_max - math.abs(player.angle_difference/150)
 	end
 	
 	
+	if player.season == 1 then
+		if player.angle_max <= 0 then
+			player.angle_max = 25
+			self.wiosna_main = self["wiosna"..player.order]
+			if self.turn_direction == 1 then
+				player.order = (player.order+1)%4
+			end
+			if self.turn_direction == -1 then
+				player.order = (player.order-1)%4
+			end
+		end
+	end
+	
+	if player.season == 1 then
+		if player.angle_max <= 0 then
+			player.angle_max = 25
+			self.lato_main = self["lato"..player.order]
+			if self.turn_direction == 1 then
+				player.order = (player.order+1)%4
+			end
+			if self.turn_direction == -1 then
+				player.order = (player.order-1)%4
+			end
+		end
+	end
+	
+	if player.season == 1 then
+		if player.angle_max <= 0 then
+			player.angle_max = 25
+			self.jesien_main = self["jesien"..player.order]
+			if self.turn_direction == 1 then
+				player.order = (player.order+1)%4
+			end
+			if self.turn_direction == -1 then
+				player.order = (player.order-1)%4
+			end
+		end
+	end
+	
+	if player.season == 1 then
+		if player.angle_max <= 0 then
+			player.angle_max = 25
+			self.zima_main = self["zima"..player.order]
+			if self.turn_direction == 1 then
+				player.order = (player.order+1)%4
+			end
+			if self.turn_direction == -1 then
+				player.order = (player.order-1)%4
+			end
+		end
+	end
 	
 end

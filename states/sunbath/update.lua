@@ -20,7 +20,7 @@ return function(self,dt)
 	end
 	if self.turn_timer < 0 then
 		self.turn_direction = self.turn_direction*(-1)
-		self.turn_timer = 5
+		self.turn_timer = math.random(3,8)
 	end
 	
 	--anim timer--
