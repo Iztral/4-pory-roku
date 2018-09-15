@@ -26,6 +26,7 @@ end
 return function(self)
     love.graphics.setPointSize(6)
 
+    -- draw points
     for playerIndex, playerPath in pairs(self.playerPaths) do
         for pathIndex, path in pairs(playerPath.paths) do
             drawPoints(path.initialPoint, path.points, lume.count(playerPath.paths) == lume.count(playerPath.paths, "done"))
@@ -39,4 +40,7 @@ return function(self)
         love.graphics.setColor(1, 0, 0, 0.5)
         love.graphics.circle("fill", self.cursorPosition.x, self.cursorPosition.y, self.cursorRadius)
     end
+
+    -- draw players
+    self.players:draw()
 end

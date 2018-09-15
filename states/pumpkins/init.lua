@@ -105,6 +105,13 @@ return {
 
         self.cursorPosition = nil
         self.cursorRadius = 8
+
+        self.players:initialize()
+
+        -- register signals for players
+        self.players.signals:register("cut", function(playerIndex, x, y)
+            self:followpath(playerIndex, x, y) 
+        end)
     end,
 
     -- callback functions
@@ -114,6 +121,7 @@ return {
     mousemoved = require "states.pumpkins.mousemoved",
     keypressed = require "states.pumpkins.keypressed",
 
-    -- exported functions
-    followpath = require "states.pumpkins.followpath"
+    -- exported functions and modules
+    followpath = require "states.pumpkins.followpath",
+    players = require "states.pumpkins.players"
 }

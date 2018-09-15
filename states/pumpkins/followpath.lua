@@ -31,13 +31,17 @@ return function(self, playerIndex, x, y)
                                 -- activate second point on path and determine direction
                                 if playerPath.followInitialIndex == pointsCount and followCurrentIndex == 1 then
                                     playerPath.followDirection = 1
+                                    playerPath.followPreviousIndex = followCurrentIndex
+                                    point.active = true
                                 elseif playerPath.followInitialIndex == 1 and followCurrentIndex == pointsCount then
                                     playerPath.followDirection = -1
+                                    playerPath.followPreviousIndex = followCurrentIndex
+                                    point.active = true
                                 elseif math.abs(followCurrentIndex - playerPath.followInitialIndex) == 1 then
                                     playerPath.followDirection = followCurrentIndex - playerPath.followInitialIndex
+                                    playerPath.followPreviousIndex = followCurrentIndex
+                                    point.active = true
                                 end
-                                playerPath.followPreviousIndex = followCurrentIndex
-                                point.active = true
                             end
                         else
                             -- activate first point on path

@@ -1,6 +1,8 @@
 -- libraries
 gamestate = require "lib.hump.gamestate"
+signal = require "lib.hump.signal"
 lume = require "lib.lume"
+baton = require "lib.baton"
 
 local states = {
     pumpkins = require "states.pumpkins"
