@@ -10,20 +10,20 @@ double table rotation_old[] x
 if turn slow = player_score -
 if turn fast = player_score +
 if turn normal = player_score ++
-if turn stop = player_score --
+if turn stop = player_score -- x 
 
-if timer == 0 check player_score
+if timer == 0 check player_score x 
 
-get rotation_old
-set rotation_new = rotation_old
-compare rotation_new with rotation_old by math.atan2
-rotation_new - rotation_old = angle_difference
-if angle_difference between x1 and x2 = good
-if angle_difference > x1 and x2 = bad
-if angle_difference < x1 and x2 = mediocre
-if angle_difference == 0 very_bad
+get rotation_old x 
+set rotation_new = rotation_old x
+compare rotation_new with rotation_old by math.atan2 x
+rotation_new - rotation_old = angle_difference x
+if angle_difference between x1 and x2 = good x
+if angle_difference > x1 and x2 = bad x 
+if angle_difference < x1 and x2 = mediocre x
+if angle_difference == 0 very_bad x
 
-if good == true then score ++
-if mediocre == true then score+
-if bad == true then score-
-if very_bad == true then score--
+if good == true then score ++ x 
+if mediocre == true then score+ x
+if bad == true then score- x
+if very_bad == true then score-- x

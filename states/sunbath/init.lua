@@ -12,7 +12,7 @@ return {
                     pairs = {
                         move = {"left", "right", "up", "down"}
                     },
-                    joystick = love.joystick.getJoysticks()[playerIndex]
+                    joystick = love.joystick.getJoysticks()[1]
                 },},
 		player2 = {player_score = 0, turn_grade = 0, angle_difference = 0, rotation_new = nil, rotation_old = nil, controls = baton.new {
                     controls = {
@@ -25,7 +25,7 @@ return {
                     pairs = {
                         move = {"left", "right", "up", "down"}
                     },
-                    joystick = love.joystick.getJoysticks()[playerIndex]
+                    joystick = love.joystick.getJoysticks()[2]
                 },},
 		player3 = {player_score = 0, turn_grade = 0, angle_difference = 0, rotation_new = nil, rotation_old = nil, controls = baton.new {
                     controls = {
@@ -38,7 +38,7 @@ return {
                     pairs = {
                         move = {"left", "right", "up", "down"}
                     },
-                    joystick = love.joystick.getJoysticks()[playerIndex]
+                    joystick = love.joystick.getJoysticks()[3]
                 },},
 		player4 = {player_score = 0, turn_grade = 0, angle_difference = 0, rotation_new = nil, rotation_old = nil, controls = baton.new {
                     controls = {
@@ -51,7 +51,7 @@ return {
                     pairs = {
                         move = {"left", "right", "up", "down"}
                     },
-                    joystick = love.joystick.getJoysticks()[playerIndex]
+                    joystick = love.joystick.getJoysticks()[4]
                 },},
 		}
 		self.timer = 30

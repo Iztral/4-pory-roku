@@ -11,7 +11,7 @@ local states = {
 
 function love.load()
     gamestate.registerEvents()
-    gamestate.switch(states.pumpkins)
+    gamestate.switch(states.sunbath)
 end
 
 function love.keypressed(key)
