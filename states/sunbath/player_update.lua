@@ -1,39 +1,42 @@
-
-if players.player1.rotation_old == nil then
-		players.player1.rotation_old = math.atan2(x,y)
+return function(player)
+if player.rotation_old == nil then
+		player.rotation_old = math.atan2(x,y)
 	end
 	
-	players.player1.rotation_new = math.atan2(y,x)
+	local x, y = player.controls:get "move"
 	
-	players.player1.angle_difference = math.deg(players.player1.rotation_new - players.player1.rotation_old)
+	player.rotation_new = math.atan2(y,x)
+	
+	player.angle_difference = math.deg(player.rotation_new - player.rotation_old)
 	
 	--grading turn--
-	if players.player1.angle_difference == 0
-		players.player1.turn_grade = 0
+	if player.angle_difference == 0
+		player.turn_grade = 0
 	end
-	if players.player1.angle_difference > 0 and players.player1.angle_difference < 2
-		players.player1.turn_grade = 1
+	if player.angle_difference > 0 and player.angle_difference < 2
+		player.turn_grade = 1
 	end
-	if players.player1.angle_difference > 2 and players.player1.angle_difference < 4
-		players.player1.turn_grade = 2
+	if player.angle_difference > 2 and player.angle_difference < 4
+		player.turn_grade = 2
 	end
-	if players.player1.angle_difference > 4
-		players.player1.turn grade = 3
+	if player.angle_difference > 4
+		player.turn grade = 3
 	end
 	
 	--score increase/decrease 
-	if players.player1.turn_grade == 0
-		players.player1.player_score = players.player1.player_score - 10
+	if player.turn_grade == 0
+		player.player_score = player.player_score - 10
 	end
 	
-	if players.player1.turn_grade == 1
-		players.player1.player_score = players.player1.player_score - 5
+	if player.turn_grade == 1
+		player.player_score = player.player_score - 5
 	end
 	
-	if players.player1.turn_grade == 2
-		players.player1.player_score = players.player1.player_score + 10
+	if player.turn_grade == 2
+		player.player_score = player.player_score + 10
 	end
 	
-	if players.player1.turn_grade == 3
-		players.player1.player_score = players.player1.player_score + 5
+	if player.turn_grade == 3
+		player.player_score = player.player_score + 5
 	end
+end

@@ -5,7 +5,7 @@ lume = require "lib.lume"
 baton = require "lib.baton"
 
 local states = {
-    pumpkins = require "states.pumpkins"
+    pumpkins = require "states.pumpkins",
 	sunbath = require "states.sunbath"
 }
 

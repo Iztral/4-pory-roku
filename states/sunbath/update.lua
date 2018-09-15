@@ -9,6 +9,11 @@ return function(self,dt)
 		--pause and compare score--
 	end
 	
+	for index,player in pairs(self.players) do
+		self.player_update(player)
+	end
+		
+	
 	
 	
 	
