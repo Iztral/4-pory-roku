@@ -17,13 +17,22 @@ return {
         love.graphics.setColor(1, 1, 1)
         love.graphics.setFont(self.font)
 
-        local sortedScores = lume.sort(self.scores, function(a, b) return a > b end)
+        local keyedScores = {}
+
+        for scoreIndex, score in pairs(self.scores) do
+            table.insert(keyedScores, {
+                index = scoreIndex,
+                score = score
+            })
+        end
+
+        local sortedScores = lume.sort(keyedScores, function(a, b) return a.score > b.score end)
 
         local i = 1
 
-        for playerIndex, score in pairs(sortedScores) do
-            love.graphics.printf("Por " .. playerIndex, love.graphics.getWidth() * 0.25, love.graphics.getHeight() * (0.25 * i - 0.125) - self.fontHeight * 0.5, love.graphics.getWidth() * 0.5, "left")
-            love.graphics.printf(score, love.graphics.getWidth() * 0.25, love.graphics.getHeight() * (0.25 * i - 0.125) - self.fontHeight * 0.5, love.graphics.getWidth() * 0.5, "right")
+        for _, scoreData in pairs(sortedScores) do
+            love.graphics.printf("Por " .. scoreData.index, love.graphics.getWidth() * 0.25, love.graphics.getHeight() * (0.25 * i - 0.125) - self.fontHeight * 0.5, love.graphics.getWidth() * 0.5, "left")
+            love.graphics.printf(scoreData.score, love.graphics.getWidth() * 0.25, love.graphics.getHeight() * (0.25 * i - 0.125) - self.fontHeight * 0.5, love.graphics.getWidth() * 0.5, "right")
 
             i = i + 1
         end
