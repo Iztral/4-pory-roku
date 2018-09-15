@@ -32,13 +32,13 @@ return function(self,player,dt)
 		if player.angle_difference > 0 then
 			player.turn_grade = 0
 		end
-		if player.angle_difference > 0 and player.angle_difference < -4 then
+		if player.angle_difference < 0 and player.angle_difference > -4 then
 			player.turn_grade = 1
 		end
-		if player.angle_difference > -4 and player.angle_difference < -6 then
+		if player.angle_difference < -4 and player.angle_difference > -6 then
 			player.turn_grade = 2
 		end
-		if player.angle_difference > -6 then
+		if player.angle_difference < -6 then
 			player.turn_grade = 3
 		end
 	end
