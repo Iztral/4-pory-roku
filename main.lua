@@ -41,7 +41,7 @@ function love.keypressed(key)
     end
 
     if key == "k" then
-        gamestate.switch(states.pumpkins)
+        gamestate.switch(states.sunbath)
     elseif key == "o" then
         gamestate.switch(states.bazooka)
     elseif key == "p" then

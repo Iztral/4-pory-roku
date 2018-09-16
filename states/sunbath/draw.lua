@@ -1,17 +1,14 @@
 return function(self)
+	--background--
     love.graphics.draw(self.sand,0,0)
-	
-	--timer--
-	love.graphics.setFont(self.font_big)
-	love.graphics.printf(string.format("%.0f", self.timer or 0),0, 10, love.graphics.getWidth(),"center")
-	
 	--score--
 	love.graphics.setFont(self.font_small)
+	love.graphics.setColor(0,0,0)
 	love.graphics.printf(string.format("%.0f", self.players.player1.player_score or 0),0,50,love.graphics.getWidth()*0.25,"center")
 	love.graphics.printf(string.format("%.0f", self.players.player2.player_score or 0),love.graphics.getWidth()*0.25,50,love.graphics.getWidth()*0.25,"center")
 	love.graphics.printf(string.format("%.0f", self.players.player3.player_score or 0),love.graphics.getWidth()*0.5,50,love.graphics.getWidth()*0.25,"center")
 	love.graphics.printf(string.format("%.0f", self.players.player4.player_score or 0),love.graphics.getWidth()*0.75,50,love.graphics.getWidth()*0.25,"center")
-	
+	love.graphics.setColor(1,1,1)
 	--towel--
 	love.graphics.draw(self.towel1,love.graphics.getWidth()*0.125,love.graphics.getHeight()*0.45,0,0.8,0.8,self.towel1:getWidth()/2,self.towel1:getHeight()/2)
 	love.graphics.draw(self.towel2,love.graphics.getWidth()*0.375,love.graphics.getHeight()*0.45,0,0.8,0.8,self.towel2:getWidth()/2,self.towel2:getHeight()/2)
@@ -32,7 +29,13 @@ return function(self)
 	love.graphics.setColor(1,1,1,self.players.player4.alfa)
 	love.graphics.draw(self.mask_zima,love.graphics.getWidth()*0.875,love.graphics.getHeight()*0.45,0,0.5,0.5,self.mask_zima:getWidth()/2,self.mask_zima:getHeight()/2)
 	love.graphics.setColor(1,1,1,1)
-	--arrow
+	--arrow clock--
 	love.graphics.draw(self.arrow,love.graphics.getWidth()*0.5,love.graphics.getHeight()*0.8,0,self.turn_direction*0.5,0.5,self.arrow:getWidth()/2,self.arrow:getHeight()/2)
+	--timer--
+	love.graphics.setFont(self.font_big)
+	love.graphics.draw(self.clock,love.graphics.getWidth()*0.5,10,0,0.3,0.3,self.clock:getWidth()/2,self.clock:getHeight()/100)
+	love.graphics.setColor(0,0,0)
+	love.graphics.printf(string.format("%.0f", self.timer or 0),0, 75, love.graphics.getWidth(),"center")
+	love.graphics.setColor(1,1,1)
 	--debug--
 end
