@@ -7,6 +7,7 @@ lume = require "lib.lume"
 baton = require "lib.baton"
 anim8 = require "lib.anim8"
 tick = require "lib.tick"
+bump = require "lib.bump"
 
 states = {
     pumpkins = require "states.pumpkins",
@@ -16,12 +17,21 @@ states = {
     summary = require "states.scoreSummary"
 }
 
+competitionOrder = {
+    "bazooka",
+    "sunbath",
+    "pumpkins",
+    "race"
+}
+
+competitionOrderIndex = 1
+
 function love.load()
     tick.framerate = 60
     tick.rate = 1 / 60
 
     gamestate.registerEvents()
-    gamestate.switch(states.sunbath)
+    gamestate.switch(states[competitionOrder[competitionOrderIndex]])
 end
 
 function love.keypressed(key)
@@ -33,9 +43,20 @@ function love.keypressed(key)
         gamestate.switch(states.pumpkins)
     elseif key == "o" then
         gamestate.switch(states.bazooka)
-    elseif key == "l" then
+    elseif key == "p" then
+        gamestate.switch(states.race)
+    elseif key == "i" then
+        gamestate.switch(states.pumpkins)
+    elseif key == "u" then
         gamestate.switch(states.summary, {
-            "player2", "player1", "player4", "player3"
+            "player1",
+            "player2",
+            "player3",
+            "player4",
         })
     end
+end
+
+function love.update(dt)
+    timer.update(dt)
 end

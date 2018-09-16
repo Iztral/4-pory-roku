@@ -1,5 +1,5 @@
 return function(self, playerIndex, x, y)
-    local playerPath = self.playerPaths["player" .. playerIndex]
+    local playerPath = self.playerPaths["player" .. playerIndex] or self.playerPaths[playerIndex]
 
     for currentPathIndex, path in pairs(playerPath.paths) do
         if playerPath.followPathIndex == nil or currentPathIndex == playerPath.followPathIndex then
@@ -74,5 +74,6 @@ return function(self, playerIndex, x, y)
                 end
             end
         end
+
     end
 end

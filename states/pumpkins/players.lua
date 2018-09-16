@@ -13,6 +13,7 @@ return {
     initialize = function(self)
         -- controls definition
         for playerIndex = 1, 4 do
+            local zeroIndex = playerIndex - 1
             self.data[playerIndex] = {
                 controls = baton.new {
                     controls = {
@@ -27,7 +28,10 @@ return {
                     },
                     joystick = love.joystick.getJoysticks()[playerIndex]
                 },
-                position = {x = 0, y = 0},
+                position = {
+                    x = 0.25 * zeroIndex * love.graphics.getWidth() + 251,
+                    y = 0.5 * love.graphics.getHeight()
+                },
                 speed = 100,
                 color = playerColors[playerIndex],
                 cutModifier = 0
@@ -43,7 +47,7 @@ return {
     draw = function(self)
         -- draw player cursor
         for playerIndex, player in pairs(self.data) do
-            love.graphics.setColor(lume.concat(player.color, {0.5}))
+            love.graphics.setColor(lume.concat(player.color, { 0.9 }))
             love.graphics.circle("fill", player.position.x, player.position.y, 8)
         end
     end,

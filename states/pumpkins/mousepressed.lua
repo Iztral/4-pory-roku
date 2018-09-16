@@ -1,4 +1,6 @@
 return function(self, x, y, button, isTouch, presses)
+    if true then return end
+
     if self.initialPoint == nil then
         self.initialPoint = {x = x, y = y}
     else

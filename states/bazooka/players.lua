@@ -45,10 +45,10 @@ return {
                 speed = 200,
                 color = playerColors[playerIndex],
                 flowerSpriteBatches = {
-                    love.graphics.newSpriteBatch(self.flowers[1], 1000),
-                    love.graphics.newSpriteBatch(self.flowers[2], 1000),
-                    love.graphics.newSpriteBatch(self.flowers[3], 1000),
-                    love.graphics.newSpriteBatch(self.flowers[4], 1000)
+                    love.graphics.newSpriteBatch(self.flowers[1], 512),
+                    love.graphics.newSpriteBatch(self.flowers[2], 512),
+                    love.graphics.newSpriteBatch(self.flowers[3], 512),
+                    love.graphics.newSpriteBatch(self.flowers[4], 512)
                 },
                 flowerSpriteBatchesIndexes = {
                     {},
@@ -56,9 +56,11 @@ return {
                     {},
                     {}
                 },
+                flowerAnimations = {},
                 reloadTime = 0,
                 time = math.random(),
-                sinsin = 0
+                sinsin = 0,
+                index = playerIndex
             }
         end
 
@@ -94,7 +96,7 @@ return {
 
             -- draw player loading bar
             self.sinsin = 1 - math.abs(math.sin(player.time * 2.5))
-            local dposX, dposY = love.graphics.getWidth() * 0.5 + minusPosX * 40, love.graphics.getHeight() * 0.5 + minusPosY * 40
+            local dposX, dposY = love.graphics.getWidth() * 0.5 + minusPosX * 100, love.graphics.getHeight() * 0.5 + minusPosY * 100
             love.graphics.push()
             love.graphics.translate(dposX, dposY)
             love.graphics.rotate(-math.pi / 2)
@@ -165,6 +167,7 @@ return {
                             randomBatch:getTexture():getWidth() / 2,
                             randomBatch:getTexture():getHeight() / 2
                         )
+
                         table.insert(
                             player.flowerSpriteBatchesIndexes[randomBatchIndex],
                             spriteIndex
