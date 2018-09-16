@@ -21,7 +21,7 @@ return {
 		self.slady = love.graphics.newImage("img/slady.png")
 		--players table--
         self.players = {
-            player1 = {player_score = 0, acceleration = 0, last_pressed = 0, speed = 0, season = 1, lane = 0, alive = 1, controls = baton.new {
+            player1 = {player_score = 0, position = 0, acceleration = 0, last_pressed = 0, speed = 0, season = 1, lane = 0, alive = 1, controls = baton.new {
                 controls = {
                     left = {"axis:leftx-"},
                     right = {"axis:leftx+"},
@@ -35,7 +35,7 @@ return {
                 },
                 joystick = love.joystick.getJoysticks()[1]
             },},
-            player2 = {player_score = 0, acceleration = 0, last_pressed = 0, speed = 0, season = 2, lane = 0, alive = 1, controls = baton.new {
+            player2 = {player_score = 0, position = 0, acceleration = 0, last_pressed = 0, speed = 0, season = 2, lane = 0, alive = 1, controls = baton.new {
                 controls = {
                     left = {"axis:leftx-"},
                     right = {"axis:leftx+"},
@@ -49,7 +49,7 @@ return {
                 },
                 joystick = love.joystick.getJoysticks()[2]
             },},
-            player3 = {player_score = 0, acceleration = 0, last_pressed = 0, speed = 0, season = 3, lane = 0, alive = 1, controls = baton.new {
+            player3 = {player_score = 0, position = 0, acceleration = 0, last_pressed = 0, speed = 0, season = 3, lane = 0, alive = 1, controls = baton.new {
                 controls = {
                     left = {"axis:leftx-"},
                     right = {"axis:leftx+"},
@@ -63,7 +63,7 @@ return {
                 },
                 joystick = love.joystick.getJoysticks()[3]
             },},
-            player4 = {player_score = 0, acceleration = 0, last_pressed = 0, speed = 0, season = 4, lane = 0, alive = 1, controls = baton.new {
+            player4 = {player_score = 0, position = 0, acceleration = 0, last_pressed = 0, speed = 0, season = 4, lane = 0, alive = 1, controls = baton.new {
                 controls = {
                     left = {"axis:leftx-"},
                     right = {"axis:leftx+"},
@@ -79,6 +79,7 @@ return {
             },},
         }
 		self.timer = 30
+		self.lane_timer = 1
     end,
     draw = require "states.race.draw",
 	update = require "states.race.update"
