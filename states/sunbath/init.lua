@@ -6,8 +6,8 @@ return {
 	--timer--
 		self.clock = love.graphics.newImage("img/timer.png")
 	--font--
-		self.font_big = love.graphics.newFont(50)
-		self.font_small = love.graphics.newFont(30)
+		self.font_big = love.graphics.newFont("font/CaviarDreams.ttf", 50)
+		self.font_small = love.graphics.newFont("font/CaviarDreams.ttf", 30)
 	--background--
         self.background1 = love.graphics.newImage("img/tlopiasek1png.png")
 		self.background2 = love.graphics.newImage("img/tlopiasek2png.png")

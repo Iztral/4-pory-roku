@@ -17,14 +17,19 @@ return {
 		self.wyjscie = love.graphics.newImage("img/na-wyjscie.png")
 		self.logo = love.graphics.newImage("img/logopng.png")
 		self.bck_timer = 5
+
+        local j = love.joystick.getJoysticks()
+
 		self.controls = baton.new {
                     controls = {
                         start = {"button:start"},
 						quit = {"button:back"}
                         
                     },
-                    joystick = love.joystick.getJoysticks()[1]
+                    joystick = j[1]
                 }
+
+        self.bottomLogo = love.graphics.newImage("img/logo/toporybiale.png")
 	end,
 	draw = require "states.menu.draw",
 	update = require "states.menu.update"
