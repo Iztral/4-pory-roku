@@ -23,9 +23,12 @@ return function(self,dt)
 	--click detection--
 	self.controls:update(dt)
 	if self.controls:pressed("start") then
+		love.audio.stop()
 		gamestate.switch(states[competitionOrder[competitionOrderIndex]])
+		
 	end
 	if self.controls:pressed("quit") then
 		love.event.quit()
+		love.audio.stop()
 	end
 end

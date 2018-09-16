@@ -11,7 +11,10 @@ return {
             pumpkinMouth = love.graphics.newImage("img/pumpkin_mouth.png"),
             pumpkinMain = love.graphics.newImage("img/pumpkin_main.png"),
         }
-
+		self.autumn = love.audio.newSource("mp3/autumn.mp3","stream")
+		self.autumn:setLooping(true)
+		self.autumn:play()
+		
         self.playerOrder = {}
 
         self.backgroundTimer = 0

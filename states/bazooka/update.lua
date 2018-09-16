@@ -4,6 +4,7 @@ return function(self, dt)
     self.timer = self.timer - dt
 
     if self.timer <= 0 then
+		
         local spriteBatchCounts = lume.map(
             self.players.data, 
             function(player)
@@ -17,7 +18,7 @@ return function(self, dt)
         )
         
         local sortedBatchCounts = lume.sort(spriteBatchCounts, function(a, b) return a.count > b.count end)
-
+		love.audio.stop()
         gamestate.switch(states.summary, lume.map(sortedBatchCounts, "index"))
     end
 end
