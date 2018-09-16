@@ -12,6 +12,7 @@ return function(self,dt)
 	end
 	if self.timer < 0 then
 		self.timer = 0
+		self.summer:stop()
 		gamestate.switch(states.summary, sorted_scores_keys)
 	end
 	--turn over--

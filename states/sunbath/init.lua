@@ -1,5 +1,9 @@
 return {
     init = function(self)
+	--music--
+		self.summer = love.audio.newSource("mp3/summer.mp3","stream")
+		self.summer:play()
+	--font--
 		self.font_big = love.graphics.newFont(50)
 		self.font_small = love.graphics.newFont(30)
 	--background--

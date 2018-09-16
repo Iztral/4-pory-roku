@@ -1,7 +1,9 @@
 return function(self)
     love.graphics.draw(self.sand,0,0)
+	
+	--timer--
 	love.graphics.setFont(self.font_big)
-	love.graphics.printf(string.format("%.0f", self.timer or 0),0, 10, love.graphics.getWidth(),"center") --timer--
+	love.graphics.printf(string.format("%.0f", self.timer or 0),0, 10, love.graphics.getWidth(),"center")
 	
 	--score--
 	love.graphics.setFont(self.font_small)
