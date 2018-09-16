@@ -8,6 +8,15 @@ return {
 
         self.fontSmall = love.graphics.newFont(32)
         self.fontSmallHeight = self.fontSmall:getHeight()
+
+        self.background = love.graphics.newImage("img/summary-bg.jpg")
+
+        self.avatars = {
+            player1 = love.graphics.newImage("img/awatar-wiosna.png"),
+            player2 = love.graphics.newImage("img/awatar-lato.png"),
+            player3 = love.graphics.newImage("img/awatar-jesien.png"),
+            player4 = love.graphics.newImage("img/awatar-zima.png"),
+        }
     end,
 
     enter = function(self, current, playerKeys)
@@ -28,7 +37,10 @@ return {
     end,
 
     draw = function(self)
+        love.graphics.setBackgroundColor(20.4 / 100, 9.4 / 100, 8.2 / 100)
         love.graphics.setColor(1, 1, 1)
+
+        love.graphics.draw(self.background, love.graphics.getWidth() * 0.5, love.graphics.getHeight() * 0.5, 0, 1, 1, self.background:getWidth() * 0.5, self.background:getHeight() * 0.5)
 
         local keyedScores = {}
 
@@ -44,15 +56,34 @@ return {
 
         local i = 1
 
-        for _, scoreData in pairs(sortedScores) do
+        local startingHeight = love.graphics.getHeight() * 0.5 - 284
+        local containerHeight = 726
+
+        for position, scoreData in pairs(sortedScores) do
+            local scaleModifier = (function() if position == 1 then return 0.5 else return 0.35 end end)()
             love.graphics.setFont(self.font)
-            love.graphics.printf("Por " .. scoreData.index, love.graphics.getWidth() * 0.25, love.graphics.getHeight() * (0.25 * i - 0.125) - self.fontHeight * 0.5, love.graphics.getWidth() * 0.4, "left")
-            love.graphics.printf(scoreData.score, love.graphics.getWidth() * 0.25, love.graphics.getHeight() * (0.25 * i - 0.125) - self.fontHeight * 0.5, love.graphics.getWidth() * 0.4, "right")
+            love.graphics.printf("Por " .. scoreData.index, love.graphics.getWidth() * 0.25, startingHeight + containerHeight * (0.25 * i - 0.125) - self.fontHeight * 0.5, love.graphics.getWidth() * 0.3, "left")
+            love.graphics.printf(scoreData.score, love.graphics.getWidth() * 0.25, startingHeight + containerHeight * (0.25 * i - 0.125) - self.fontHeight * 0.5, love.graphics.getWidth() * 0.3, "right")
 
             love.graphics.setFont(self.fontSmall)
-            love.graphics.printf("+" .. scoreData.addScore, love.graphics.getWidth() * 0.25, love.graphics.getHeight() * (0.25 * i - 0.125) - self.fontSmallHeight * 0.5, love.graphics.getWidth() * 0.5, "right")
+            love.graphics.printf("+" .. scoreData.addScore, love.graphics.getWidth() * 0.25, startingHeight + containerHeight * (0.25 * i - 0.125) - self.fontSmallHeight * 0.5, love.graphics.getWidth() * 0.4, "right")
+
+            love.graphics.setColor(1, 1, 1)
+
+            local avatar = self.avatars["player" .. scoreData.index]
+
+            love.graphics.draw(avatar, love.graphics.getWidth() * 0.5 + self.background:getWidth() * 0.5 - 160, startingHeight + containerHeight * (0.25 * i - 0.125), 0, scaleModifier, scaleModifier, avatar:getWidth() * 0.5, avatar:getHeight() * 0.5)
 
             i = i + 1
         end
+
+        love.graphics.setFont(self.font)
+        love.graphics.printf(
+            "Pora na najlepszego pora",
+            love.graphics.getWidth() * 0.5 - self.background:getWidth() * 0.5 + 32,
+            love.graphics.getHeight() * 0.5 - self.background:getHeight() * 0.5 + 64 - self.fontHeight * 0.5,
+            self.background:getWidth() - 32 * 2,
+            "left"
+        )
     end
 }

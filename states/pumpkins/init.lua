@@ -1,7 +1,11 @@
 return {
     init = function(self)
         self.img = {
-            background = love.graphics.newImage("img/tlo_pumpkins.jpg"),
+            backgrounds = {
+                love.graphics.newImage("img/tlo_pumpkins_1.jpg"),
+                love.graphics.newImage("img/tlo_pumpkins_2.jpg"),
+                love.graphics.newImage("img/tlo_pumpkins_3.jpg"),
+            },
             pumpkinEyeLeft = love.graphics.newImage("img/pumpkin_left.png"),
             pumpkinEyeRight = love.graphics.newImage("img/pumpkin_right.png"),
             pumpkinMouth = love.graphics.newImage("img/pumpkin_mouth.png"),
@@ -9,6 +13,10 @@ return {
         }
 
         self.playerOrder = {}
+
+        self.backgroundTimer = 0
+
+        self.lastBackgroundIndex = nil
 
         local relativePoints = {
             pumpkin1 = {

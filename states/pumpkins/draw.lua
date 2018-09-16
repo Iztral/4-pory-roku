@@ -19,7 +19,7 @@ end
 
 return function(self)
     love.graphics.setColor(1, 1, 1)
-    love.graphics.draw(self.img.background)
+    love.graphics.draw(self.img.backgrounds[self.lastBackgroundIndex or 1])
 
     local pumpkinCoords = {}
 

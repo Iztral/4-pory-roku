@@ -14,7 +14,8 @@ states = {
 	sunbath = require "states.sunbath",
 	bazooka = require "states.bazooka",
 	race = require "states.race",
-    summary = require "states.scoreSummary"
+    summary = require "states.scoreSummary",
+    podium = require "states.podium"
 }
 
 competitionOrder = {
