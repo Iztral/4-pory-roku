@@ -28,7 +28,7 @@ return {
                         right = {"axis:leftx+"},
                         up = {"axis:lefty-"},
                         down = {"axis:lefty+"},
-                        cut = {"axis:triggerleft+"}
+                        cut = {"axis:triggerright+"}
                     },
                     pairs = {
                         move = {"left", "right", "up", "down"}
