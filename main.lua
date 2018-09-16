@@ -22,10 +22,13 @@ competitionOrder = {
     "bazooka",
     "sunbath",
     "pumpkins",
-    "race"
+    -- "race",
+    "podium"
 }
 
 competitionOrderIndex = 1
+
+standings = {}
 
 function love.load()
     tick.framerate = 60
@@ -40,18 +43,29 @@ function love.keypressed(key)
         love.event.quit()
     end
 
-    if key == "k" then
+    local findCompetitionOrder = function(stateName)
+        return lume.find(competitionOrder, stateName) or lume.count(competitionOrder)
+    end
+
+    if key == "kp1" then
         gamestate.switch(states.sunbath)
-    elseif key == "o" then
+        competitionOrderIndex = findCompetitionOrder("sunbath")
+    elseif key == "kp2" then
         gamestate.switch(states.bazooka)
-    elseif key == "p" then
+        competitionOrderIndex = findCompetitionOrder("bazooka")
+    elseif key == "kp3" then
         gamestate.switch(states.race)
-    elseif key == "i" then
+        competitionOrderIndex = findCompetitionOrder("race")
+    elseif key == "kp4" then
         gamestate.switch(states.pumpkins)
-    elseif key == "u" then
+        competitionOrderIndex = findCompetitionOrder("pumpkins")
+    elseif key == "kp5" then
+        gamestate.switch(states.podium)
+        competitionOrderIndex = findCompetitionOrder("podium")
+    elseif key == "kp0" then
         gamestate.switch(states.summary, {
-            "player1",
             "player2",
+            "player1",
             "player3",
             "player4",
         })
