@@ -2,10 +2,10 @@ return function(self,dt,player)
 
 	player.controls:update(dt)
 	local x, y = player.controls:get "move"
-	
+	--speed declare--
 	player.speed = player.acceleration
 	player.acceleration = math.max(player.acceleration-dt,0)
-	--speed--
+	--speed boost--
 	if player.controls:pressed("move_1") and player.last_pressed == 2 then
 		timer.tween(0.5,player,{acceleration = 1})
 		player.last_pressed = 1
