@@ -1,6 +1,6 @@
 return {
     init = function(self)
-	
+		love.audio.stop()
 		self.polka = love.audio.newSource("mp3/polka.mp3","stream")
 		self.polka:setLooping(true)
 		self.polka:play()
