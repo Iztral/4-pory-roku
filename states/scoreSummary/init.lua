@@ -54,6 +54,8 @@ return {
 
         local sortedScores = lume.sort(keyedScores, function(a, b) return a.score > b.score end)
 
+        standings = sortedScores
+
         local i = 1
 
         local startingHeight = love.graphics.getHeight() * 0.5 - 284
