@@ -16,6 +16,7 @@ states = {
 	race = require "states.race",
     summary = require "states.scoreSummary",
     podium = require "states.podium"
+	menu = require "states.menu"
 }
 
 competitionOrder = {
@@ -32,7 +33,8 @@ function love.load()
     tick.rate = 1 / 60
 
     gamestate.registerEvents()
-    gamestate.switch(states[competitionOrder[competitionOrderIndex]])
+    
+	gamestate.switch(states.menu)
 end
 
 function love.keypressed(key)
