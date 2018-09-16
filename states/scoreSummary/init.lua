@@ -3,10 +3,10 @@ return {
         self.scores = {}
         self.addScores = {}
 
-        self.font = love.graphics.newFont(48)
+        self.font = love.graphics.newFont("font/CaviarDreams.ttf", 48)
         self.fontHeight = self.font:getHeight()
 
-        self.fontSmall = love.graphics.newFont(32)
+        self.fontSmall = love.graphics.newFont("font/CaviarDreams.ttf", 32)
         self.fontSmallHeight = self.fontSmall:getHeight()
 
         self.background = love.graphics.newImage("img/summary-bg.jpg")
@@ -62,7 +62,7 @@ return {
         for position, scoreData in pairs(sortedScores) do
             local scaleModifier = (function() if position == 1 then return 0.5 else return 0.35 end end)()
             love.graphics.setFont(self.font)
-            love.graphics.printf("Por " .. scoreData.index, love.graphics.getWidth() * 0.25, startingHeight + containerHeight * (0.25 * i - 0.125) - self.fontHeight * 0.5, love.graphics.getWidth() * 0.3, "left")
+            love.graphics.printf(position .. ". Por " .. scoreData.index, love.graphics.getWidth() * 0.25, startingHeight + containerHeight * (0.25 * i - 0.125) - self.fontHeight * 0.5, love.graphics.getWidth() * 0.3, "left")
             love.graphics.printf(scoreData.score, love.graphics.getWidth() * 0.25, startingHeight + containerHeight * (0.25 * i - 0.125) - self.fontHeight * 0.5, love.graphics.getWidth() * 0.3, "right")
 
             love.graphics.setFont(self.fontSmall)

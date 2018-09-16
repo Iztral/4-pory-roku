@@ -5,6 +5,13 @@ local playerColors = {
     {1, 0.1, 1}
 }
 
+local playerAvatars = {
+    love.graphics.newImage("img/awatar-wiosna.png"),
+    love.graphics.newImage("img/awatar-lato.png"),
+    love.graphics.newImage("img/awatar-jesien.png"),
+    love.graphics.newImage("img/awatar-zima.png")
+}
+
 return {
     data = {},
     initialized = false,
@@ -45,10 +52,29 @@ return {
     end,
 
     draw = function(self)
-        -- draw player cursor
         for playerIndex, player in pairs(self.data) do
-            love.graphics.setColor(lume.concat(player.color, { 0.9 }))
+            -- draw player cursor
+            local zeroIndex = playerIndex - 1
+
+            local alphaMod = 0.5
+            if player.cutModifier > 0 then
+                alphaMod = 1
+            end
+            love.graphics.setColor(lume.concat(player.color, { alphaMod }))
             love.graphics.circle("fill", player.position.x, player.position.y, 8)
+
+            love.graphics.setColor(1, 1, 1)
+            love.graphics.setLineWidth(2 * alphaMod)
+            love.graphics.circle("line", player.position.x, player.position.y, 9 + 2 * alphaMod)
+
+            love.graphics.setColor(0, 0, 0)
+            love.graphics.setLineWidth(2 * alphaMod)
+            love.graphics.circle("line", player.position.x, player.position.y, 8 + 2 * alphaMod)
+
+            -- draw player avatar
+            love.graphics.setColor(1, 1, 1)
+            local avatar = playerAvatars[playerIndex]
+            love.graphics.draw(avatar, (zeroIndex * 0.25 + 0.125) * love.graphics.getWidth(), 0.8 * love.graphics.getHeight(), 0, 0.5, 0.5, avatar:getWidth() / 2, avatar:getHeight() / 2)
         end
     end,
 
@@ -69,7 +95,7 @@ return {
                 -- handle cutting
                 if player.controls:pressed "cut" then
                     if player.cutModifier < 0.5 then
-                        player.cutModifier = 1
+                        player.cutModifier = 0.9
                     end
                 end
 

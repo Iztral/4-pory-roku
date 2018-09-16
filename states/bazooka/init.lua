@@ -11,7 +11,7 @@ return {
 
         self.timer = 40
 
-        self.font = love.graphics.newFont(40)
+        self.font = love.graphics.newFont("font/CaviarDreams.ttf", 40)
         self.fontHeight = self.font:getHeight()
 
         self.plotkiHorizontal = love.graphics.newImage("img/plotek_bok_2.png")
