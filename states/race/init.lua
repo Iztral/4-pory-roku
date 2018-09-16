@@ -17,6 +17,7 @@ return {
 		--graphic_obstacle--
 		self.zaspa = love.graphics.newImage("img/zaspa.png")
 		self.rampa = love.graphics.newImage("img/rampa.png")
+		self.kamyk = love.graphics.newImage("img/kamyk.png")
 		--graphic_particle--
 		self.slady = love.graphics.newImage("img/slady.png")
 		--players table--
@@ -82,5 +83,6 @@ return {
 		self.lane_timer = 1
     end,
     draw = require "states.race.draw",
-	update = require "states.race.update"
+	update = require "states.race.update",
+	player_update = require "states.race.player_update",
 }

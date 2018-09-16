@@ -13,5 +13,4 @@ return function(self)
 	love.graphics.printf(string.format("%.0f", self.players.player4.player_score or 0),love.graphics.getWidth()*0.75,50,love.graphics.getWidth()*0.25,"center")
 	
 	--sled--
-	love.graphics.draw(self.wiosna_sanie)
 end

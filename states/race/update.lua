@@ -15,8 +15,6 @@ return function(self,dt)
 		gamestate.switch(states.summary, sorted_scores_keys)
 	end
 	
-	--accel funtion--
-	
 	
 	for index,player in pairs(self.players) do
 		self:player_update(player,dt)
