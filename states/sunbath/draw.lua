@@ -30,7 +30,7 @@ return function(self)
 	love.graphics.draw(self.mask_zima,love.graphics.getWidth()*0.875,love.graphics.getHeight()*0.45,0,0.5,0.5,self.mask_zima:getWidth()/2,self.mask_zima:getHeight()/2)
 	love.graphics.setColor(1,1,1,1)
 	--arrow clock--
-	love.graphics.draw(self.arrow,love.graphics.getWidth()*0.5,love.graphics.getHeight()*0.8,0,self.turn_direction*0.5,0.5,self.arrow:getWidth()/2,self.arrow:getHeight()/2)
+	love.graphics.draw(self.arrow,love.graphics.getWidth()*0.5,love.graphics.getHeight()*0.8,0,self.turn_direction*0.9,0.9,self.arrow:getWidth()/2,self.arrow:getHeight()/2)
 	--timer--
 	love.graphics.setFont(self.font_big)
 	love.graphics.draw(self.clock,love.graphics.getWidth()*0.5,10,0,0.3,0.3,self.clock:getWidth()/2,self.clock:getHeight()/100)
