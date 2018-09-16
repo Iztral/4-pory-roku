@@ -15,8 +15,8 @@ states = {
 	bazooka = require "states.bazooka",
 	race = require "states.race",
     summary = require "states.scoreSummary",
-    podium = require "states.podium"
-	menu = require "states.menu"
+    podium = require "states.podium",
+	menu = require "states.menu",
 }
 
 competitionOrder = {
