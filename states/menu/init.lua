@@ -1,5 +1,6 @@
 return {
 	init = function(self)
+		self.font= love.graphics.newFont("font/CaviarDreams.ttf", 48)
 		--music--
 		self.menu = love.audio.newSource("mp3/menu.mp3","stream")
 		self.menu:setLooping(true)

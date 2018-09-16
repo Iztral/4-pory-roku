@@ -8,8 +8,9 @@ return function(self)
 	--boards--
 	love.graphics.draw(self.tytul, 900, 200, 0,self.scalex,self.scaley)
 	love.graphics.draw(self.logo, 1000, 200,0,0.6,0.6)
-	love.graphics.draw(self.start, 1200, 300,0,self.scalex,self.scaley)
-	love.graphics.print("START", 1200, 300)
-	love.graphics.draw(self.wyjscie, 600, 1000,0,self.scalex,self.scaley)
-	love.graphics.print("WYJSCIE", 600, 1000)
+	love.graphics.draw(self.start, 1200, 500,0,self.scalex,self.scaley,self.start:getWidth()/2,self.start:getHeight()/2)
+	love.graphics.setFont(self.font)
+	love.graphics.print("START", 1150, 475)
+	love.graphics.draw(self.wyjscie, 1200, 625,0,self.scalex,self.scaley,self.wyjscie:getWidth()/2,self.wyjscie:getHeight()/2)
+	love.graphics.print("WYJŚCIE", 1125, 600)
 end
