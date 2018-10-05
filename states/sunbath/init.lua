@@ -9,48 +9,48 @@ return {
 		self.font_big = love.graphics.newFont("font/CaviarDreams.ttf", 50)
 		self.font_small = love.graphics.newFont("font/CaviarDreams.ttf", 30)
 	--background--
-        self.background1 = love.graphics.newImage("img/tlopiasek1png.png")
-		self.background2 = love.graphics.newImage("img/tlopiasek2png.png")
-		self.background3 = love.graphics.newImage("img/tlopiasek3png.png")
+        self.background1 = love.graphics.newImage("img/sunbath/tlopiasek1png.png")
+		self.background2 = love.graphics.newImage("img/sunbath/tlopiasek2png.png")
+		self.background3 = love.graphics.newImage("img/sunbath/tlopiasek3png.png")
 		self.sand = self.background1
 	--towel--
-		self.towel1 = love.graphics.newImage("img/koc1.png")
-		self.towel2 = love.graphics.newImage("img/koc2.png")
-		self.towel3 = love.graphics.newImage("img/koc3.png")
-		self.towel4 = love.graphics.newImage("img/koc4.png")
+		self.towel1 = love.graphics.newImage("img/sunbath/koc1.png")
+		self.towel2 = love.graphics.newImage("img/sunbath/koc2.png")
+		self.towel3 = love.graphics.newImage("img/sunbath/koc3.png")
+		self.towel4 = love.graphics.newImage("img/sunbath/koc4.png")
 	--arrow--
-		self.arrow = love.graphics.newImage("img/arrow.png")
+		self.arrow = love.graphics.newImage("img/sunbath/arrow.png")
 	--leek--
 		--spring--
-		self.wiosna0 = love.graphics.newImage("img/wiosna0.png")
-		self.wiosna1 = love.graphics.newImage("img/wiosna1.png")
-		self.wiosna2 = love.graphics.newImage("img/wiosna2.png")
-		self.wiosna3 = love.graphics.newImage("img/wiosna3.png")
+		self.wiosna0 = love.graphics.newImage("img/sunbath/wiosna0.png")
+		self.wiosna1 = love.graphics.newImage("img/sunbath/wiosna1.png")
+		self.wiosna2 = love.graphics.newImage("img/sunbath/wiosna2.png")
+		self.wiosna3 = love.graphics.newImage("img/sunbath/wiosna3.png")
 		self.wiosna_main = self.wiosna0
 		--summer--
-		self.lato0 = love.graphics.newImage("img/lato0.png")
-		self.lato1 = love.graphics.newImage("img/lato1.png")
-		self.lato2 = love.graphics.newImage("img/lato2.png")
-		self.lato3 = love.graphics.newImage("img/lato3.png")
+		self.lato0 = love.graphics.newImage("img/sunbath/lato0.png")
+		self.lato1 = love.graphics.newImage("img/sunbath/lato1.png")
+		self.lato2 = love.graphics.newImage("img/sunbath/lato2.png")
+		self.lato3 = love.graphics.newImage("img/sunbath/lato3.png")
 		self.lato_main = self.lato0
 		--fall--
-		self.jesien0 = love.graphics.newImage("img/jesien0.png")
-		self.jesien1 = love.graphics.newImage("img/jesien1.png")
-		self.jesien2 = love.graphics.newImage("img/jesien2.png")
-		self.jesien3 = love.graphics.newImage("img/jesien3.png")
+		self.jesien0 = love.graphics.newImage("img/sunbath/jesien0.png")
+		self.jesien1 = love.graphics.newImage("img/sunbath/jesien1.png")
+		self.jesien2 = love.graphics.newImage("img/sunbath/jesien2.png")
+		self.jesien3 = love.graphics.newImage("img/sunbath/jesien3.png")
 		self.jesien_main = self.jesien0
 		--winter--
-		self.zima0 = love.graphics.newImage("img/zima0.png")
-		self.zima1 = love.graphics.newImage("img/zima1.png")
-		self.zima2 = love.graphics.newImage("img/zima2.png")
-		self.zima3 = love.graphics.newImage("img/zima3.png")
+		self.zima0 = love.graphics.newImage("img/sunbath/zima0.png")
+		self.zima1 = love.graphics.newImage("img/sunbath/zima1.png")
+		self.zima2 = love.graphics.newImage("img/sunbath/zima2.png")
+		self.zima3 = love.graphics.newImage("img/sunbath/zima3.png")
 		self.zima_main = self.zima0
 		
 	--leek mask--
-		self.mask0 = love.graphics.newImage("img/maska0.png")
-		self.mask1 = love.graphics.newImage("img/maska1.png")
-		self.mask2 = love.graphics.newImage("img/maska2.png")
-		self.mask3 = love.graphics.newImage("img/maska3.png")
+		self.mask0 = love.graphics.newImage("img/sunbath/maska0.png")
+		self.mask1 = love.graphics.newImage("img/sunbath/maska1.png")
+		self.mask2 = love.graphics.newImage("img/sunbath/maska2.png")
+		self.mask3 = love.graphics.newImage("img/sunbath/maska3.png")
 		self.mask_wiosna = self.mask0
 		self.mask_lato = self.mask0
 		self.mask_jesien = self.mask0

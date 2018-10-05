@@ -8,6 +8,7 @@ baton = require "lib.baton"
 anim8 = require "lib.anim8"
 tick = require "lib.tick"
 bump = require "lib.bump"
+moonshine = require "lib.moonshine"
 
 states = {
     pumpkins = require "states.pumpkins",
@@ -17,6 +18,7 @@ states = {
     summary = require "states.scoreSummary",
     podium = require "states.podium",
 	menu = require "states.menu",
+	choice = require "states.choice",
 }
 
 competitionOrder = {
