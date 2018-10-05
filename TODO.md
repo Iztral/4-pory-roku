@@ -1,5 +1,5 @@
 - tryb zimy -> wyścig kto pierwszy do mety / ostatni przy życiu
-- dopracowanie, ułatwienie i naprawa trybu jesieni
+- **BOLEC:** dopracowanie, ułatwienie i naprawa trybu jesieni
 - przejścia pomiędzy stanami
 - tutoriale tuż przed poziomami
 - znaczniki graczy podczas gry
