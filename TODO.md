@@ -4,6 +4,6 @@
 - tutoriale tuż przed poziomami
 - znaczniki graczy podczas gry
 - dodanie flagi -debug podczas uruchomienia gry do włączenia opcji debugowych (np. ręczne przejścia pomiędzy poziomami)
-- ekran wyboru postaci po głównym menu z jasnym oznaczeniem, kto jest którym graczem
+- **IZTRAL:** ekran wyboru postaci po głównym menu z jasnym oznaczeniem, kto jest którym graczem
 - naprawa innych znalezionych błędów
 - animowany splash screen
