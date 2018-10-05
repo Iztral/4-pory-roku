@@ -1,0 +1,9 @@
+- tryb zimy -> wyścig kto pierwszy do mety / ostatni przy życiu
+- dopracowanie, ułatwienie i naprawa trybu jesieni
+- przejścia pomiędzy stanami
+- tutoriale tuż przed poziomami
+- znaczniki graczy podczas gry
+- dodanie flagi -debug podczas uruchomienia gry do włączenia opcji debugowych (np. ręczne przejścia pomiędzy poziomami)
+- ekran wyboru postaci po głównym menu z jasnym oznaczeniem, kto jest którym graczem
+- naprawa innych znalezionych błędów
+- animowany splash screen
