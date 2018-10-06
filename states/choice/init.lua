@@ -1,5 +1,6 @@
 return {
     init = function(self)
+	  self.font_bigger = love.graphics.newFont("_OLD/CaviarDreams_Bold.ttf", 45)
 	  --music--
       self.choice = assets.music.choice
       self.choice:setLooping(true)
@@ -59,7 +60,7 @@ return {
                     },
                     joystick = love.joystick.getJoysticks()[1]
                 },},
-                player2 = {index = 2, leek_choice = 2, locked = -1, controls = baton.new {
+                player2 = {index = 2, leek_choice = 2, locked = 1, controls = baton.new {
                     controls = {
                         left = {"axis:leftx-"},
                         right = {"axis:leftx+"},

@@ -18,6 +18,7 @@ return function(self)
         lg.printf(string.format("%.1f", player.currentPerfectAngle), scoreWidth, lg.getHeight() - 50, 0.25 * lg.getWidth(),"center")
 
         lg.setColor(1, 1, 1)
+		lg.printf("PLAYER " .. i,width - 120, lg.getHeight()*0.1, 250, "center")
         lg.draw(player.towel, width, lg.getHeight()*0.45, 0, 0.8, 0.8, player.towel:getWidth() / 2, player.towel:getHeight() / 2)
         lg.draw(currentFrame, width, lg.getHeight()*0.45, 0, 0.5, 0.5, currentFrame:getWidth() / 2, currentFrame:getHeight() / 2)
 

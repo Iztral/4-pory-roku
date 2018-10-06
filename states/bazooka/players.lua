@@ -43,7 +43,7 @@ return {
                         right = {"axis:leftx+"},
                         up = {"axis:lefty-"},
                         down = {"axis:lefty+"},
-                        shoot = {"axis:triggerright+"}
+                        shoot = {"axis:triggerleft+"}
                     },
                     pairs = {
                         move = {"left", "right", "up", "down"}

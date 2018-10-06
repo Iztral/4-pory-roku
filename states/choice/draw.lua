@@ -1,7 +1,7 @@
 return function(self)
   --background--
 	love.graphics.setBackgroundColor(1,1,1)
-	love.graphics.draw(self.choice_bg, 0, 0)
+	love.graphics.draw(self.choice_bg, 0, 0, 0, 0.5, 0.5)
   --buttons--
 	love.graphics.setColor(1, 1, 1, self.transparency[1])
 	love.graphics.draw(self.buttons[1],love.graphics.getWidth()*0.125,(love.graphics.getHeight()*0.45)+350,0,0.3,0.3,self.buttons[1]:getWidth()/2,self.buttons[1]:getHeight()/2)
@@ -13,6 +13,7 @@ return function(self)
 	love.graphics.draw(self.buttons[4],love.graphics.getWidth()*0.875,(love.graphics.getHeight()*0.45)+350,0,0.3,0.3,self.buttons[4]:getWidth()/2,self.buttons[4]:getHeight()/2)
 	love.graphics.setColor(1, 1, 1, 1)
   --player_number--
+	love.graphics.setFont(self.font_bigger)
 	love.graphics.setColor(0,0,0)
 	love.graphics.printf("PLAYER 1",(love.graphics.getWidth()*0.125)-100,(love.graphics.getHeight()*0.45)-400,250,"center")
 	love.graphics.printf("PLAYER 2",(love.graphics.getWidth()*0.375)-100,(love.graphics.getHeight()*0.45)-400,250,"center")
