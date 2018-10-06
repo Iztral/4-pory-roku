@@ -3,17 +3,17 @@ return function(self)
 	love.graphics.setBackgroundColor(1,1,1)
 	love.graphics.draw(self.choice_bg, 0, 0)
   --arrows--
-	love.graphics.draw(self.arrow,(love.graphics.getWidth()*0.125)-150,love.graphics.getHeight()*0.45,0,-0.2,0.2,self.arrow:getWidth()/2,self.arrow:getHeight()/2)
-	love.graphics.draw(self.arrow,(love.graphics.getWidth()*0.125)+150,love.graphics.getHeight()*0.45,0,0.2,0.2,self.arrow:getWidth()/2,self.arrow:getHeight()/2)
+	-- love.graphics.draw(self.arrow,(love.graphics.getWidth()*0.125)-150,love.graphics.getHeight()*0.45,0,-0.2,0.2,self.arrow:getWidth()/2,self.arrow:getHeight()/2)
+	-- love.graphics.draw(self.arrow,(love.graphics.getWidth()*0.125)+150,love.graphics.getHeight()*0.45,0,0.2,0.2,self.arrow:getWidth()/2,self.arrow:getHeight()/2)
 	
-	love.graphics.draw(self.arrow,(love.graphics.getWidth()*0.375)-150,love.graphics.getHeight()*0.45,0,-0.2,0.2,self.arrow:getWidth()/2,self.arrow:getHeight()/2)
-	love.graphics.draw(self.arrow,(love.graphics.getWidth()*0.375)+150,love.graphics.getHeight()*0.45,0,0.2,0.2,self.arrow:getWidth()/2,self.arrow:getHeight()/2)
+	-- love.graphics.draw(self.arrow,(love.graphics.getWidth()*0.375)-150,love.graphics.getHeight()*0.45,0,-0.2,0.2,self.arrow:getWidth()/2,self.arrow:getHeight()/2)
+	-- love.graphics.draw(self.arrow,(love.graphics.getWidth()*0.375)+150,love.graphics.getHeight()*0.45,0,0.2,0.2,self.arrow:getWidth()/2,self.arrow:getHeight()/2)
 
-	love.graphics.draw(self.arrow,(love.graphics.getWidth()*0.625)-150,love.graphics.getHeight()*0.45,0,-0.2,0.2,self.arrow:getWidth()/2,self.arrow:getHeight()/2)
-	love.graphics.draw(self.arrow,(love.graphics.getWidth()*0.625)+150,love.graphics.getHeight()*0.45,0,0.2,0.2,self.arrow:getWidth()/2,self.arrow:getHeight()/2)
+	-- love.graphics.draw(self.arrow,(love.graphics.getWidth()*0.625)-150,love.graphics.getHeight()*0.45,0,-0.2,0.2,self.arrow:getWidth()/2,self.arrow:getHeight()/2)
+	-- love.graphics.draw(self.arrow,(love.graphics.getWidth()*0.625)+150,love.graphics.getHeight()*0.45,0,0.2,0.2,self.arrow:getWidth()/2,self.arrow:getHeight()/2)
 	
-	love.graphics.draw(self.arrow,(love.graphics.getWidth()*0.875)-150,love.graphics.getHeight()*0.45,0,-0.2,0.2,self.arrow:getWidth()/2,self.arrow:getHeight()/2)
-	love.graphics.draw(self.arrow,(love.graphics.getWidth()*0.875)+150,love.graphics.getHeight()*0.45,0,0.2,0.2,self.arrow:getWidth()/2,self.arrow:getHeight()/2)
+	-- love.graphics.draw(self.arrow,(love.graphics.getWidth()*0.875)-150,love.graphics.getHeight()*0.45,0,-0.2,0.2,self.arrow:getWidth()/2,self.arrow:getHeight()/2)
+	-- love.graphics.draw(self.arrow,(love.graphics.getWidth()*0.875)+150,love.graphics.getHeight()*0.45,0,0.2,0.2,self.arrow:getWidth()/2,self.arrow:getHeight()/2)
   --buttons--
 	love.graphics.setColor(1, 1, 1, self.transparency[1])
 	love.graphics.draw(self.buttons[1],love.graphics.getWidth()*0.125,(love.graphics.getHeight()*0.45)+350,0,0.3,0.3,self.buttons[1]:getWidth()/2,self.buttons[1]:getHeight()/2)
