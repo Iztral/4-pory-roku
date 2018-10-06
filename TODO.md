@@ -1,7 +1,7 @@
 - tryb zimy -> wyścig kto pierwszy do mety / ostatni przy życiu
 - **BOLEC:** dopracowanie, ułatwienie i naprawa trybu jesieni
 - przejścia pomiędzy stanami
-- tutoriale tuż przed poziomami
+- tutoriale tuż przed poziomami **Można pokazać przez kilka sekund screen z napisami(gotowy z PS)**
 - znaczniki graczy podczas gry
 - dodanie flagi -debug podczas uruchomienia gry do włączenia opcji debugowych (np. ręczne przejścia pomiędzy poziomami)
 - **IZTRAL:** ekran wyboru postaci po głównym menu z jasnym oznaczeniem, kto jest którym graczem **DONE**
