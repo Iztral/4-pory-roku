@@ -1,3 +1,5 @@
 return function(self, x, y)
-    self.cursorPosition = {x = x, y = y}
+    if isDebug then
+        self.cursorPosition = {x = x, y = y}
+    end
 end

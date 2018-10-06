@@ -1,3 +1,20 @@
+local activateNextPoint = function(playerPath, path, followCurrentIndex, pointsCount, forceDirection)
+    -- set next point status
+    if not forceDirection then
+        for _k, resetPoint in pairs(path.points) do resetPoint.next = false end
+    end
+
+    local nextFollowIndex = followCurrentIndex + (forceDirection or playerPath.followDirection)
+    if nextFollowIndex > pointsCount then
+        nextFollowIndex = 1
+    end
+    if nextFollowIndex < 1 then
+        nextFollowIndex = pointsCount
+    end
+
+    path.points[nextFollowIndex].next = true
+end
+
 return function(self, playerIndex, x, y)
     local playerPath = self.playerPaths["player" .. playerIndex] or self.playerPaths[playerIndex]
 
@@ -20,12 +37,15 @@ return function(self, playerIndex, x, y)
                                 if playerPath.followPreviousIndex == pointsCount and followCurrentIndex == 1 and playerPath.followDirection == 1 then
                                     playerPath.followPreviousIndex = followCurrentIndex
                                     point.active = true
+                                    activateNextPoint(playerPath, path, followCurrentIndex, pointsCount)
                                 elseif playerPath.followPreviousIndex == 1 and followCurrentIndex == pointsCount and playerPath.followDirection == -1 then
                                     playerPath.followPreviousIndex = followCurrentIndex
                                     point.active = true
+                                    activateNextPoint(playerPath, path, followCurrentIndex, pointsCount)
                                 elseif math.abs(followCurrentIndex - playerPath.followPreviousIndex) == 1 and playerPath.followDirection == followCurrentIndex - playerPath.followPreviousIndex then
                                     playerPath.followPreviousIndex = followCurrentIndex
                                     point.active = true
+                                    activateNextPoint(playerPath, path, followCurrentIndex, pointsCount)
                                 end
                             else
                                 -- activate second point on path and determine direction
@@ -33,16 +53,20 @@ return function(self, playerIndex, x, y)
                                     playerPath.followDirection = 1
                                     playerPath.followPreviousIndex = followCurrentIndex
                                     point.active = true
+                                    activateNextPoint(playerPath, path, followCurrentIndex, pointsCount)
                                 elseif playerPath.followInitialIndex == 1 and followCurrentIndex == pointsCount then
                                     playerPath.followDirection = -1
                                     playerPath.followPreviousIndex = followCurrentIndex
                                     point.active = true
+                                    activateNextPoint(playerPath, path, followCurrentIndex, pointsCount)
                                 elseif math.abs(followCurrentIndex - playerPath.followInitialIndex) == 1 then
                                     playerPath.followDirection = followCurrentIndex - playerPath.followInitialIndex
                                     playerPath.followPreviousIndex = followCurrentIndex
                                     point.active = true
+                                    activateNextPoint(playerPath, path, followCurrentIndex, pointsCount)
                                 end
                             end
+
                         else
                             -- activate first point on path
                             playerPath.followInitialIndex = followCurrentIndex
@@ -50,6 +74,8 @@ return function(self, playerIndex, x, y)
                             point.active = true
                             if playerPath.followPathIndex == nil then
                                 playerPath.followPathIndex = currentPathIndex
+                                activateNextPoint(playerPath, path, followCurrentIndex, pointsCount, 1)
+                                activateNextPoint(playerPath, path, followCurrentIndex, pointsCount, -1)
                             end
                         end
                     end

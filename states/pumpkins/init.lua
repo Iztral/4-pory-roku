@@ -11,7 +11,7 @@ return {
             pumpkinMouth = assets.pumpkins.pumpkin_mouth,
             pumpkinMain = assets.pumpkins.pumpkin_main,
         }
-		self.autumn = assets.music.autumn,
+		self.autumn = assets.music.autumn
 		self.autumn:setLooping(true)
 		self.autumn:play()
 		
@@ -20,6 +20,10 @@ return {
         self.backgroundTimer = 0
 
         self.lastBackgroundIndex = nil
+
+        self.timeAngle = 0
+
+        self.winCounter = nil
 
         local relativePoints = {
             pumpkin1 = {
@@ -186,7 +190,7 @@ return {
 
         for playerIndex = 1, 4 do
             local zeroIndex = playerIndex - 1
-            table.insert(self.playerPaths, playerIndex, {
+            self.playerPaths[playerIndex] = {
                 paths = createPumpkin(relativePoints.pumpkin1, {
                     x = love.graphics.getWidth() * (0.25 * zeroIndex + 0.0) + 251,
                     y = love.graphics.getHeight() * 0.495
@@ -195,7 +199,7 @@ return {
                 followDirection = nil,
                 followPreviousIndex = nil,
                 followPathIndex = nil
-            })
+            }
         end
 
         self.initialPoint = nil

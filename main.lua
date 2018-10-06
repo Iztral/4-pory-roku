@@ -1,3 +1,7 @@
+-- random seed
+math.randomseed(os.time())
+
+-- shortcuts
 lg = love.graphics
 lf = love.filesystem
 
@@ -35,9 +39,11 @@ competitionOrderIndex = 1
 
 standings = {}
 
-function love.load()
+function love.load(args)
     tick.framerate = 60
     tick.rate = 1 / 60
+
+    isDebug = lume.find(args, "-debug") ~= nil
 
     gamestate.registerEvents()
     
@@ -53,28 +59,36 @@ function love.keypressed(key)
         return lume.find(competitionOrder, stateName) or lume.count(competitionOrder)
     end
 
-    if key == "kp1" then
-        gamestate.switch(states.sunbath)
-        competitionOrderIndex = findCompetitionOrder("sunbath")
-    elseif key == "kp2" then
-        gamestate.switch(states.bazooka)
-        competitionOrderIndex = findCompetitionOrder("bazooka")
-    elseif key == "kp3" then
-        gamestate.switch(states.race)
-        competitionOrderIndex = findCompetitionOrder("race")
-    elseif key == "kp4" then
-        gamestate.switch(states.pumpkins)
-        competitionOrderIndex = findCompetitionOrder("pumpkins")
-    elseif key == "kp5" then
-        gamestate.switch(states.podium)
-        competitionOrderIndex = findCompetitionOrder("podium")
-    elseif key == "kp0" then
-        gamestate.switch(states.summary, {
-            "player2",
-            "player1",
-            "player3",
-            "player4",
-        })
+    if isDebug then
+        if key == "kp1" then
+            love.audio.stop()
+            gamestate.switch(states.sunbath)
+            competitionOrderIndex = findCompetitionOrder("sunbath")
+        elseif key == "kp2" then
+            love.audio.stop()
+            gamestate.switch(states.bazooka)
+            competitionOrderIndex = findCompetitionOrder("bazooka")
+        elseif key == "kp3" then
+            love.audio.stop()
+            gamestate.switch(states.pumpkins)
+            competitionOrderIndex = findCompetitionOrder("pumpkins")
+        elseif key == "kp4" then
+            love.audio.stop()
+            gamestate.switch(states.race)
+            competitionOrderIndex = findCompetitionOrder("race")
+        elseif key == "kp5" then
+            love.audio.stop()
+            gamestate.switch(states.podium)
+            competitionOrderIndex = findCompetitionOrder("podium")
+        elseif key == "kp0" then
+            love.audio.stop()
+            gamestate.switch(states.summary, {
+                "player2",
+                "player1",
+                "player3",
+                "player4",
+            })
+        end
     end
 end
 
