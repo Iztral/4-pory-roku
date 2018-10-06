@@ -4,7 +4,7 @@
 - tutoriale tuż przed poziomami **Można pokazać przez kilka sekund screen z napisami(gotowy z PS)**
 - znaczniki graczy podczas gry
 - **DONE** dodanie flagi -debug podczas uruchomienia gry do włączenia opcji debugowych (np. ręczne przejścia pomiędzy poziomami)
-- **IZTRAL:** ekran wyboru postaci po głównym menu z jasnym oznaczeniem, kto jest którym graczem **DONE**
+- **DONE** ekran wyboru postaci po głównym menu z jasnym oznaczeniem, kto jest którym graczem 
 - naprawa innych znalezionych błędów
 - animowany splash screen
 - **DONE** asynchroniczne ładowanie assetów
