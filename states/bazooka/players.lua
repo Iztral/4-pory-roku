@@ -12,15 +12,15 @@ return {
     
     initialize = function(self)
         self.flowers = {
-            love.graphics.newImage("assets/bazooka/kwiatek1.png"),
-            love.graphics.newImage("assets/bazooka/kwiatek2.png"),
-            love.graphics.newImage("assets/bazooka/kwiatek3.png"),
-            love.graphics.newImage("assets/bazooka/kwiatek4.png")
+            assets.bazooka.kwiatek1,
+            assets.bazooka.kwiatek2,
+            assets.bazooka.kwiatek3,
+            assets.bazooka.kwiatek4,
         }
 
-        self.sight = love.graphics.newImage("assets/bazooka/celownik.png")
+        self.sight = assets.bazooka.celownik
 
-        local legsImage = love.graphics.newImage("assets/bazooka/animacja_por_nogi.png")
+        local legsImage = assets.bazooka.animacja_por_nogi
         local topIndexes = {
             ["1"] = "wiosna",
             ["2"] = "lato",
@@ -30,7 +30,7 @@ return {
 
         -- controls definition
         for playerIndex = 1, 4 do
-            local topImage = love.graphics.newImage("assets/bazooka/animacja_por_" .. topIndexes[tostring(playerIndex)] .. ".png")
+            local topImage = assets.bazooka["animacja_por_" .. topIndexes[tostring(playerIndex)]]
             local zeroIndex = playerIndex - 1
 
             local legGrid = anim8.newGrid(196, 116, legsImage:getWidth(), legsImage:getHeight())

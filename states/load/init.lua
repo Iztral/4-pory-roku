@@ -3,10 +3,16 @@ return {
         lily.newFont("assets/font/caviarDreams.ttf", 32):onComplete(function(_, font)
             assets.font.caviarDreams_32 = font
 
-            local assetsFilesPaths = lf.getDirectoryItems("assets")
+            local assetsDirectories = lf.getDirectoryItems("assets")
 
-            assetsFilesPaths = lume.filter(assetsFilePaths, function(assetsFilePath)
-                return lf.getInfo("assets/" .. assetsFilePath, "directory") ~= nil
+            local assetsFilesPaths = {}
+
+            lume.each(assetsDirectories, function(directory)
+                local assetsPaths = lf.getDirectoryItems("assets/" .. directory)
+
+                lume.each(assetsPaths, function(assetPath)
+                    table.insert(assetsFilesPaths, string.format("%s/%s", directory, assetPath))
+                end)
             end)
 
             local assetsFilesInfo = lume.map(assetsFilesPaths, function(assetsFilePath)
@@ -14,24 +20,27 @@ return {
             end)
 
             local assetsMultililyInfo = lume.map(assetsFilesInfo, function(info)
-                local name = info[1]
+                local directoryName = lume.split(info[1], "/")
                 local extension = info[2]
 
-                local assetFullPath = string.format("assets/%s.%s", name, extension)
+                local directory = directoryName[1]
+                local name = directoryName[2]
+
+                local assetFullPath = string.format("assets/%s/%s.%s", directory, name, extension)
 
                 local loadArguments, loadObjectInfo
 
                 if lume.find({ "jpg", "png" }, extension) ~= nil then
                     loadArguments = {{ "newImage", assetFullPath }}
-                    loadObjectInfo = {{ name, extension }}
+                    loadObjectInfo = {{ name, extension, directory }}
                 elseif lume.find({ "mp3", "ogg" }, extension) ~= nil then
                     loadArguments = {{ "newSource", assetFullPath, "stream" }}
-                    loadObjectInfo = {{ name, extension }}
+                    loadObjectInfo = {{ name, extension, directory }}
                 elseif lume.find({ "ttf" }, extension) ~= nil then
                     loadArguments, loadObjectInfo = {}, {}
                     for size = 16, 64, 8 do
                         table.insert(loadArguments, { "newFont", assetFullPath, size })
-                        table.insert(loadObjectInfo, { name, extension })
+                        table.insert(loadObjectInfo, { name, extension, directory })
                     end
                 else
                     error(string.format("Invalid format: %s", extension))
@@ -66,11 +75,25 @@ return {
                     end
 
                     local newKey = assetsNamesFlat[k][1] .. suffix
-                    assets[newKey] = v[1]
+
+                    local directory = assetsNamesFlat[k][3]
+
+                    if not assets[directory] then
+                        assets[directory] = {}
+                    end
+
+                    assets[directory][newKey] = v[1]
                 end
 
-                Timer.after(0.25, function()
-                    Gamestate.switch(states.menu)
+                -- loading all states
+                local statesNames = lf.getDirectoryItems("states")
+                lume.remove(statesNames, "load")
+                lume.each(statesNames, function(stateName)
+                    states[stateName] = require("states." .. stateName)
+                end)
+
+                timer.after(0.25, function()
+                    gamestate.switch(states.menu)
                 end)
             end)
         end)

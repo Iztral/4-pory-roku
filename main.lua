@@ -1,3 +1,6 @@
+lg = love.graphics
+lf = love.filesystem
+
 -- libraries
 gamestate = require "lib.hump.gamestate"
 signal = require "lib.hump.signal"
@@ -9,16 +12,15 @@ anim8 = require "lib.anim8"
 tick = require "lib.tick"
 bump = require "lib.bump"
 moonshine = require "lib.moonshine"
+lily = require "lib.lily"
+inspect = require "lib.inspect"
+
+assets = {
+    font = {}
+}
 
 states = {
-    pumpkins = require "states.pumpkins",
-	sunbath = require "states.sunbath",
-	bazooka = require "states.bazooka",
-	race = require "states.race",
-    summary = require "states.scoreSummary",
-    podium = require "states.podium",
-	menu = require "states.menu",
-	choice = require "states.choice",
+    load = require "states.load"
 }
 
 competitionOrder = {
@@ -39,7 +41,7 @@ function love.load()
 
     gamestate.registerEvents()
     
-	gamestate.switch(states.load)
+    gamestate.switch(states.load)
 end
 
 function love.keypressed(key)

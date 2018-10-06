@@ -6,10 +6,10 @@ local playerColors = {
 }
 
 local playerAvatars = {
-    love.graphics.newImage("assets/avatars/awatar_wiosna.png"),
-    love.graphics.newImage("assets/avatars/awatar_lato.png"),
-    love.graphics.newImage("assets/avatars/awatar_jesien.png"),
-    love.graphics.newImage("assets/avatars/awatar_zima.png")
+    assets.avatars.awatar_wiosna,
+    assets.avatars.awatar_lato,
+    assets.avatars.awatar_jesien,
+    assets.avatars.awatar_zima,
 }
 
 return {

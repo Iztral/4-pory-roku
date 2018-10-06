@@ -1,17 +1,17 @@
 return {
     init = function(self)
-		love.audio.stop()
-		self.polka = love.audio.newSource("assets/music/polka.mp3", "stream")
-		self.polka:setLooping(true)
-		self.polka:play()
-		
-        self.podiumBackground = love.graphics.newImage("assets/podium/podium_bg.jpg")
+        love.audio.stop()
+        self.polka = assets.music.polka
+        self.polka:setLooping(true)
+        self.polka:play()
+        
+        self.podiumBackground = assets.podium.podium_bg
 
         self.fullImages = {
-            ["player1"] = love.graphics.newImage("assets/full/wiosna.png"),
-            ["player2"] = love.graphics.newImage("assets/full/lato.png"),
-            ["player3"] = love.graphics.newImage("assets/full/jesien.png"),
-            ["player4"] = love.graphics.newImage("assets/full/zima.png")
+            ["player1"] = assets.full.wiosna,
+            ["player2"] = assets.full.lato,
+            ["player3"] = assets.full.jesien,
+            ["player4"] = assets.full.zima,
         }
 
         self.standingsPositions = {

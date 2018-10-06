@@ -2,8 +2,8 @@ return {
     init = function(self)
         -- image loading
         self.img = {
-            background = love.graphics.newImage("assets/bazooka/bazooka_bg.jpg"),
-            timer = love.graphics.newImage("assets/general/timer.png")
+            background = assets.bazooka.bazooka_bg,
+            timer = assets.general.timer,
         }
 
         -- players initializing
@@ -12,12 +12,12 @@ return {
 		
         self.timer = 40
 
-        self.font = love.graphics.newFont("assets/font/caviarDreams.ttf", 40)
+        self.font = assets.font.caviarDreams_40
         self.fontHeight = self.font:getHeight()
 
-        self.plotkiHorizontal = love.graphics.newImage("assets/bazooka/bazooka_fg.png")
+        self.plotkiHorizontal = assets.bazooka.bazooka_fg
 		--music
-		self.spring = love.audio.newSource("assets/music/spring.mp3","stream")
+		self.spring = assets.music.spring
 		self.spring:setLooping(true)
 		self.spring:play()
     end,

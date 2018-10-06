@@ -1,25 +1,25 @@
 return {
     init = function(self)
 		--music--
-		winter = love.audio.newSource("assets/music/winter.mp3","stream")
+		winter = assets.music.winter,
 		winter:play()
 		--font--
-		self.font_big = love.graphics.newFont(50)
-		self.font_small = love.graphics.newFont(30)
+		self.font_big = assets.font.caviarDreams_48
+		self.font_small = assets.font.caviarDreams_32
 		--graphic--
-		self.snow1 = love.graphics.newImage("assets/race/tlozima1.png")
-		self.snow2 = love.graphics.newImage("assets/race/tlozima2.png")
+		self.snow1 = assets.race.tlozima1
+		self.snow2 = assets.race.tlozima2
 		--graphic_sled--
-		self.wiosna_sanie = love.graphics.newImage("assets/race/lato-sanki1.png")
-		self.lato_sanie = love.graphics.newImage("assets/race/lato-sanki1.png")
-		self.jesien_sanie = love.graphics.newImage("assets/race/jesien-sanki1.png")
-		self.zima_sanie = love.graphics.newImage("assets/race/zima-sanki1.png")
+		self.wiosna_sanie = assets.race.animacja_sanki_wiosna
+		self.lato_sanie = assets.race.animacja_sanki_lato
+		self.jesien_sanie = assets.race.animacja_sanki_jesien
+		self.zima_sanie = assets.race.animacja_sanki_zima
 		--graphic_obstacle--
-		self.zaspa = love.graphics.newImage("assets/race/zaspa.png")
-		self.rampa = love.graphics.newImage("assets/race/rampa.png")
-		self.kamyk = love.graphics.newImage("assets/race/kamyk.png")
+		self.zaspa = assets.race.zaspa
+		self.rampa = assets.race.rampa
+		self.kamyk = assets.race.kamyk
 		--graphic_particle--
-		self.slady = love.graphics.newImage("assets/race/slady.png")
+		self.slady = assets.race.slady
 		--players table--
         self.players = {
             player1 = {player_score = 0, position = 0, acceleration = 0, last_pressed = 0, speed = 0, season = 1, lane = 0, alive = 1, controls = baton.new {

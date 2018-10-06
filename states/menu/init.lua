@@ -1,36 +1,38 @@
 return {
-	init = function(self)
-		self.font= love.graphics.newFont("assets/font/caviarDreams.ttf", 48)
-		--music--
-		self.menu = love.audio.newSource("assets/music/menu.mp3","stream")
-		self.menu:setLooping(true)
-		self.menu:play()
-		--background--
-		self.menu_bck = love.graphics.newImage("assets/menu/menu_bck.png")
-		self.menu1 = love.graphics.newImage("assets/menu/menu1.png")
-		self.menu2 = love.graphics.newImage("assets/menu/menu2.png")
-		self.menu3 = love.graphics.newImage("assets/menu/menu3.png")
-		self.menu_main = self.menu1
-		--options--
-		self.start = love.graphics.newImage("assets/menu/na_start.png")
-		self.tytul = love.graphics.newImage("assets/menu/na_tytul.png")
-		self.wyjscie = love.graphics.newImage("assets/menu/na_wyjscie.png")
-		self.logo = love.graphics.newImage("assets/logo/logo_menu.png")
-		self.bck_timer = 5
+    init = function(self)
+        self.font= assets.font.caviarDreams_48
+        --music--
+        self.menu = assets.music.menu
+        self.menu:setLooping(true)
+        self.menu:play()
+        --background--
+        self.menu_bck = assets.menu.menu_bck
+        self.menu1 = assets.menu.menu1
+        self.menu2 = assets.menu.menu2
+        self.menu3 = assets.menu.menu3
+        self.menu_main = self.menu1
+        --options--
+        self.start = assets.menu.na_start
+        self.tytul = assets.menu.na_tytul
+        self.wyjscie = assets.menu.na_wyjscie
+
+        self.logo = assets.logo.logo_game
+        self.bottomLogo = assets.logo.logo_topory
+
+        self.bck_timer = 5
 
         local j = love.joystick.getJoysticks()
 
-		self.controls = baton.new {
+        self.controls = baton.new {
                     controls = {
                         start = {"button:start"},
-						quit = {"button:back"}
+                        quit = {"button:back"}
                         
                     },
                     joystick = j[1]
                 }
 
-        self.bottomLogo = love.graphics.newImage("assets/logo/logo_topory.png")
-	end,
-	draw = require "states.menu.draw",
-	update = require "states.menu.update"
+    end,
+    draw = require "states.menu.draw",
+    update = require "states.menu.update"
 }

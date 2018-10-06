@@ -1,20 +1,20 @@
 return {
     init = function(self)
       --music--
-      self.choice = love.audio.newSource("assets/music/choice.mp3","stream")
+      self.choice = assets.music.choice
       self.choice:play()
       --background--
-      self.choice_bg = love.graphics.newImage("assets/choice/choice_bg.png")
+      self.choice_bg = assets.choice.choice_bg
       --leek--
-      self.wiosna = love.graphics.newImage("assets/choice/choice_wiosna.png")
-      self.lato = love.graphics.newImage("assets/choice/choice_lato.png")
-      self.jesien = love.graphics.newImage("assets/choice/choice_jesien.png")
-      self.zima = love.graphics.newImage("assets/choice/choice_zima.png")
+      self.wiosna = assets.choice.choice_wiosna
+      self.lato = assets.choice.choice_lato
+      self.jesien = assets.choice.choice_jesien
+      self.zima = assets.choice.choice_zima
       --arrows--
-      self.arrow = love.graphics.newImage("assets/choice/arrow_choice.png")
+      self.arrow = assets.choice.arrow_choice
       --buttons--
-      self.confirm = love.graphics.newImage("assets/choice/confirm.png")
-      self.locked = love.graphics.newImage("assets/choice/locked.png")
+      self.confirm = assets.choice.confirm
+      self.locked = assets.choice.locked
 	  
 	  self.buttons = {
 		self.confirm,
