@@ -1,6 +1,6 @@
 return {
     init = function(self)
-      --music--
+	  --music--
       self.choice = assets.music.choice
       self.choice:setLooping(true)
       self.choice:play()
