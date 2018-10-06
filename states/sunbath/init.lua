@@ -1,56 +1,56 @@
 return {
     init = function(self)
 	--music--
-		self.summer = love.audio.newSource("mp3/summer.mp3","stream")
+		self.summer = love.audio.newSource("assets/music/summer.mp3", "stream")
 		self.summer:play()
 	--timer--
-		self.clock = love.graphics.newImage("img/timer.png")
+		self.clock = love.graphics.newImage("assets/general/timer.png")
 	--font--
-		self.font_big = love.graphics.newFont("font/CaviarDreams.ttf", 50)
-		self.font_small = love.graphics.newFont("font/CaviarDreams.ttf", 30)
+		self.font_big = love.graphics.newFont("assets/font/caviarDreams.ttf", 48)
+		self.font_small = love.graphics.newFont("assets/font/caviarDreams.ttf", 32)
 	--background--
-        self.background1 = love.graphics.newImage("img/sunbath/tlopiasek1png.png")
-		self.background2 = love.graphics.newImage("img/sunbath/tlopiasek2png.png")
-		self.background3 = love.graphics.newImage("img/sunbath/tlopiasek3png.png")
+        self.background1 = love.graphics.newImage("assets/sunbath/tlopiasek1png.png")
+		self.background2 = love.graphics.newImage("assets/sunbath/tlopiasek2png.png")
+		self.background3 = love.graphics.newImage("assets/sunbath/tlopiasek3png.png")
 		self.sand = self.background1
 	--towel--
-		self.towel1 = love.graphics.newImage("img/sunbath/koc1.png")
-		self.towel2 = love.graphics.newImage("img/sunbath/koc2.png")
-		self.towel3 = love.graphics.newImage("img/sunbath/koc3.png")
-		self.towel4 = love.graphics.newImage("img/sunbath/koc4.png")
+		self.towel1 = love.graphics.newImage("assets/sunbath/koc1.png")
+		self.towel2 = love.graphics.newImage("assets/sunbath/koc2.png")
+		self.towel3 = love.graphics.newImage("assets/sunbath/koc3.png")
+		self.towel4 = love.graphics.newImage("assets/sunbath/koc4.png")
 	--arrow--
-		self.arrow = love.graphics.newImage("img/sunbath/arrow.png")
+		self.arrow = love.graphics.newImage("assets/sunbath/arrow.png")
 	--leek--
 		--spring--
-		self.wiosna0 = love.graphics.newImage("img/sunbath/wiosna0.png")
-		self.wiosna1 = love.graphics.newImage("img/sunbath/wiosna1.png")
-		self.wiosna2 = love.graphics.newImage("img/sunbath/wiosna2.png")
-		self.wiosna3 = love.graphics.newImage("img/sunbath/wiosna3.png")
+		self.wiosna0 = love.graphics.newImage("assets/sunbath/wiosna0.png")
+		self.wiosna1 = love.graphics.newImage("assets/sunbath/wiosna1.png")
+		self.wiosna2 = love.graphics.newImage("assets/sunbath/wiosna2.png")
+		self.wiosna3 = love.graphics.newImage("assets/sunbath/wiosna3.png")
 		self.wiosna_main = self.wiosna0
 		--summer--
-		self.lato0 = love.graphics.newImage("img/sunbath/lato0.png")
-		self.lato1 = love.graphics.newImage("img/sunbath/lato1.png")
-		self.lato2 = love.graphics.newImage("img/sunbath/lato2.png")
-		self.lato3 = love.graphics.newImage("img/sunbath/lato3.png")
+		self.lato0 = love.graphics.newImage("assets/sunbath/lato0.png")
+		self.lato1 = love.graphics.newImage("assets/sunbath/lato1.png")
+		self.lato2 = love.graphics.newImage("assets/sunbath/lato2.png")
+		self.lato3 = love.graphics.newImage("assets/sunbath/lato3.png")
 		self.lato_main = self.lato0
 		--fall--
-		self.jesien0 = love.graphics.newImage("img/sunbath/jesien0.png")
-		self.jesien1 = love.graphics.newImage("img/sunbath/jesien1.png")
-		self.jesien2 = love.graphics.newImage("img/sunbath/jesien2.png")
-		self.jesien3 = love.graphics.newImage("img/sunbath/jesien3.png")
+		self.jesien0 = love.graphics.newImage("assets/sunbath/jesien0.png")
+		self.jesien1 = love.graphics.newImage("assets/sunbath/jesien1.png")
+		self.jesien2 = love.graphics.newImage("assets/sunbath/jesien2.png")
+		self.jesien3 = love.graphics.newImage("assets/sunbath/jesien3.png")
 		self.jesien_main = self.jesien0
 		--winter--
-		self.zima0 = love.graphics.newImage("img/sunbath/zima0.png")
-		self.zima1 = love.graphics.newImage("img/sunbath/zima1.png")
-		self.zima2 = love.graphics.newImage("img/sunbath/zima2.png")
-		self.zima3 = love.graphics.newImage("img/sunbath/zima3.png")
+		self.zima0 = love.graphics.newImage("assets/sunbath/zima0.png")
+		self.zima1 = love.graphics.newImage("assets/sunbath/zima1.png")
+		self.zima2 = love.graphics.newImage("assets/sunbath/zima2.png")
+		self.zima3 = love.graphics.newImage("assets/sunbath/zima3.png")
 		self.zima_main = self.zima0
 		
 	--leek mask--
-		self.mask0 = love.graphics.newImage("img/sunbath/maska0.png")
-		self.mask1 = love.graphics.newImage("img/sunbath/maska1.png")
-		self.mask2 = love.graphics.newImage("img/sunbath/maska2.png")
-		self.mask3 = love.graphics.newImage("img/sunbath/maska3.png")
+		self.mask0 = love.graphics.newImage("assets/sunbath/maska0.png")
+		self.mask1 = love.graphics.newImage("assets/sunbath/maska1.png")
+		self.mask2 = love.graphics.newImage("assets/sunbath/maska2.png")
+		self.mask3 = love.graphics.newImage("assets/sunbath/maska3.png")
 		self.mask_wiosna = self.mask0
 		self.mask_lato = self.mask0
 		self.mask_jesien = self.mask0

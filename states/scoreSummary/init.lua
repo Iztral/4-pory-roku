@@ -3,19 +3,19 @@ return {
         self.scores = {}
         self.addScores = {}
 
-        self.font = love.graphics.newFont("font/CaviarDreams.ttf", 48)
+        self.font = love.graphics.newFont("assets/font/caviarDreams.ttf", 48)
         self.fontHeight = self.font:getHeight()
 
-        self.fontSmall = love.graphics.newFont("font/CaviarDreams.ttf", 32)
+        self.fontSmall = love.graphics.newFont("assets/font/caviarDreams.ttf", 32)
         self.fontSmallHeight = self.fontSmall:getHeight()
 
-        self.background = love.graphics.newImage("img/summary-bg.jpg")
+        self.background = love.graphics.newImage("assets/summary/summary_bg.jpg")
 
         self.avatars = {
-            player1 = love.graphics.newImage("img/awatar-wiosna.png"),
-            player2 = love.graphics.newImage("img/awatar-lato.png"),
-            player3 = love.graphics.newImage("img/awatar-jesien.png"),
-            player4 = love.graphics.newImage("img/awatar-zima.png"),
+            player1 = love.graphics.newImage("assets/avatars/awatar_wiosna.png"),
+            player2 = love.graphics.newImage("assets/avatars/awatar_lato.png"),
+            player3 = love.graphics.newImage("assets/avatars/awatar_jesien.png"),
+            player4 = love.graphics.newImage("assets/avatars/awatar_zima.png"),
         }
     end,
 

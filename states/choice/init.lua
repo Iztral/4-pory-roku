@@ -1,20 +1,20 @@
 return {
     init = function(self)
       --music--
-      self.choice = love.audio.newSource("mp3/choice.mp3","stream")
+      self.choice = love.audio.newSource("assets/music/choice.mp3","stream")
       self.choice:play()
       --background--
-      self.choice_bg = love.graphics.newImage("img/choice/choice_bg.png")
+      self.choice_bg = love.graphics.newImage("assets/choice/choice_bg.png")
       --leek--
-      self.wiosna = love.graphics.newImage("img/choice/choice_wiosna.png")
-      self.lato = love.graphics.newImage("img/choice/choice_lato.png")
-      self.jesien = love.graphics.newImage("img/choice/choice_jesien.png")
-      self.zima = love.graphics.newImage("img/choice/choice_zima.png")
+      self.wiosna = love.graphics.newImage("assets/choice/choice_wiosna.png")
+      self.lato = love.graphics.newImage("assets/choice/choice_lato.png")
+      self.jesien = love.graphics.newImage("assets/choice/choice_jesien.png")
+      self.zima = love.graphics.newImage("assets/choice/choice_zima.png")
       --arrows--
-      self.arrow = love.graphics.newImage("img/choice/arrow_choice.png")
+      self.arrow = love.graphics.newImage("assets/choice/arrow_choice.png")
       --buttons--
-      self.confirm = love.graphics.newImage("img/choice/confirm.png")
-      self.locked = love.graphics.newImage("img/choice/locked.png")
+      self.confirm = love.graphics.newImage("assets/choice/confirm.png")
+      self.locked = love.graphics.newImage("assets/choice/locked.png")
 	  
 	  self.buttons = {
 		self.confirm,

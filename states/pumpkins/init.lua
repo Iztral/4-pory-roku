@@ -2,16 +2,16 @@ return {
     init = function(self)
         self.img = {
             backgrounds = {
-                love.graphics.newImage("img/tlo_pumpkins_1.jpg"),
-                love.graphics.newImage("img/tlo_pumpkins_2.jpg"),
-                love.graphics.newImage("img/tlo_pumpkins_3.jpg"),
+                love.graphics.newImage("assets/pumpkins/tlo_pumpkins_1.jpg"),
+                love.graphics.newImage("assets/pumpkins/tlo_pumpkins_2.jpg"),
+                love.graphics.newImage("assets/pumpkins/tlo_pumpkins_3.jpg"),
             },
-            pumpkinEyeLeft = love.graphics.newImage("img/pumpkin_left.png"),
-            pumpkinEyeRight = love.graphics.newImage("img/pumpkin_right.png"),
-            pumpkinMouth = love.graphics.newImage("img/pumpkin_mouth.png"),
-            pumpkinMain = love.graphics.newImage("img/pumpkin_main.png"),
+            pumpkinEyeLeft = love.graphics.newImage("assets/pumpkins/pumpkin_left.png"),
+            pumpkinEyeRight = love.graphics.newImage("assets/pumpkins/pumpkin_right.png"),
+            pumpkinMouth = love.graphics.newImage("assets/pumpkins/pumpkin_mouth.png"),
+            pumpkinMain = love.graphics.newImage("assets/pumpkins/pumpkin_main.png"),
         }
-		self.autumn = love.audio.newSource("mp3/autumn.mp3","stream")
+		self.autumn = love.audio.newSource("assets/music/autumn.mp3","stream")
 		self.autumn:setLooping(true)
 		self.autumn:play()
 		

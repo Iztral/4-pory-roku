@@ -7,3 +7,4 @@
 - **IZTRAL:** ekran wyboru postaci po głównym menu z jasnym oznaczeniem, kto jest którym graczem
 - naprawa innych znalezionych błędów
 - animowany splash screen
+- asynchroniczne ładowanie assetów

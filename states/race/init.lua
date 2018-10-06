@@ -1,25 +1,25 @@
 return {
     init = function(self)
 		--music--
-		winter = love.audio.newSource("mp3/winter.mp3","stream")
+		winter = love.audio.newSource("assets/music/winter.mp3","stream")
 		winter:play()
 		--font--
 		self.font_big = love.graphics.newFont(50)
 		self.font_small = love.graphics.newFont(30)
 		--graphic--
-		self.snow1 = love.graphics.newImage("img/tlozima1.png")
-		self.snow2 = love.graphics.newImage("img/tlozima2.png")
+		self.snow1 = love.graphics.newImage("assets/race/tlozima1.png")
+		self.snow2 = love.graphics.newImage("assets/race/tlozima2.png")
 		--graphic_sled--
-		self.wiosna_sanie = love.graphics.newImage("img/lato-sanki1.png")
-		self.lato_sanie = love.graphics.newImage("img/lato-sanki1.png")
-		self.jesien_sanie = love.graphics.newImage("img/jesien-sanki1.png")
-		self.zima_sanie = love.graphics.newImage("img/zima-sanki1.png")
+		self.wiosna_sanie = love.graphics.newImage("assets/race/lato-sanki1.png")
+		self.lato_sanie = love.graphics.newImage("assets/race/lato-sanki1.png")
+		self.jesien_sanie = love.graphics.newImage("assets/race/jesien-sanki1.png")
+		self.zima_sanie = love.graphics.newImage("assets/race/zima-sanki1.png")
 		--graphic_obstacle--
-		self.zaspa = love.graphics.newImage("img/zaspa.png")
-		self.rampa = love.graphics.newImage("img/rampa.png")
-		self.kamyk = love.graphics.newImage("img/kamyk.png")
+		self.zaspa = love.graphics.newImage("assets/race/zaspa.png")
+		self.rampa = love.graphics.newImage("assets/race/rampa.png")
+		self.kamyk = love.graphics.newImage("assets/race/kamyk.png")
 		--graphic_particle--
-		self.slady = love.graphics.newImage("img/slady.png")
+		self.slady = love.graphics.newImage("assets/race/slady.png")
 		--players table--
         self.players = {
             player1 = {player_score = 0, position = 0, acceleration = 0, last_pressed = 0, speed = 0, season = 1, lane = 0, alive = 1, controls = baton.new {

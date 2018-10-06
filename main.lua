@@ -39,7 +39,7 @@ function love.load()
 
     gamestate.registerEvents()
     
-	gamestate.switch(states.menu)
+	gamestate.switch(states.load)
 end
 
 function love.keypressed(key)
