@@ -4,7 +4,7 @@ return {
       self.choice = love.audio.newSource("mp3/choice.mp3","stream")
       self.choice:play()
       --background--
-      self.choicebg = love.graphics.newImage("img/choice/choicebg.png")
+      self.choice_bg = love.graphics.newImage("img/choice/choice_bg.png")
       --leek--
       self.wiosna = love.graphics.newImage("img/choice/choice_wiosna.png")
       self.lato = love.graphics.newImage("img/choice/choice_lato.png")
@@ -15,54 +15,85 @@ return {
       --buttons--
       self.confirm = love.graphics.newImage("img/choice/confirm.png")
       self.locked = love.graphics.newImage("img/choice/locked.png")
+	  
+	  self.buttons = {
+		self.confirm,
+		self.confirm,
+		self.confirm,
+		self.confirm,
+	  }
+	  
+	  self.transparency = {
+		0.99,
+		0.99,
+		0.99,
+		0.99,
+	  }
+	  --leeks**
+	  self.leeks = {
+		self.wiosna,
+		self.lato,
+		self.jesien,
+		self.zima,
+	  }
       --player_leek--
-      self.player_leek1 = self.wiosna
-      self.player_leek2 = self.lato
-      self.player_leek3 = self.jesien
-      self.player_leek4 = self.zima
+	  self.player_leeks = {
+		self.wiosna,
+		self.lato,
+		self.jesien,
+		self.zima,
+	  }
       --players--
       self.players = {
-                player1 = {leek_choice = 1, controls = baton.new {
+                player1 = {index = 1, leek_choice = 1, locked = -1, controls = baton.new {
                     controls = {
                         left = {"axis:leftx-"},
                         right = {"axis:leftx+"},
-              lock = {"axis:triggerright+"},
+						up = {"axis:lefty-"},
+						down = {"axis:lefty+"},
+						lock = {"axis:triggerright+"},
                     },
                     pairs = {
-                        move = {"left", "right","lock"}
+                        move = {"left", "right", "up", "down", "lock"}
                     },
                     joystick = love.joystick.getJoysticks()[1]
                 },},
-                player2 = {leek_choice = 2, controls = baton.new {
+                player2 = {index = 2, leek_choice = 2, locked = 1, controls = baton.new {
                     controls = {
                         left = {"axis:leftx-"},
                         right = {"axis:leftx+"},
-              lock = {"axis:triggerright+"},
+						up = {"axis:lefty-"},
+						down = {"axis:lefty+"},
+						lock = {"axis:triggerright+"},
                     },
                     pairs = {
-                        move = {"left", "right","lock"}
+                        move = {"left", "right", "up", "down", "lock"}
                     },
                     joystick = love.joystick.getJoysticks()[2]
                 },},
-                player3 = {leek_choice = 3, controls = baton.new {
+                player3 = {index = 3, leek_choice = 3, locked = 1, controls = baton.new {
                     controls = {
                         left = {"axis:leftx-"},
                         right = {"axis:leftx+"},
-              lock = {"axis:triggerright+"},
+						up = {"axis:lefty-"},
+						down = {"axis:lefty+"},
+						lock = {"axis:triggerright+"},
                     },
                     pairs = {
-                        move = {"left", "right","lock"}
+                        move = {"left", "right", "up", "down", "lock"}
                     },
                     joystick = love.joystick.getJoysticks()[3]
                 },},
-                player4 = {leek_choice = 4, controls = baton.new {
+                player4 = {index = 4, leek_choice = 4, locked = 1, controls = baton.new {
                     controls = {
                         left = {"axis:leftx-"},
                         right = {"axis:leftx+"},
-              lock = {"axis:triggerright+"},
+						up = {"axis:lefty-"},
+						down = {"axis:lefty+"},
+						lock = {"axis:triggerright+"},
                     },
                     pairs = {
-                        move = {"left", "right","lock"}
+                        move = {"left", "right", "up", "down", "lock"}
                     },
                     joystick = love.joystick.getJoysticks()[4]
                 },},
@@ -70,4 +101,5 @@ return {
 	end,
 	draw = require "states.choice.draw",
 	update = require "states.choice.update",
+	player_update = require "states.choice.player_update"
 	}

@@ -24,7 +24,7 @@ return function(self,dt)
 	self.controls:update(dt)
 	if self.controls:pressed("start") then
 		love.audio.stop()
-		gamestate.switch(states[competitionOrder[competitionOrderIndex]])
+		gamestate.switch(states.choice)
 		
 	end
 	if self.controls:pressed("quit") then
