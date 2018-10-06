@@ -17,8 +17,12 @@ return function(self)
 	love.graphics.draw(self.logo, bgLine, logoHeight, 0, 0.6, 0.6, self.logo:getWidth() / 2, self.logo:getHeight() / 2)
 	love.graphics.draw(self.start, bgLine, startHeight,0,self.scalex,self.scaley,self.start:getWidth()/2,self.start:getHeight()/2)
     -- love.graphics.draw(self.wyjscie, bgLine, wyjscieHeight,0,self.scalex,self.scaley,self.wyjscie:getWidth()/2,self.wyjscie:getHeight()/2)
-
-	love.graphics.setFont(self.font)
+	if self.start_timer < 2 and self.start_timer > 1 then
+		love.graphics.setFont(self.font)
+	end
+	if self.start_timer < 1 and self.start_timer > 0 then
+		love.graphics.setFont(self.font_bigger)
+	end
 	love.graphics.printf("PRESS START", bgLine - self.start:getWidth() / 2, startHeight - self.font:getHeight() / 2, self.start:getWidth(), "center")
 	-- love.graphics.printf("WYJŚCIE", bgLine - self.wyjscie:getWidth() / 2, wyjscieHeight - self.font:getHeight() / 2, self.wyjscie:getWidth(), "center")
 

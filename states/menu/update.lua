@@ -5,6 +5,14 @@ return function(self,dt)
 		self.bck_timer = self.bck_timer - dt
 	end
 	
+	--start size timer--
+	if self.start_timer and self.start_timer > 0 then
+		self.start_timer = self.start_timer - dt
+	end
+	if self.start_timer < 0 then
+		self.start_timer = 2
+	end
+	
 	--anim switch--
 	if self.bck_timer < 5 and self.bck_timer > 4 or self.bck_timer < 1 and self.bck_timer > 0 then
 		self.menu_main = self.menu1

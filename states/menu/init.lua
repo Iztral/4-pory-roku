@@ -1,6 +1,7 @@
 return {
     init = function(self)
-        self.font= assets.font.caviarDreams_48
+        self.font = assets.font.caviarDreams_48
+		self.font_bigger = assets.font.caviarDreams_56
         --music--
         self.menu = assets.music.menu
         self.menu:setLooping(true)
@@ -20,6 +21,7 @@ return {
         self.bottomLogo = assets.logo.logo_topory
 
         self.bck_timer = 5
+		self.start_timer = 2
 
         local j = love.joystick.getJoysticks()
 
