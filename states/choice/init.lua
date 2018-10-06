@@ -2,6 +2,7 @@ return {
     init = function(self)
       --music--
       self.choice = assets.music.choice
+      self.choice:setLooping(true)
       self.choice:play()
       --background--
       self.choice_bg = assets.choice.choice_bg

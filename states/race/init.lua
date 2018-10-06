@@ -1,14 +1,13 @@
 return {
     init = function(self)
 		--music--
-		winter = assets.music.winter,
+		winter = assets.music.winter
 		winter:play()
 		--font--
 		self.font_big = assets.font.caviarDreams_48
 		self.font_small = assets.font.caviarDreams_32
 		--graphic--
-		self.snow1 = assets.race.tlozima1
-		self.snow2 = assets.race.tlozima2
+		self.snow1 = assets.race.snieg
 		--graphic_sled--
 		self.wiosna_sanie = assets.race.animacja_sanki_wiosna
 		self.lato_sanie = assets.race.animacja_sanki_lato

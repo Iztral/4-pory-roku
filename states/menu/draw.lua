@@ -9,19 +9,19 @@ return function(self)
     local bgLine = 0.75 * love.graphics.getWidth()
 
     local logoHeight = 300
-    local startHeight = 600
+    local startHeight = 670
     local wyjscieHeight = 725
 
 	--boards--
 	love.graphics.draw(self.tytul, bgLine, logoHeight, 0, self.scalex,self.scaley, self.tytul:getWidth() / 2, self.tytul:getHeight() / 2)
 	love.graphics.draw(self.logo, bgLine, logoHeight, 0, 0.6, 0.6, self.logo:getWidth() / 2, self.logo:getHeight() / 2)
 	love.graphics.draw(self.start, bgLine, startHeight,0,self.scalex,self.scaley,self.start:getWidth()/2,self.start:getHeight()/2)
-    love.graphics.draw(self.wyjscie, bgLine, wyjscieHeight,0,self.scalex,self.scaley,self.wyjscie:getWidth()/2,self.wyjscie:getHeight()/2)
+    -- love.graphics.draw(self.wyjscie, bgLine, wyjscieHeight,0,self.scalex,self.scaley,self.wyjscie:getWidth()/2,self.wyjscie:getHeight()/2)
 
 	love.graphics.setFont(self.font)
-	love.graphics.printf("START", bgLine - self.start:getWidth() / 2, startHeight - self.font:getHeight() / 2, self.start:getWidth(), "center")
-	love.graphics.printf("WYJŚCIE", bgLine - self.wyjscie:getWidth() / 2, wyjscieHeight - self.font:getHeight() / 2, self.wyjscie:getWidth(), "center")
+	love.graphics.printf("PRESS START", bgLine - self.start:getWidth() / 2, startHeight - self.font:getHeight() / 2, self.start:getWidth(), "center")
+	-- love.graphics.printf("WYJŚCIE", bgLine - self.wyjscie:getWidth() / 2, wyjscieHeight - self.font:getHeight() / 2, self.wyjscie:getWidth(), "center")
 
     love.graphics.setColor(1, 1, 1)
-    love.graphics.draw(self.bottomLogo, bgLine, love.graphics.getHeight() - 16, 0, 0.25, 0.25, self.bottomLogo:getWidth() / 2, self.bottomLogo:getHeight())
+    love.graphics.draw(self.bottomLogo, bgLine, love.graphics.getHeight() - 16, 0, 0.2, 0.2, self.bottomLogo:getWidth() / 2, self.bottomLogo:getHeight())
 end

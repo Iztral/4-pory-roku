@@ -17,6 +17,6 @@ return function(self,dt)
 	
 	
 	for index,player in pairs(self.players) do
-		self:player_update(player,dt)
+		self:player_update(dt, player)
 	end
 end

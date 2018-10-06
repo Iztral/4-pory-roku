@@ -35,12 +35,12 @@ return function(self,player,dt)
 	--score increase/decrease 
 	if player.turn_grade == 0 then
 		player.player_score = math.max(player.player_score - 15 * dt,0)
-		player.alfa = player.alfa + 1*dt
+		player.alfa = math.min(1, player.alfa + 0.4*dt)
 	end
 	
 	if player.turn_grade == 1 then
 		player.player_score = math.max(player.player_score + 50 * dt,0)
-		player.alfa = math.max(player.alfa - 1*dt,0)
+		player.alfa = math.max(player.alfa - 0.4*dt,0)
 	end
 	
 	player.rotation_old = player.rotation_new

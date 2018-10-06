@@ -62,12 +62,12 @@ function love.keypressed(key)
     if isDebug then
         if key == "kp1" then
             love.audio.stop()
-            gamestate.switch(states.sunbath)
-            competitionOrderIndex = findCompetitionOrder("sunbath")
-        elseif key == "kp2" then
-            love.audio.stop()
             gamestate.switch(states.bazooka)
             competitionOrderIndex = findCompetitionOrder("bazooka")
+        elseif key == "kp2" then
+            love.audio.stop()
+            gamestate.switch(states.sunbath)
+            competitionOrderIndex = findCompetitionOrder("sunbath")
         elseif key == "kp3" then
             love.audio.stop()
             gamestate.switch(states.pumpkins)
