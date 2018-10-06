@@ -40,6 +40,8 @@ competitionOrderIndex = 1
 standings = {}
 
 function love.load(args)
+    love.audio.setVolume(0)
+
     tick.framerate = 60
     tick.rate = 1 / 60
 

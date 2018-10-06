@@ -1,115 +1,63 @@
 return function(self,player,dt)
-	
-	player.controls:update(dt)
-	local x, y = player.controls:get "move"
-	
-	
-	if player.rotation_old == nil then
-		player.rotation_old = math.atan2(y,x)
-	end
+    player.controls:update(dt)
+    player.perfectAngleTween:update(dt)
 
-	player.rotation_new = math.atan2(y,x)
-	
-	player.angle_difference = math.deg(player.rotation_new - player.rotation_old)*dt*50
+    local x, y = player.controls:get "move"
+    
+    if player.rotation_old == nil then
+        player.rotation_old = vector(x, y):normalized()
+    end
 
-	--grading turn posotive--
-	if self.turn_direction == 1 then
-		if player.angle_difference <= 0 then
-			player.turn_grade = 0
-		end
-		if player.angle_difference > 0 then
-			player.turn_grade = 1
-		end
-	end
-	
-	--grading turn negative--
-	if self.turn_direction == -1 then
-		if player.angle_difference >= 0 then
-			player.turn_grade = 0
-		end
-		if player.angle_difference < 0 then
-			player.turn_grade = 1
-		end
-	end
-	
-	--score increase/decrease 
-	if player.turn_grade == 0 then
-		player.player_score = math.max(player.player_score - 15 * dt,0)
-		player.alfa = math.min(1, player.alfa + 0.4*dt)
-	end
-	
-	if player.turn_grade == 1 then
-		player.player_score = math.max(player.player_score + 50 * dt,0)
-		player.alfa = math.max(player.alfa - 0.4*dt,0)
-	end
-	
-	player.rotation_old = player.rotation_new
-	
-	--turn animation--
-	if angle_old == nil then
-		player.angle_old = 0
-	end
-	
-	if player.angle_max > 0 then
-		player.angle_max = player.angle_max - math.abs(player.angle_difference/150)
-	end
-	
-	
-	if player.season == 1 then
-		if player.angle_max <= 0 then
-			player.angle_max = 25
-			self.wiosna_main = self["wiosna"..player.order]
-			self.mask_wiosna = self["mask"..player.order]
-			player.alfa = 0
-			if self.turn_direction == 1 then
-				player.order = (player.order+1)%4
-			end
-			if self.turn_direction == -1 then
-				player.order = (player.order-1)%4
-			end
-		end
-	end
-	
-	if player.season == 2 then
-		if player.angle_max <= 0 then
-			player.angle_max = 25
-			self.lato_main = self["lato"..player.order]
-			player.alfa = 0
-			if self.turn_direction == 1 then
-				player.order = (player.order+1)%4
-			end
-			if self.turn_direction == -1 then
-				player.order = (player.order-1)%4
-			end
-		end
-	end
-	
-	if player.season == 3 then
-		if player.angle_max <= 0 then
-			player.angle_max = 25
-			player.alfa = 0
-			self.jesien_main = self["jesien"..player.order]
-			if self.turn_direction == 1 then
-				player.order = (player.order+1)%4
-			end
-			if self.turn_direction == -1 then
-				player.order = (player.order-1)%4
-			end
-		end
-	end
-	
-	if player.season == 4 then
-		if player.angle_max <= 0 then
-			player.angle_max = 25
-			player.alfa = 0
-			self.zima_main = self["zima"..player.order]
-			if self.turn_direction == 1 then
-				player.order = (player.order+1)%4
-			end
-			if self.turn_direction == -1 then
-				player.order = (player.order-1)%4
-			end
-		end
-	end
-	
+    player.rotation_new = vector(x, y):normalized()
+    
+    player.angle_difference = math.deg(player.rotation_new:angleTo(player.rotation_old))
+    
+    if math.abs(player.angle_difference) >= 180 then
+        -- very funny way to workaround very big angles while spinning the stick
+        local tempRotOld = player.rotation_old:rotated(math.pi)
+        local tempRotNew = player.rotation_new:rotated(math.pi)
+        player.angle_difference = math.deg(tempRotNew:angleTo(tempRotOld))
+    end
+
+    --[[
+    if player.season == "wiosna" then
+        if player.maxAngle == nil or player.maxAngle < math.abs(player.angle_difference) then
+            player.maxAngle = math.abs(player.angle_difference)
+            print(player.maxAngle)
+        end
+    end
+    ]]
+
+    player.rotation_old = player.rotation_new
+
+    player.angle = player.angle + player.angle_difference
+
+    -- current frame change
+    if math.abs(player.angle) >= 540 then
+        local changeFrameDirection = -lume.sign(player.angle)
+
+        player.currentFrameIndex = player.currentFrameIndex + changeFrameDirection
+
+        if player.currentFrameIndex < 1 then
+            player.currentFrameIndex = #player.masks
+        end
+
+        if player.currentFrameIndex > #player.masks then
+            player.currentFrameIndex = 1
+        end
+
+        player.angle = 0
+    end
+
+    -- changing required spin speed and direction
+    player.perfectAngleGenTime = player.perfectAngleGenTime - dt
+
+    if player.perfectAngleGenTime <= 0 then
+        player.perfectAngleGenTime = lume.random(1.5, 5)
+
+        player.perfectAngleTween:tween(0.5, player, { currentPerfectAngle = lume.random(-1, 1) }, "out-cubic")
+    end
+
+    -- check the perfect angle requirement
+
 end
