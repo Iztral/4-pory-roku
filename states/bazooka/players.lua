@@ -126,10 +126,10 @@ return {
             lg.draw(self.sight, player.position.x + sightOffset.x, player.position.y + sightOffset.y, 0, 1, 1, self.sight:getWidth() / 2, self.sight:getHeight() / 2)
 
             -- draw player loading bar
-            self.sinsin = 1 - math.abs(math.sin(player.time * 2.5))
+            player.sinsin = 1 - math.abs(math.sin(player.time * 2.5))
             local dposX, dposY = lg.getWidth() * 0.5 + minusPosX * 128, lg.getHeight() * 0.5 + minusPosY * 128
 
-            local mod = self.sinsin
+            local mod = player.sinsin
 
             if player.reloadTime > 0 then
                 lg.setColor(0.75, 0.75, 0.75)
@@ -209,7 +209,7 @@ return {
                     player.reloadTime = 1
                     player.currentTopAnimation = "shoot"
 
-                    local shootPower = math.max(math.floor(8.1 * self.sinsin), 1)
+                    local shootPower = math.max(math.floor(8.1 * player.sinsin), 1)
                     for i = 1, shootPower do
                         local randomBatchIndex = math.random(1, 4)
                         local randomBatch = player.flowerSpriteBatches[randomBatchIndex]
