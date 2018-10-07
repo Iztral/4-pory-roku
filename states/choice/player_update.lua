@@ -4,6 +4,8 @@ return function(self,player,dt)
 	local x, y = player.controls:get "move"
 	
 	if player.controls:pressed("lock") then
+		self.light_timer = 8
+		self.light_up = 0
 		if player.locked == -1 then
 			self.buttons[player.index] = self.locked
 			self.transparency[player.index] = 1

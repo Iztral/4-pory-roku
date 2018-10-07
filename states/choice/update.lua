@@ -4,7 +4,7 @@ return function(self,dt)
 		if self.transparency[i] <= 0.99 then
 			self.transparency[i] = self.transparency[i] - dt*1.3
 		end
-		if self.transparency[i] <= 0 then
+		if self.transparency[i] <= 0.2 then
 			self.transparency[i] = 0.99
 		end
 	end
@@ -14,14 +14,30 @@ return function(self,dt)
 	end
 	
 	--start conditions--
-	if self.players.player1.locked == 1 and self.players.player2.locked == 1 and self.players.player3.locked == 1 and self.players.player4.locked == 1 then --all locked--
-		if self.players.player1.leek_choice ~= self.players.player2.leek_choice and self.players.player1.leek_choice ~= self.players.player3.leek_choice and self.players.player1.leek_choice ~= self.players.player4.leek_choice then --player 1--
-			if self.players.player2.leek_choice ~= self.players.player3.leek_choice and self.players.player2.leek_choice ~= self.players.player4.leek_choice then --player 2--
-				if self.players.player3.leek_choice ~= self.players.player4.leek_choice then
-					love.audio.stop( )
-					gamestate.switch(states[competitionOrder[competitionOrderIndex]])
-				end
-			end
+	if self.players.player1.locked == 1 and self.players.player2.locked == 1 and self.players.player3.locked == 1 and self.players.player4.locked == 1 then
+		self.light_timer = self.light_timer - dt
+		if self.light_timer < 9 and self.light_timer > 8 then
+			self.light_up = 0
+		end
+		if self.light_timer < 8 and self.light_timer > 7 then
+			self.light_up = self.light_up + 1
+		end
+		if self.light_timer < 7 and self.light_timer > 6 then
+			self.light_up = self.light_up + 1
+		end
+		if self.light_timer < 5 and self.light_timer > 4 then
+			self.light_up = self.light_up + 1
+		end
+		if self.light_timer < 3 and self.light_timer > 2 then
+			self.light_up = self.light_up + 1
+		end
+		if self.light_timer < 1 and self.light_timer > 0 then
+			self.light_up = 5
+		end
+		
+		if self.light_timer <= 0 then
+			love.audio.stop( )
+			gamestate.switch(states.tutorial)
 		end
 	end
 end

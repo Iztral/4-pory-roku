@@ -32,7 +32,7 @@ competitionOrder = {
     "bazooka",
     "sunbath",
     "pumpkins",
-    --"race",
+    "race",
     "podium"
 }
 

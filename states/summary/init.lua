@@ -29,7 +29,7 @@ return {
         timer.after(5, function()
             competitionOrderIndex = competitionOrderIndex + 1
             if competitionOrder[competitionOrderIndex] then
-                gamestate.switch(states[competitionOrder[competitionOrderIndex]])
+                gamestate.switch(states.tutorial)
             else
                 love.event.quit()
             end
