@@ -8,7 +8,7 @@
 - naprawa innych znalezionych błędów
 - animowany splash screen
 - **DONE** asynchroniczne ładowanie assetów
-- **TERAZ DONE** MENU
+- **DONE** MENU
   - animacja "Press Start" w menu (delikatne powiększanie)
 - **DONE, oczekiwanie na grafiki** WIOSNA
   - podpis "Spreading Power" koło wskaźnika mocy
