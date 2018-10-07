@@ -44,6 +44,7 @@ return {
                     },
                     joystick = love.joystick.getJoysticks()[playerIndex]
                 },
+                index = playerIndex,
                 position = { 
                     x = lg.getWidth() * (0.25 + 0.5 * (zeroIndex % 2)),
                     y = lg.getHeight() * (0.25 + 0.5 * math.floor(zeroIndex / 2)),
@@ -120,6 +121,11 @@ return {
 
             local legFrameWidth, legFrameHeight = player.legAnimations[player.currentLegAnimation]:getDimensions()
             player.legAnimations[player.currentLegAnimation]:draw(player.legsImage, player.position.x, player.position.y, 0, player.animationDirection * 0.5, 0.5, legFrameWidth / 2, 0)
+
+            -- draw player label
+            lg.setColor(0, 0, 0)
+            lg.setFont(assets.font.caviarDreamsBold_24)
+            lg.printf("P" .. player.index, player.position.x - 100, player.position.y + 72, 200, "center")
 
             -- draw player sight
             lg.setColor(player.sightColor)

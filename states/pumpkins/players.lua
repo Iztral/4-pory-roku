@@ -17,7 +17,7 @@ return {
     initialized = false,
     signals = nil,
 
-    font = assets.font.caviarDreams_64,
+    font = assets.font.caviarDreams_56,
     
     initialize = function(self)
         -- controls definition
@@ -79,7 +79,12 @@ return {
             -- draw player avatar
             lg.setColor(1, 1, 1)
             local avatar = playerAvatars[playerIndex]
-            lg.draw(avatar, (zeroIndex * 0.25 + 0.125) * lg.getWidth(), 0.8 * lg.getHeight(), 0, 0.5, 0.5, avatar:getWidth() / 2, avatar:getHeight() / 2)
+            lg.draw(avatar, (zeroIndex * 0.25 + 0.125) * lg.getWidth(), 0.825 * lg.getHeight(), 0, 0.5, 0.5, avatar:getWidth() / 2, avatar:getHeight() / 2)
+
+            -- drawing player label
+            lg.setColor(1, 1, 1)
+            lg.setFont(assets.font.caviarDreams_32)
+            lg.printf("PLAYER " .. playerIndex, zeroIndex * 0.25 * lg.getWidth(), 0.675 * lg.getHeight(), 0.25 * lg.getWidth(), "center")
 
             -- draw player position
             if player.order ~= nil then
@@ -89,7 +94,7 @@ return {
 
                 lg.setColor(1, 1, 1)
                 lg.setFont(self.font)
-                lg.printf(position, zeroIndex * 0.25 * lg.getWidth(), 0.9 * lg.getHeight(), 0.25 * lg.getWidth(), "center")
+                lg.printf(position, zeroIndex * 0.25 * lg.getWidth(), 0.925 * lg.getHeight(), 0.25 * lg.getWidth(), "center")
             end
         end
     end,
