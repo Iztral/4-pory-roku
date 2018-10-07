@@ -1,4 +1,4 @@
-- **BOLEC** tryb zimy -> wyścig kto pierwszy do mety / ostatni przy życiu
+- **DONE** tryb zimy -> wyścig kto pierwszy do mety / ostatni przy życiu
 - **DONE** dopracowanie, ułatwienie i naprawa trybu jesieni
 - przejścia pomiędzy stanami
 - **DONE** tutoriale tuż przed poziomami
@@ -14,7 +14,7 @@
   - podpis "Spreading Power" koło wskaźnika mocy
   - nowy wskaźnik mocy rozrzutu: wypełnienie od 0 do 90 stopni od koloru zielonego (MIN) przez źółty do czerwonego (MAX)
   - napis "Cooling Down" (w miejsce "Spreading Power") przy wychładzaniu się bazooki
-- **DONE, oczekiwanie na grafiki** LATO
+- **IMPLEMENTACJA GRAFIK** LATO
   - zmiana mechaniki punktacji i obrotu opalania
   - wskaźnik prędkości obrotu z losowo zmienianą konieczną wartością prędkości i kierunku obrotu gałki
   - oś w postaci poziomego paska z gradientami (będzie grafika)
