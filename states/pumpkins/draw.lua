@@ -33,13 +33,15 @@ return function(self)
     for i = 1, 4 do
         local zeroIndex = i - 1
 
-        pumpkinCoords[i] = {(0.25 * zeroIndex + 0.125) * lg.getWidth(), 0.625 * love.graphics.getHeight(), 0, 1, 1, self.img.pumpkinMain:getWidth() * 0.5, self.img.pumpkinMain:getHeight()}
+        local pumpkinScale = 320 / self.img.pumpkinMain:getHeight()
+        pumpkinCoords[i] = {(0.25 * zeroIndex + 0.125) * lg.getWidth(), 0.625 * love.graphics.getHeight(), 0, pumpkinScale, pumpkinScale, self.img.pumpkinMain:getWidth() * 0.5, self.img.pumpkinMain:getHeight()}
         
         lg.draw(self.img.pumpkinMain, unpack(pumpkinCoords[i]))
     end
 
     -- draw points
     for playerIndex, playerPath in pairs(self.playerPaths) do
+        lg.draw(playerPath.pathImage, unpack(pumpkinCoords[playerIndex]))
         for pathIndex, path in pairs(playerPath.paths) do
             drawPoints(path.initialPoint, path.points, lume.count(playerPath.paths) == lume.count(playerPath.paths, "done"), self.timeAngle)
 

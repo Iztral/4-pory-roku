@@ -20,6 +20,6 @@
   - oś w postaci poziomego paska z gradientami (będzie grafika)
   - co kilka sekund wskaźnik zmienia położenie na osi, oznaczając jednocześnie prędkość i kierunek obrotu gałki
   - organoleptyczny test prędkości obrotu gałki
-- JESIEŃ
+- **BOLEC** JESIEŃ
   - nowe dynie
-- **BOLEC** dorzucić wszędzie countdowny
+- **DONE** dorzucić wszędzie countdowny

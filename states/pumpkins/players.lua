@@ -112,7 +112,7 @@ return {
                     -- handle cutting
                     if player.controls:pressed "cut" then
                         if player.cutModifier < 0.5 then
-                            player.cutModifier = 0.9
+                            player.cutModifier = 1
                         end
                     end
 
