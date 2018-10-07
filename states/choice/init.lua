@@ -1,12 +1,17 @@
 return {
     init = function(self)
-	  self.font_bigger = assets.font.caviarDreamsBold_48
+	  self.font_bigger = assets.font.caviarDreamsBold_32
 	  --music--
       self.choice = assets.music.choice
       self.choice:setLooping(true)
       self.choice:play()
       --background--
       self.choice_bg = assets.choice.choice_bg
+	  --1/4--
+	  self.wiosna_bg = assets.choice.wiosna_tlo
+	  self.lato_bg = assets.choice.lato_tlo
+	  self.jesien_bg = assets.choice.jesien_tlo
+	  self.zima_bg = assets.choice.zima_tlo
       --leek--
       self.wiosna = assets.choice.choice_wiosna
       self.lato = assets.choice.choice_lato
@@ -31,6 +36,9 @@ return {
 		0.99,
 		0.99,
 	  }
+	  --timer lightup--
+	  self.light_timer = 9
+	  self.light_up = 0
 	  --leeks**
 	  self.leeks = {
 		self.wiosna,

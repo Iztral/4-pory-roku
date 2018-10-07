@@ -68,7 +68,7 @@ return {
             end
         end
 
-        self.timer = 30
+        self.timer = 40
         self.turn_direction = 1
         self.turn_timer = math.random(3,8)
         self.bck_timer = 5

@@ -1,7 +1,9 @@
 return function(self, dt)
 	
     self.players:update(dt)
-
+	
+	self.timer = self.timer - dt
+	
     if self.timer <= 0 then
 		
         local spriteBatchCounts = lume.map(
