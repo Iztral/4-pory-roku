@@ -21,6 +21,52 @@ return {
 			self.tutorial_zima:initialize()
 		end
 		
+		
+		
+		self.players = {
+				player1 = {controls = baton.new {
+                    controls = {
+                        start = {"button:start"},
+                    },
+                    joystick = love.joystick.getJoysticks()[1]
+                },},
+                player2 = {controls = baton.new {
+                    controls = {
+                        start = {"button:start"},
+                    },
+                    joystick = love.joystick.getJoysticks()[2]
+                },},
+                player3 = {controls = baton.new {
+                    controls = {
+                        start = {"button:start"},
+                    },
+                    joystick = love.joystick.getJoysticks()[3]
+                },},
+                player4 = {controls = baton.new {
+                    controls = {
+                        start = {"button:start"},
+                    },
+                    joystick = love.joystick.getJoysticks()[4]
+                },},
+            }
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	end,
 	update = require "states.tutorial.update",
 	draw = require "states.tutorial.draw",

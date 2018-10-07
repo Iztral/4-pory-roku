@@ -3,7 +3,7 @@ return function(self)
 	love.graphics.setBackgroundColor(1,1,1)
 	--player1--
 	if self.players.player1.locked == 1 then
-		love.graphics.setColor(0.75,0.75,0.75)
+		love.graphics.setColor(0.5,0.5,0.5)
 	end
 	if self.light_up == 1 then
 		love.graphics.setColor(1,1,1)
@@ -22,7 +22,7 @@ return function(self)
 	
 	--player2--
 	if self.players.player2.locked == 1 then
-		love.graphics.setColor(0.75,0.75,0.75)
+		love.graphics.setColor(0.5,0.5,0.5)
 	end
 	if self.light_up == 2 then
 		love.graphics.setColor(1,1,1)
@@ -41,7 +41,7 @@ return function(self)
 	
 	--player3--
 	if self.players.player3.locked == 1 then
-		love.graphics.setColor(0.75,0.75,0.75)
+		love.graphics.setColor(0.5,0.5,0.5)
 	end
 	if self.light_up == 3 then
 		love.graphics.setColor(1,1,1)
@@ -60,7 +60,7 @@ return function(self)
 	
 	--player4--
 	if self.players.player4.locked == 1 then
-		love.graphics.setColor(0.75,0.75,0.75)
+		love.graphics.setColor(0.5,0.5,0.5)
 	end
 	if self.light_up == 4 then
 		love.graphics.setColor(1,1,1)

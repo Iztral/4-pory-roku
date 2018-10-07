@@ -17,6 +17,13 @@ return function(self, dt)
 		 self.tutorial_zima:update(dt)
 	end
 	
+    for index,player in pairs(self.players) do
+		self.players[index].controls:update(dt)
+		if self.players[index].controls:pressed "start" then
+			self.timer = 0
+		end
+	end
+	
 	if self.timer <= 0 then
 		if competitionOrder[competitionOrderIndex] then
 			gamestate.switch(states[competitionOrder[competitionOrderIndex]])

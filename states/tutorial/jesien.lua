@@ -10,7 +10,7 @@ return {
 		love.graphics.draw(assets.tutorial.jesien_tutorial, 0, 0)
 		love.graphics.setColor(1, 1, 1, 1)
 		love.graphics.draw(grzyb, 813,823, 0, 1, 1, grzyb:getWidth()/2, grzyb:getHeight()/2)
-		love.graphics.draw(start, 884,821, 0, 1, 1, start:getWidth()/2, start:getHeight()/2)
+		love.graphics.draw(start, 884,824, 0, 1, 1, start:getWidth()/2, start:getHeight()/2)
 		love.graphics.draw(trigger, 911,762, 0, 1, 1, trigger:getWidth()/2, trigger:getHeight()/2)
 		love.graphics.setColor(1, 1, 1, 1)
 	end,

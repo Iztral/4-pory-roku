@@ -23,7 +23,7 @@ return function(self, dt)
 
     -- win counter set
     if #self.playerOrder > 0 and self.winCounter == nil then
-        self.winCounter = 30
+        self.winCounter = 15
     end
 
     -- win counter win handling

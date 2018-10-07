@@ -62,7 +62,7 @@ function love.keypressed(key)
         return lume.find(competitionOrder, stateName) or lume.count(competitionOrder)
     end
 
-    if isDebug then
+   -- if isDebug then
         if key == "kp1" then
             love.audio.stop()
             gamestate.switch(states.bazooka)
@@ -92,7 +92,7 @@ function love.keypressed(key)
                 "player4",
             })
         end
-    end
+  --  end
 end
 
 function love.update(dt)
