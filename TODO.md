@@ -2,7 +2,7 @@
 - **DONE** dopracowanie, ułatwienie i naprawa trybu jesieni
 - przejścia pomiędzy stanami
 - **DONE** tutoriale tuż przed poziomami
-- znaczniki graczy podczas gry (wiosna, jesień)
+- **BOLEC** znaczniki graczy podczas gry (wiosna, jesień)
 - **DONE** dodanie flagi -debug podczas uruchomienia gry do włączenia opcji debugowych (np. ręczne przejścia pomiędzy poziomami)
 - **DONE** ekran wyboru postaci po głównym menu z jasnym oznaczeniem, kto jest którym graczem 
 - naprawa innych znalezionych błędów
@@ -20,6 +20,6 @@
   - oś w postaci poziomego paska z gradientami (będzie grafika)
   - co kilka sekund wskaźnik zmienia położenie na osi, oznaczając jednocześnie prędkość i kierunek obrotu gałki
   - organoleptyczny test prędkości obrotu gałki
-- **BOLEC** JESIEŃ
+- **DONE** JESIEŃ
   - nowe dynie
 - **DONE** dorzucić wszędzie countdowny
