@@ -13,8 +13,6 @@ return {
         self.background2 = assets.sunbath.tlopiasek2png
         self.background3 = assets.sunbath.tlopiasek3png
         self.sand = self.background1
-    --arrow--
-        self.arrow = assets.sunbath.arrow
         
         self.players = {}
 

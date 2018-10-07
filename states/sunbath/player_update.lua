@@ -77,9 +77,11 @@ return function(self,player,dt)
 
     if addNewScore < 0 then
         addNewScore = addNewScore * 0.6
+        player.alfa = lume.clamp(player.alfa - addNewScore * 0.1 * dt, 0, 1)
+    else
+        player.alfa = lume.clamp(player.alfa - addNewScore * 0.025 * dt, 0, 1)
     end
 
-    player.alfa = lume.clamp(player.alfa - addNewScore * 0.1 * dt, 0, 1)
 
     player.player_score = math.max(0, player.player_score + addNewScore * 75 * dt)
 end

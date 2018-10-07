@@ -14,11 +14,10 @@ return function(self)
         local currentMaskFrame = player.masks[player.currentFrameIndex]
 
         lg.setColor(0, 0, 0)
-        lg.printf(string.format("%d", player.player_score), scoreWidth, 50, 0.25 * lg.getWidth(), "center")
-        lg.printf(string.format("%.1f", player.currentPerfectAngle), scoreWidth, lg.getHeight() - 50, 0.25 * lg.getWidth(),"center")
+        lg.printf("PLAYER " .. i, scoreWidth, 50, 0.25 * lg.getWidth(), "center")
+        lg.printf(string.format("%d pts", player.player_score), scoreWidth, 100, 0.25 * lg.getWidth(), "center")
 
         lg.setColor(1, 1, 1)
-		lg.printf("PLAYER " .. i,width - 120, lg.getHeight()*0.1, 250, "center")
         lg.draw(player.towel, width, lg.getHeight()*0.45, 0, 0.8, 0.8, player.towel:getWidth() / 2, player.towel:getHeight() / 2)
         lg.draw(currentFrame, width, lg.getHeight()*0.45, 0, 0.5, 0.5, currentFrame:getWidth() / 2, currentFrame:getHeight() / 2)
 
@@ -36,14 +35,11 @@ return function(self)
         lg.rectangle("line", width - 60, lg.getHeight() * 0.8 - 2 * w, 120, 4 * w)
     end
 
-    --arrow clock--
-    lg.setColor(1,1,1)
-    lg.draw(self.arrow,lg.getWidth()*0.5,lg.getHeight()*0.8,0,self.turn_direction*0.9,0.9,self.arrow:getWidth()/2,self.arrow:getHeight()/2)
     --timer--
+    lg.setColor(1, 1, 1)
     lg.setFont(self.font_big)
     lg.draw(self.clock,lg.getWidth()*0.5,10,0,0.3,0.3,self.clock:getWidth()/2,self.clock:getHeight()/100)
-    lg.setColor(0,0,0)
+    lg.setColor(0, 0, 0)
     lg.printf(string.format("%.0f", self.timer or 0),0, 75, lg.getWidth(),"center")
-    lg.setColor(1,1,1)
     --debug--
 end
