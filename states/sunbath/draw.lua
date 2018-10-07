@@ -33,6 +33,41 @@ return function(self)
         lg.setLineWidth(2)
         lg.line(width, lg.getHeight() * 0.8 - 2 * w, width, lg.getHeight() * 0.8 + 2 * w)
         lg.rectangle("line", width - 60, lg.getHeight() * 0.8 - 2 * w, 120, 4 * w)
+
+        --thermometer
+        local thermoImgScale = 48 / assets.sunbath.thermo_bg:getWidth()
+        lg.setColor(1, 1, 1)
+
+        local thermoScissorHeight = assets.sunbath.thermo_fg:getHeight() * thermoImgScale * player.alfa
+
+        lg.setScissor(
+            width + 0.125 * 0.75 * lg.getWidth() - assets.sunbath.thermo_fg:getWidth() * 0.5 * thermoImgScale,
+            lg.getHeight() * 0.45 - assets.sunbath.thermo_fg:getHeight() * 0.5 * thermoImgScale + (assets.sunbath.thermo_fg:getHeight() * thermoImgScale - thermoScissorHeight),
+            assets.sunbath.thermo_fg:getWidth() * thermoImgScale,
+            thermoScissorHeight
+        )
+        lg.draw(
+            assets.sunbath.thermo_fg,
+            width + 0.125 * 0.75 * lg.getWidth(),
+            lg.getHeight() * 0.45,
+            0,
+            thermoImgScale,
+            thermoImgScale,
+            assets.sunbath.thermo_fg:getWidth() * 0.5,
+            assets.sunbath.thermo_fg:getHeight() * 0.5
+        )
+        lg.setScissor()
+
+        lg.draw(
+            assets.sunbath.thermo_bg,
+            width + 0.125 * 0.75 * lg.getWidth(),
+            lg.getHeight() * 0.45,
+            0,
+            thermoImgScale,
+            thermoImgScale,
+            assets.sunbath.thermo_bg:getWidth() * 0.5,
+            assets.sunbath.thermo_bg:getHeight() * 0.5
+        )
     end
 
     --timer--
