@@ -2,7 +2,7 @@
 - **DONE** dopracowanie, ułatwienie i naprawa trybu jesieni
 - przejścia pomiędzy stanami
 - **DONE** tutoriale tuż przed poziomami
-- znaczniki graczy podczas gry
+- znaczniki graczy podczas gry (wiosna, jesień)
 - **DONE** dodanie flagi -debug podczas uruchomienia gry do włączenia opcji debugowych (np. ręczne przejścia pomiędzy poziomami)
 - **DONE** ekran wyboru postaci po głównym menu z jasnym oznaczeniem, kto jest którym graczem 
 - naprawa innych znalezionych błędów
@@ -10,7 +10,7 @@
 - **DONE** asynchroniczne ładowanie assetów
 - **DONE** MENU
   - animacja "Press Start" w menu (delikatne powiększanie)
-- **IMPLEMENTACJA GRAFIK** WIOSNA
+- **DONE** WIOSNA
   - podpis "Spreading Power" koło wskaźnika mocy
   - nowy wskaźnik mocy rozrzutu: wypełnienie od 0 do 90 stopni od koloru zielonego (MIN) przez źółty do czerwonego (MAX)
   - napis "Cooling Down" (w miejsce "Spreading Power") przy wychładzaniu się bazooki
@@ -20,3 +20,6 @@
   - oś w postaci poziomego paska z gradientami (będzie grafika)
   - co kilka sekund wskaźnik zmienia położenie na osi, oznaczając jednocześnie prędkość i kierunek obrotu gałki
   - organoleptyczny test prędkości obrotu gałki
+- JESIEŃ
+  - nowe dynie
+- **BOLEC** dorzucić wszędzie countdowny
