@@ -1,4 +1,4 @@
-- tryb zimy -> wyścig kto pierwszy do mety / ostatni przy życiu
+- **BOLEC** tryb zimy -> wyścig kto pierwszy do mety / ostatni przy życiu
 - **DONE** dopracowanie, ułatwienie i naprawa trybu jesieni
 - przejścia pomiędzy stanami
 - **IZTRAL** tutoriale tuż przed poziomami
