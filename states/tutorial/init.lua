@@ -4,6 +4,8 @@ return {
 		self.timer = 10
 		alfa_timer = 2
 		
+		font_control = love.graphics.newFont("assets/font/caviarDreams.ttf", 24)
+		
 		grzyb =  assets.tutorial.kontroller_gala
 		trigger = assets.tutorial.kontroller_triger
 		start = assets.tutorial.kontroller_start
