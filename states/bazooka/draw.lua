@@ -17,4 +17,7 @@ return function(self)
     love.graphics.printf(string.format("%d", math.ceil(self.timer)), 0, love.graphics.getHeight() * 0.5 - self.fontHeight * 0.5, love.graphics.getWidth(), "center")
 
     love.graphics.setColor(1, 1, 1)
+	if self.freeze_timer > 0 then
+		love.graphics.draw(self.tutorial, 0, 0)
+	end
 end

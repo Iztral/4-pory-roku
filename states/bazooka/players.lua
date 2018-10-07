@@ -10,7 +10,9 @@ return {
             assets.bazooka.kwiatek3,
             assets.bazooka.kwiatek4,
         }
-
+		
+		self.freeze_timer = 5
+		
         self.sight = assets.bazooka.celownik
 
         local legsImage = assets.bazooka.animacja_por_nogi
@@ -151,86 +153,91 @@ return {
 
     update = function(self, dt)
         if self.initialized then
-            for playerIndex, player in pairs(self.data) do
-                -- update systems
-                player.controls:update(dt)
-                player.legAnimations[player.currentLegAnimation]:update(dt)
-                player.topAnimations[player.currentTopAnimation]:update(dt)
-                player.time = player.time + dt
+			
+			if self.freeze_timer > 0 then
+				self.freeze_timer = self.freeze_timer - dt
+			else
+				for playerIndex, player in pairs(self.data) do
+					-- update systems
+					player.controls:update(dt)
+					player.legAnimations[player.currentLegAnimation]:update(dt)
+					player.topAnimations[player.currentTopAnimation]:update(dt)
+					player.time = player.time + dt
 
-                player.reloadTime = math.max(player.reloadTime - dt, 0)
+					player.reloadTime = math.max(player.reloadTime - dt, 0)
 
-                -- handle movement
-                local moveX, moveY = player.controls:get "move"
+					-- handle movement
+					local moveX, moveY = player.controls:get "move"
 
-                local zeroIndex = playerIndex - 1
-                local posX, posY = zeroIndex % 2, math.floor(zeroIndex / 2)
+					local zeroIndex = playerIndex - 1
+					local posX, posY = zeroIndex % 2, math.floor(zeroIndex / 2)
 
-                local minMaxMarginX = 40
-                local minMaxMarginY = 64
+					local minMaxMarginX = 40
+					local minMaxMarginY = 64
 
-                local minPosX, maxPosX = 0.5 * posX * lg.getWidth() + minMaxMarginX, (0.5 * posX + 0.5) * lg.getWidth() - minMaxMarginX
-                local minPosY, maxPosY = 0.5 * posY * lg.getHeight() + minMaxMarginY, (0.5 * posY + 0.5) * lg.getHeight() - minMaxMarginY
+					local minPosX, maxPosX = 0.5 * posX * lg.getWidth() + minMaxMarginX, (0.5 * posX + 0.5) * lg.getWidth() - minMaxMarginX
+					local minPosY, maxPosY = 0.5 * posY * lg.getHeight() + minMaxMarginY, (0.5 * posY + 0.5) * lg.getHeight() - minMaxMarginY
 
-                if math.abs(moveX) > 0.05 or math.abs(moveY) > 0.05 then
-                    player.direction = vector(moveX, moveY):normalized()
-                    player.currentLegAnimation = "walk"
+					if math.abs(moveX) > 0.05 or math.abs(moveY) > 0.05 then
+						player.direction = vector(moveX, moveY):normalized()
+						player.currentLegAnimation = "walk"
 
-                    player.position = {
-                        x = lume.clamp(player.position.x + moveX * player.speed * dt, minPosX, maxPosX),
-                        y = lume.clamp(player.position.y + moveY * player.speed * dt, minPosY, maxPosY)
-                    }
+						player.position = {
+							x = lume.clamp(player.position.x + moveX * player.speed * dt, minPosX, maxPosX),
+							y = lume.clamp(player.position.y + moveY * player.speed * dt, minPosY, maxPosY)
+						}
 
-                    player.animationDirection = 1
+						player.animationDirection = 1
 
-                    if moveX < 0 then
-                        player.animationDirection = -1
-                    end
-                else
-                    player.currentLegAnimation = "stop"
-                end
+						if moveX < 0 then
+							player.animationDirection = -1
+						end
+					else
+						player.currentLegAnimation = "stop"
+					end
 
-                local sightOffset = player.direction * 64
-                local sightPosition = {
-                    x = player.position.x + sightOffset.x,
-                    y = player.position.y + sightOffset.y
-                }
+					local sightOffset = player.direction * 64
+					local sightPosition = {
+						x = player.position.x + sightOffset.x,
+						y = player.position.y + sightOffset.y
+					}
 
-                local sightInLimits = sightPosition.x >= minPosX and sightPosition.x <= maxPosX and sightPosition.y >= minPosY and sightPosition.y <= maxPosY
+					local sightInLimits = sightPosition.x >= minPosX and sightPosition.x <= maxPosX and sightPosition.y >= minPosY and sightPosition.y <= maxPosY
 
-                if sightInLimits then
-                    player.sightColor = {1, 1, 1, 0.5}
-                else
-                    player.sightColor = {1, 0, 0, 0.5}
-                end
+					if sightInLimits then
+						player.sightColor = {1, 1, 1, 0.5}
+					else
+						player.sightColor = {1, 0, 0, 0.5}
+					end
 
-                -- handle shooting
-                if player.controls:pressed "shoot" and player.reloadTime <= 0 and sightInLimits then
-                    player.reloadTime = 1
-                    player.currentTopAnimation = "shoot"
+					-- handle shooting
+					if player.controls:pressed "shoot" and player.reloadTime <= 0 and sightInLimits then
+						player.reloadTime = 1
+						player.currentTopAnimation = "shoot"
 
-                    local shootPower = math.max(math.floor(8.1 * player.sinsin), 1)
-                    for i = 1, shootPower do
-                        local randomBatchIndex = math.random(1, 4)
-                        local randomBatch = player.flowerSpriteBatches[randomBatchIndex]
+						local shootPower = math.max(math.floor(8.1 * player.sinsin), 1)
+						for i = 1, shootPower do
+							local randomBatchIndex = math.random(1, 4)
+							local randomBatch = player.flowerSpriteBatches[randomBatchIndex]
 
-                        local spriteIndex = randomBatch:add(
-                            player.position.x + sightOffset.x + math.random(-64, 64),
-                            player.position.y + sightOffset.y + math.random(-64, 64),
-                            math.random() * math.pi,
-                            lume.random(0.2, 0.3),
-                            lume.random(0.2, 0.3),
-                            randomBatch:getTexture():getWidth() / 2,
-                            randomBatch:getTexture():getHeight() / 2
-                        )
+							local spriteIndex = randomBatch:add(
+								player.position.x + sightOffset.x + math.random(-64, 64),
+								player.position.y + sightOffset.y + math.random(-64, 64),
+								math.random() * math.pi,
+								lume.random(0.2, 0.3),
+								lume.random(0.2, 0.3),
+								randomBatch:getTexture():getWidth() / 2,
+								randomBatch:getTexture():getHeight() / 2
+							)
 
-                        table.insert(
-                            player.flowerSpriteBatchesIndexes[randomBatchIndex],
-                            spriteIndex
-                        )
-                    end
-                end
-            end
+							table.insert(
+								player.flowerSpriteBatchesIndexes[randomBatchIndex],
+								spriteIndex
+							)
+						end
+					end
+				end
+			end
         end
     end
 }
