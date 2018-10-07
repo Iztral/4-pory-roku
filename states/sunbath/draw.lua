@@ -25,9 +25,15 @@ return function(self)
         lg.setColor(1, 1, 1, player.alfa)
         lg.draw(currentMaskFrame, width, lg.getHeight()*0.45, 0, 0.5, 0.5, currentMaskFrame:getWidth() / 2, currentMaskFrame:getHeight() / 2)
 
-        lg.setColor(1, 0, 0)
         local w = 8
-        lg.rectangle("fill", width + player.angle_difference - w / 2, lg.getHeight() * 0.8 - w, w, w * 2)
+        lg.setColor(0, 0, 1)
+        lg.rectangle("fill", width + 2 * player.currentPerfectAngle - w / 2, lg.getHeight() * 0.8 - w * 2, w, w * 4)
+        lg.setColor(1, 0, 0)
+        lg.rectangle("fill", width + 2 * player.angle_difference - w / 2, lg.getHeight() * 0.8 - w, w, w * 2)
+        lg.setColor(0, 0, 0)
+        lg.setLineWidth(2)
+        lg.line(width, lg.getHeight() * 0.8 - 2 * w, width, lg.getHeight() * 0.8 + 2 * w)
+        lg.rectangle("line", width - 60, lg.getHeight() * 0.8 - 2 * w, 120, 4 * w)
     end
 
     --arrow clock--

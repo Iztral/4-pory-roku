@@ -14,7 +14,7 @@
   - podpis "Spreading Power" koło wskaźnika mocy
   - nowy wskaźnik mocy rozrzutu: wypełnienie od 0 do 90 stopni od koloru zielonego (MIN) przez źółty do czerwonego (MAX)
   - napis "Cooling Down" (w miejsce "Spreading Power") przy wychładzaniu się bazooki
-- **BOLEC** LATO
+- **DONE, oczekiwanie na grafiki** LATO
   - zmiana mechaniki punktacji i obrotu opalania
   - wskaźnik prędkości obrotu z losowo zmienianą konieczną wartością prędkości i kierunku obrotu gałki
   - oś w postaci poziomego paska z gradientami (będzie grafika)

@@ -33,9 +33,13 @@ return {
                 season = seasons[playerIndex],
                 angle = 0,
 
-                currentPerfectAngle = lume.random(-1, 1),
-                perfectAngleGenTime = lume.random(1.5, 5),
+                currentPerfectAngle = 0,
+                regenerateCurrentPerfectAngle = function(this)
+                    this.perfectAngleTween:tween(0.5, this, { currentPerfectAngle = lume.randomchoice({-1, 1}) * lume.random(5, 20) }, "out-cubic")
+                end,
+                perfectAngleGenTime = 0,
                 perfectAngleTween = timer.new(),
+                previousAngles = {},
 
                 currentFrameIndex = 1,
                 frames = lume.map({1, 2, 3, 4}, function(index)
@@ -59,6 +63,11 @@ return {
                     joystick = love.joystick.getJoysticks()[playerIndex]
                 }
             }
+
+            -- filling previous angles with start samples
+            for i = 1, 30 do
+                self.players["player" .. playerIndex].previousAngles[i] = 0
+            end
         end
 
         self.timer = 30
