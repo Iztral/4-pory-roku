@@ -1,12 +1,4 @@
 return function(self, dt)
-
-	if self.freeze_timer > 0 then
-		self.freeze_timer = self.freeze_timer - dt
-	end
-	
-	if self.freeze_timer <= 0 then
-		self.timer = self.timer - dt
-	end
 	
     self.players:update(dt)
 

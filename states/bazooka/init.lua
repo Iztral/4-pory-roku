@@ -10,13 +10,15 @@ return {
         self.players:initialize()
         
         self.timer = 40
-		self.freeze_timer = 5
 
         self.font = assets.font.caviarDreams_40
         self.font_small = assets.font.caviarDreams_16
         self.fontHeight = self.font:getHeight()
-		
+		--tutorial--
 		self.tutorial = assets.tutorial.wiosna_tutorial
+		self.grzyb = assets.tutorial.kontroller_gala
+		self.trigger = assets.tutorial.kontroller_triger
+		
         self.plotkiHorizontal = assets.bazooka.bazooka_fg
         --music
         self.spring = assets.music.spring
