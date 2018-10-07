@@ -1,87 +1,122 @@
 return {
     init = function(self)
-		--music--
-		winter = assets.music.winter
-		winter:play()
-		--font--
-		self.font_big = assets.font.caviarDreams_48
-		self.font_small = assets.font.caviarDreams_32
-		--graphic--
-		self.snow1 = assets.race.snieg
-		--graphic_sled--
-		self.wiosna_sanie = assets.race.animacja_sanki_wiosna
-		self.lato_sanie = assets.race.animacja_sanki_lato
-		self.jesien_sanie = assets.race.animacja_sanki_jesien
-		self.zima_sanie = assets.race.animacja_sanki_zima
-		--graphic_obstacle--
-		self.zaspa = assets.race.zaspa
-		self.rampa = assets.race.rampa
-		self.kamyk = assets.race.kamyk
-		--graphic_particle--
-		self.slady = assets.race.slady
-		--players table--
-        self.players = {
-            player1 = {player_score = 0, position = 0, acceleration = 0, last_pressed = 0, speed = 0, season = 1, lane = 0, alive = 1, controls = baton.new {
-                controls = {
-                    left = {"axis:leftx-"},
-                    right = {"axis:leftx+"},
-                    up = {"axis:lefty-"},
-                    down = {"axis:lefty+"},
-					move_1 = {"axis:triggerleft+"},
-					move_2 = {"axis:triggerright+"},
-                },
-                pairs = {
-                    move = {"left", "right", "up", "down"}
-                },
-                joystick = love.joystick.getJoysticks()[1]
-            },},
-            player2 = {player_score = 0, position = 0, acceleration = 0, last_pressed = 0, speed = 0, season = 2, lane = 0, alive = 1, controls = baton.new {
-                controls = {
-                    left = {"axis:leftx-"},
-                    right = {"axis:leftx+"},
-                    up = {"axis:lefty-"},
-                    down = {"axis:lefty+"},
-					move_1 = {"axis:triggerleft+"},
-					move_2 = {"axis:triggerright+"},
-                },
-                pairs = {
-                    move = {"left", "right", "up", "down"}
-                },
-                joystick = love.joystick.getJoysticks()[2]
-            },},
-            player3 = {player_score = 0, position = 0, acceleration = 0, last_pressed = 0, speed = 0, season = 3, lane = 0, alive = 1, controls = baton.new {
-                controls = {
-                    left = {"axis:leftx-"},
-                    right = {"axis:leftx+"},
-                    up = {"axis:lefty-"},
-                    down = {"axis:lefty+"},
-					move_1 = {"axis:triggerleft+"},
-					move_2 = {"axis:triggerright+"},
-                },
-                pairs = {
-                    move = {"left", "right", "up", "down"}
-                },
-                joystick = love.joystick.getJoysticks()[3]
-            },},
-            player4 = {player_score = 0, position = 0, acceleration = 0, last_pressed = 0, speed = 0, season = 4, lane = 0, alive = 1, controls = baton.new {
-                controls = {
-                    left = {"axis:leftx-"},
-                    right = {"axis:leftx+"},
-                    up = {"axis:lefty-"},
-                    down = {"axis:lefty+"},
-					move_1 = {"axis:triggerleft+"},
-					move_2 = {"axis:triggerright+"},
-                },
-                pairs = {
-                    move = {"left", "right", "up", "down"}
-                },
-                joystick = love.joystick.getJoysticks()[4]
-            },},
+        -- music
+        self.winter = assets.music.winter
+        self.winter:setLooping(true)
+        self.winter:play()
+
+        -- font
+        self.font_big = assets.font.caviarDreams_48
+
+        -- bg shifting modifiers
+        self.raceBgScale = lg.getHeight() / assets.race.race_bg:getHeight()
+        self.bgShifts = {0, assets.race.race_bg:getWidth() * self.raceBgScale}
+
+        -- world
+        self.world = HC.new()
+        self.worldSpeed = 0
+        self.worldSpeedMax = 600
+    
+        -- world walls
+        local wallOffset = 100
+        self.wallTop = self.world:rectangle(-wallOffset, -wallOffset, lg.getWidth() + 2 * wallOffset, wallOffset)
+        self.wallBottom = self.world:rectangle(-wallOffset, lg.getHeight(), lg.getWidth() + 2 * wallOffset, wallOffset)
+
+        self.wallTop.data = {
+            type = "wall",
+            id = "top"
         }
-		self.timer = 30
-		self.lane_timer = 1
+
+        self.wallBottom.data = {
+            type = "wall",
+            id = "bottom"
+        }
+
+        -- obstacles
+        self.worldObstacles = {}
+        self.worldObstacleTimer = 0
+        self.regenerateObstacleTimer = function(self)
+            self.worldObstacleTimer = lume.random(1, 3)
+        end
+        self:regenerateObstacleTimer()
+
+        -- finish line
+        local finishLineScale = lg.getHeight() / assets.race.meta:getHeight()
+        self.finishLine = self.world:rectangle(2 * lg.getWidth(), 0, assets.race.meta:getWidth() * finishLineScale, lg.getHeight())
+        self.finishLine.data = {
+            type = "finish",
+            id = "finish"
+        }
+        self.finishLine.finishLineScale = finishLineScale
+
+        --players table--
+        local seasons = {"wiosna", "lato", "jesien", "zima"}
+
+        local playerWidth, playerHeight = 128, 32
+
+        local heightFromBottom = lg.getHeight() - 128
+
+        local startingHeight = lg.getHeight() - heightFromBottom
+
+        self.reversePlayerPositions = {}
+        self.normalPlayerPositions = {}
+        self.finishPlayerPositions = {}
+        self.finishBlinkTimer = nil
+        self.blinkEffect = moonshine(moonshine.effects.glow)
+        --self.blinkEffect.glow.
+
+        self.players = {}
+        for playerIndex = 1, 4 do
+            local playerId = "player" .. playerIndex
+            local gridImage = assets.race["animacja_sanki_" .. seasons[playerIndex]]
+            local animGrid = anim8.newGrid(gridImage:getWidth() / 2, gridImage:getHeight() / 2, gridImage:getWidth(), gridImage:getHeight())
+
+            self.players[playerId] = {
+                animGrid = animGrid,
+                gridImage = gridImage,
+                speed = 0,
+                maxSpeed = 2.75,
+                maxVerticalSpeed = 350,
+                playerWidth = playerWidth,
+                playerHeight = playerHeight,
+                index = playerIndex,
+                crashed = false,
+                body = self.world:rectangle(
+                    0.5 * lg.getWidth() - 0.5 * playerWidth,
+                    startingHeight + ((playerIndex - 1) * 0.25 + 0.125) * heightFromBottom - 0.5 * playerHeight,
+                    playerWidth,
+                    playerHeight
+                ),
+                controls = baton.new {
+                    controls = {
+                        left = {"axis:leftx-"},
+                        right = {"axis:leftx+"},
+                        up = {"axis:lefty-"},
+                        down = {"axis:lefty+"},
+                        forward = {"axis:triggerright+"},
+                    },
+                    pairs = {
+                        move = {"left", "right", "up", "down"}
+                    },
+                    joystick = love.joystick.getJoysticks()[playerIndex]
+                }
+            }
+
+            self.players[playerId].animation = anim8.newAnimation(
+                animGrid(1, 1, "1-2", 2),
+                0.1
+            )
+            self.players[playerId].animationEmptySled = anim8.newAnimation(
+                animGrid(2, 1),
+                0.1
+            )
+
+            self.players[playerId].body.data = {
+                type = "player",
+                id = playerIndex
+            }
+        end
     end,
     draw = require "states.race.draw",
-	update = require "states.race.update",
-	player_update = require "states.race.player_update",
+    update = require "states.race.update",
 }

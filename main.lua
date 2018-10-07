@@ -14,7 +14,7 @@ lume = require "lib.lume"
 baton = require "lib.baton"
 anim8 = require "lib.anim8"
 tick = require "lib.tick"
-bump = require "lib.bump"
+HC = require "lib.hc"
 moonshine = require "lib.moonshine"
 lily = require "lib.lily"
 inspect = require "lib.inspect"
@@ -32,7 +32,7 @@ competitionOrder = {
     "bazooka",
     "sunbath",
     "pumpkins",
-    --"race",
+    "race",
     "podium"
 }
 
