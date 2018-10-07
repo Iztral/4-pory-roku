@@ -1,5 +1,5 @@
 return {
-    init = function(self)
+    enter = function(self)
         self.font = assets.font.caviarDreams_48
         --music--
         self.menu = assets.music.menu

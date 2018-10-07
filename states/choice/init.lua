@@ -1,5 +1,5 @@
 return {
-    init = function(self)
+    enter = function(self)
 	  self.font_bigger = assets.font.caviarDreamsBold_32
 	  --music--
       self.choice = assets.music.choice

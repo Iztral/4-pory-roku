@@ -1,5 +1,5 @@
 return {
-    init = function(self)
+    enter = function(self)
         self.img = {
             backgrounds = {
                 assets.pumpkins.tlo_pumpkins_1,

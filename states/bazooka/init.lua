@@ -1,5 +1,5 @@
 return {
-    init = function(self)
+    enter = function(self)
         -- image loading
         self.img = {
             background = assets.bazooka.bazooka_bg,

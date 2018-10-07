@@ -1,5 +1,5 @@
 return {
-    init = function(self)
+    enter = function(self)
     --music--
         self.summer = assets.music.summer
         self.summer:play()
