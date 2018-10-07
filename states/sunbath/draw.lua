@@ -24,17 +24,45 @@ return function(self)
         lg.setColor(1, 1, 1, player.alfa)
         lg.draw(currentMaskFrame, width, lg.getHeight()*0.45, 0, 0.5, 0.5, currentMaskFrame:getWidth() / 2, currentMaskFrame:getHeight() / 2)
 
-        local w = 8
-        lg.setColor(0, 0, 1)
-        lg.rectangle("fill", width + 2 * player.currentPerfectAngle - w / 2, lg.getHeight() * 0.8 - w * 2, w, w * 4)
-        lg.setColor(1, 0, 0)
-        lg.rectangle("fill", width + 2 * player.angle_difference - w / 2, lg.getHeight() * 0.8 - w, w, w * 2)
-        lg.setColor(0, 0, 0)
-        lg.setLineWidth(2)
-        lg.line(width, lg.getHeight() * 0.8 - 2 * w, width, lg.getHeight() * 0.8 + 2 * w)
-        lg.rectangle("line", width - 60, lg.getHeight() * 0.8 - 2 * w, 120, 4 * w)
+        -- rotation bars
+        lg.setColor(1, 1, 1)
+        local maxAngleShift = 0.95 * 0.5 * assets.sunbath.bar_bg:getWidth()
+        lg.draw(assets.sunbath.bar_bg, width, lg.getHeight() * 0.8, 0, 1, 1, assets.sunbath.bar_bg:getWidth() * 0.5, assets.sunbath.bar_bg:getHeight() * 0.5)
+        lg.draw(
+            assets.sunbath.bar_perfect_angle,
+            width + player.currentPerfectAngle * maxAngleShift / 25,
+            lg.getHeight() * 0.8,
+            0,
+            1,
+            1,
+            assets.sunbath.bar_perfect_angle:getWidth() * 0.5,
+            assets.sunbath.bar_perfect_angle:getHeight() * 0.5
+        )
+        lg.draw(
+            assets.sunbath.bar_current_angle,
+            width + player.angle_difference * maxAngleShift / 25,
+            lg.getHeight() * 0.8,
+            0,
+            1,
+            1,
+            assets.sunbath.bar_current_angle:getWidth() * 0.5,
+            assets.sunbath.bar_current_angle:getHeight() * 0.5
+        )
 
-        --thermometer
+        -- rotation arrows
+        local leftArrow, rightArrow = assets.sunbath.bar_arrow_empty, assets.sunbath.bar_arrow_full
+        local leftColor, rightColor = {0.7, 0.7, 0.7, 0.4}, {1, 1, 1}
+        if player.angle_difference < 0 then
+            leftArrow, rightArrow = assets.sunbath.bar_arrow_full, assets.sunbath.bar_arrow_empty
+            leftColor, rightColor = {1, 1, 1}, {0.7, 0.7, 0.7, 0.4}
+        end
+
+        lg.setColor(leftColor)
+        lg.draw(leftArrow, width - maxAngleShift * 0.5, lg.getHeight() * 0.8 - assets.sunbath.bar_bg:getHeight() * 0.5, 0, -1, 1, leftArrow:getWidth() * 0.5, leftArrow:getHeight())
+        lg.setColor(rightColor)
+        lg.draw(rightArrow, width + maxAngleShift * 0.5, lg.getHeight() * 0.8 - assets.sunbath.bar_bg:getHeight() * 0.5, 0, 1, 1, rightArrow:getWidth() * 0.5, rightArrow:getHeight())
+
+        -- thermometer
         local thermoImgScale = 48 / assets.sunbath.thermo_bg:getWidth()
         lg.setColor(1, 1, 1)
 

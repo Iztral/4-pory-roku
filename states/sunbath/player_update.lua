@@ -79,7 +79,7 @@ return function(self,player,dt)
         addNewScore = addNewScore * 0.6
         player.alfa = lume.clamp(player.alfa - addNewScore * 0.1 * dt, 0, 1)
     else
-        player.alfa = lume.clamp(player.alfa - addNewScore * 0.025 * dt, 0, 1)
+        player.alfa = lume.clamp(player.alfa - addNewScore * 0.01 * dt, 0, 1)
     end
 
 
