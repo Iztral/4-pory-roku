@@ -23,6 +23,7 @@ return {
 
         timer.after(15, function()
             competitionOrderIndex = 1
+			love.audio.stop()
             states.summary.scores = {}
             states.summary.addScores = {}
             gamestate.switch(states.menu)
