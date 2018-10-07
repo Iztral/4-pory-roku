@@ -140,13 +140,37 @@ return {
                 lg.setColor(r / 255, g / 255, b / 255, a / 255)
             end
 
-            lg.arc("fill", dposX, dposY, 32, math.pi, math.pi + 0.5 * math.pi * mod)
+            local arcRadius = 40
+
+            local angleSets = {
+                {math.pi, 0.5 * math.pi},
+                {2 * math.pi, -0.5 * math.pi},
+                {math.pi, -0.5 * math.pi},
+                {0, 0.5 * math.pi},
+            }
+
+            local angleSet = angleSets[playerIndex]
+
+            lg.arc("fill", dposX - posX * arcRadius, dposY - posY * arcRadius, arcRadius, angleSet[1], angleSet[1] + angleSet[2] * mod)
+
+            lg.setColor(1, 1, 1)
+            local meterScale = arcRadius / 108
+            lg.draw(
+                assets.bazooka.meter,
+                dposX - posX * arcRadius,
+                dposY - posY * arcRadius,
+                0,
+                meterScale * -minusPosX,
+                meterScale * -minusPosY,
+                assets.bazooka.meter:getWidth() - 14,
+                assets.bazooka.meter:getHeight() - 14
+            )
 
             local fnt = assets.font.caviarDreamsBold_16
             lg.setColor(0, 0, 0)
             lg.setFont(fnt)
             local labelWidth = 300
-            lg.printf((player.reloadTime > 0) and "RELOADING" or "SPREADING POWER", dposX - labelWidth / 2 - 16, dposY - fnt:getHeight() / 2 + minusPosY * 48 - 16, labelWidth, "center")
+            lg.printf((player.reloadTime > 0) and "RELOADING" or "SPREADING POWER", dposX - labelWidth / 2 - arcRadius / 2, dposY - fnt:getHeight() / 2 + minusPosY * 48 - arcRadius / 2, labelWidth, "center")
         end
     end,
 

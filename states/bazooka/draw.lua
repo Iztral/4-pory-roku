@@ -2,12 +2,12 @@ return function(self)
     love.graphics.setBackgroundColor(0, 0, 0)
 
     love.graphics.setColor(1, 1, 1)
-    love.graphics.draw(self.img.background, 0, 0)
+    love.graphics.draw(self.img.background, lg.getWidth() * 0.5, lg.getHeight() * 0.5, 0, 1, 1, self.img.background:getWidth() * 0.5, self.img.background:getHeight() * 0.5)
 
     self.players:draw()
 
     love.graphics.setColor(1, 1, 1)
-    love.graphics.draw(self.plotkiHorizontal, 0, -24)
+    love.graphics.draw(self.plotkiHorizontal, lg.getWidth() * 0.5 - 18, lg.getHeight() * 0.5, 0, 1, 1, self.plotkiHorizontal:getWidth() * 0.5, self.plotkiHorizontal:getHeight() * 0.5)
 
     love.graphics.setColor(1, 1, 1)
     love.graphics.draw(self.img.timer, love.graphics.getWidth() * 0.5, love.graphics.getHeight() * 0.5 - 24, 0, 0.3, 0.3, self.img.timer:getWidth() / 2, self.img.timer:getHeight() / 2)
