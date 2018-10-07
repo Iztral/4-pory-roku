@@ -38,7 +38,7 @@ return {
                     loadObjectInfo = {{ name, extension, directory }}
                 elseif lume.find({ "ttf" }, extension) ~= nil then
                     loadArguments, loadObjectInfo = {}, {}
-                    for size = 16, 64, 8 do
+                    for size = 16, 128, 8 do
                         table.insert(loadArguments, { "newFont", assetFullPath, size })
                         table.insert(loadObjectInfo, { name, extension, directory })
                     end

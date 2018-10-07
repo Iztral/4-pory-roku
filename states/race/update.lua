@@ -1,10 +1,8 @@
 return function(self, dt)
-    local sorted_scores = lume.sort(self.players,function(a, b) return a.player_score > b.player_score end)
-    local sorted_scores_keys = {}
+    -- countdown timer update
+    self.countdown:update(dt)
 
-    for playerKey, _ in pairs(sorted_scores) do
-        table.insert(sorted_scores_keys, playerKey)
-    end
+    if not self.gameStarted then return end
 
     local relativeWorldSpeed = 1
 
@@ -23,6 +21,7 @@ return function(self, dt)
         if player.body == nil then return end
 
         player.controls:update(dt)
+        player.snowAnimation:update(dt)
 
         player.speed = math.max(0, player.speed - dt * 7.5)
 
@@ -54,24 +53,52 @@ return function(self, dt)
                     elseif other.data.type == "obstacle" then
                         player.body:move(sepVector.x, sepVector.y)
                         player.crashed = true
+                        player.dead = true
                         player.speed = 0
                     elseif other.data.type == "finish" then
                         player.finished = true
                         table.insert(self.normalPlayerPositions, "player" .. player.index)
+                        player.position = #self.normalPlayerPositions
                     end
                 end
+            end
+
+            if player.crashed then
+                local crashTime = 1.6
+                table.insert(self.reversePlayerPositions, "player" .. player.index)
+                player.animation:gotoFrame(3)
+                -- tween crash position
+                timer.tween(crashTime / 2, player.crashPosition, {y = -100}, "out-cubic", function()
+                    timer.tween(crashTime / 2, player.crashPosition, {y = 0}, "in-cubic", function()
+                        player.animation:gotoFrame(2)
+                    end)
+                end)
+
+                -- tween crash rotation
+                timer.tween(crashTime, player, {crashRotation = 0}, "linear")
+                timer.tween(crashTime, player.crashPosition, {x = 600}, "linear")
             end
         end
 
         local pX, pY = player.body:center()
 
-        if pX < -player.playerWidth or pX > lg.getWidth() + player.playerWidth then
+        local crashTestShift = 0
+        if player.crashed then
+            crashTestShift = 600
+        end
+
+        if pX < -player.playerWidth - crashTestShift or pX > lg.getWidth() + player.playerWidth then
             self.world:remove(player.body)
-            table.insert(self.reversePlayerPositions, "player" .. player.index)
+            if lume.find(self.reversePlayerPositions, "player" .. player.index) == nil then
+                table.insert(self.reversePlayerPositions, "player" .. player.index)
+            end
+            player.outOfBounds = true
+            player.dead = true
             player.body = nil
         end
     end)
 
+    -- world speed change
     self.worldSpeed = math.min(self.worldSpeedMax, self.worldSpeed + 50 * dt)
 
     -- finish line moving
@@ -116,11 +143,12 @@ return function(self, dt)
     -- check for finish requirement
     if #self.finishPlayerPositions == 0 and (#self.reversePlayerPositions + #self.normalPlayerPositions == 4 or #self.reversePlayerPositions == 3) then
         if #self.reversePlayerPositions == 3 then
-            local positions = lume.map({1, 2, 3, 4}, function(i) return "player" .. i end)
-            lume.remove(positions, unpack(self.reversePlayerPositions))
-            local alivePlayer = positions[1]
-            self.players[alivePlayer].finished = true
-            table.insert(self.normalPlayerPositions, alivePlayer)
+            local alivePlayer = lume.match(self.players, function(player)
+                return not player.dead
+            end)
+
+            alivePlayer.finished = true
+            table.insert(self.normalPlayerPositions, "player" .. alivePlayer.index)
         end
         
         self.finishPlayerPositions = lume.concat(self.finishPlayerPositions, self.normalPlayerPositions)
@@ -128,7 +156,7 @@ return function(self, dt)
             table.insert(self.finishPlayerPositions, playerId)
         end
 
-        self.finishBlinkTimer = 5
+        self.finishBlinkTimer = self.maxFinishBlinkTimer
         timer.after(self.finishBlinkTimer, function()
             gamestate.switch(states.summary, self.finishPlayerPositions)
         end)
