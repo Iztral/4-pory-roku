@@ -20,6 +20,13 @@ return {
             {x = 1239, y = 639},
             {x = 913,  y = 762},
         }
+
+        timer.after(15, function()
+            competitionOrderIndex = 1
+            states.summary.scores = {}
+            states.summary.addScores = {}
+            gamestate.switch(states.menu)
+        end)
     end,
 
     draw = function(self)
