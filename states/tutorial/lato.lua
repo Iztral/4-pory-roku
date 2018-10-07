@@ -8,7 +8,7 @@ return {
 	
 	draw = function(self)
 		love.graphics.draw(assets.tutorial.lato_tutorial, 0, 0)
-		love.graphics.setColor(1, 1, 1, 1)
+		love.graphics.setColor(1, 1, 1, self.alfa)
 		love.graphics.draw(grzyb, 840,816, 0, 1, 1, grzyb:getWidth()/2, grzyb:getHeight()/2)
 		love.graphics.draw(start, 906,819, 0, 1, 1, start:getWidth()/2, start:getHeight()/2)
 		love.graphics.setColor(1, 1, 1, 1)
@@ -22,7 +22,7 @@ return {
 			alfa_timer = alfa_timer - 2 * math.pi
 		end
 	
-		self.alfa = 0 + 0.05 * math.abs(math.sin(2 * alfa_timer))
+		self.alfa = 0 + 1 * math.abs(math.sin(2 * alfa_timer))
 	
 	end,
 }
