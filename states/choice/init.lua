@@ -1,6 +1,6 @@
 return {
     init = function(self)
-	  self.font_bigger = love.graphics.newFont("_OLD/CaviarDreams_Bold.ttf", 45)
+	  self.font_bigger = love.graphics.newFont("assets/font/caviarDreamsBold.ttf", 45)
 	  --music--
       self.choice = assets.music.choice
       self.choice:setLooping(true)
