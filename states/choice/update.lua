@@ -20,16 +20,28 @@ return function(self,dt)
 			self.light_up = 0
 		end
 		if self.light_timer < 8 and self.light_timer > 7 then
-			self.light_up = self.light_up + 1
+			self.light_up = 1
+			if joystick1 ~= nil then
+				sucess1 = joystick1:setVibration( 1, 1, 0.1)
+			end
 		end
 		if self.light_timer < 7 and self.light_timer > 6 then
-			self.light_up = self.light_up + 1
+			self.light_up = 2
+			if joystick2 ~= nil then
+				sucess2 = joystick2:setVibration( 1, 1, 0.1 )
+			end
 		end
 		if self.light_timer < 5 and self.light_timer > 4 then
-			self.light_up = self.light_up + 1
+			self.light_up = 3
+			if joystick3 ~= nil then
+				sucess3 = joystick3:setVibration( 1, 1, 0.1 )
+			end
 		end
 		if self.light_timer < 3 and self.light_timer > 2 then
-			self.light_up = self.light_up + 1
+			self.light_up = 4
+			if joystick4 ~= nil then
+				sucess4 = joystick4:setVibration( 1, 1, 0.1 )
+			end
 		end
 		if self.light_timer < 1 and self.light_timer > 0 then
 			self.light_up = 5

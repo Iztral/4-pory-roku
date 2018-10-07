@@ -53,6 +53,13 @@ return {
 		self.jesien,
 		self.zima,
 	  }
+	  
+	  local joysticks = love.joystick.getJoysticks()
+	  joystick1 = joysticks[1]
+	  joystick2 = joysticks[2]
+	  joystick3 = joysticks[3]
+	  joystick4 = joysticks[4]
+	  
       --players--
       self.players = {
                 player1 = {index = 1, leek_choice = 1, locked = -1, controls = baton.new {
