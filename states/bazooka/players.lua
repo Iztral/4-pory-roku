@@ -1,10 +1,3 @@
-local playerColors = {
-    {1, 0.1, 0.1},
-    {0.1, 1, 0.1},
-    {1, 1, 0.1},
-    {1, 0.1, 1}
-}
-
 return {
     data = {},
     initialized = false,
@@ -43,7 +36,7 @@ return {
                         right = {"axis:leftx+"},
                         up = {"axis:lefty-"},
                         down = {"axis:lefty+"},
-                        shoot = {"axis:triggerleft+"}
+                        shoot = {"axis:triggerright+"}
                     },
                     pairs = {
                         move = {"left", "right", "up", "down"}
@@ -51,17 +44,16 @@ return {
                     joystick = love.joystick.getJoysticks()[playerIndex]
                 },
                 position = { 
-                    x = love.graphics.getWidth() * (0.25 + 0.5 * (zeroIndex % 2)),
-                    y = love.graphics.getHeight() * (0.25 + 0.5 * math.floor(zeroIndex / 2)),
+                    x = lg.getWidth() * (0.25 + 0.5 * (zeroIndex % 2)),
+                    y = lg.getHeight() * (0.25 + 0.5 * math.floor(zeroIndex / 2)),
                 },
                 direction = vector.fromPolar(0, 1),
                 speed = 250,
-                color = playerColors[playerIndex],
                 flowerSpriteBatches = {
-                    love.graphics.newSpriteBatch(self.flowers[1], 512),
-                    love.graphics.newSpriteBatch(self.flowers[2], 512),
-                    love.graphics.newSpriteBatch(self.flowers[3], 512),
-                    love.graphics.newSpriteBatch(self.flowers[4], 512)
+                    lg.newSpriteBatch(self.flowers[1], 512),
+                    lg.newSpriteBatch(self.flowers[2], 512),
+                    lg.newSpriteBatch(self.flowers[3], 512),
+                    lg.newSpriteBatch(self.flowers[4], 512)
                 },
                 flowerSpriteBatchesIndexes = {
                     {},
@@ -112,17 +104,15 @@ return {
             local posX, posY = zeroIndex % 2, math.floor(zeroIndex / 2)
             local minusPosX, minusPosY = posX * 2 - 1, posY * 2 - 1
 
-            love.graphics.setColor(1, 1, 1)
-            love.graphics.setScissor(love.graphics.getWidth() * 0.5 * posX, love.graphics.getHeight() * 0.5 * posY, love.graphics.getWidth() * 0.5, love.graphics.getHeight() * 0.5)
+            lg.setColor(1, 1, 1)
+            lg.setScissor(lg.getWidth() * 0.5 * posX, lg.getHeight() * 0.5 * posY, lg.getWidth() * 0.5, lg.getHeight() * 0.5)
             for batchIndex, batch in pairs(player.flowerSpriteBatches) do
-                love.graphics.draw(batch)
+                lg.draw(batch)
             end
 
-            love.graphics.setScissor()
+            lg.setScissor()
             -- draw player animations
-            local playerColor = lume.concat(playerColors[playerIndex], { 0.75 })
-
-            love.graphics.setColor(1, 1, 1)
+            lg.setColor(1, 1, 1)
 
             local topFrameWidth, topFrameHeight = player.topAnimations[player.currentTopAnimation]:getDimensions()
             player.topAnimations[player.currentTopAnimation]:draw(player.topImage, player.position.x, player.position.y, 0, player.animationDirection * 0.5, 0.5, topFrameWidth / 2 - 25, topFrameHeight - 40)
@@ -130,32 +120,32 @@ return {
             local legFrameWidth, legFrameHeight = player.legAnimations[player.currentLegAnimation]:getDimensions()
             player.legAnimations[player.currentLegAnimation]:draw(player.legsImage, player.position.x, player.position.y, 0, player.animationDirection * 0.5, 0.5, legFrameWidth / 2, 0)
 
-            -- love.graphics.setColor(playerColor)
-            -- love.graphics.circle("fill", player.position.x, player.position.y, 8)
-
             -- draw player sight
-            love.graphics.setColor(player.sightColor)
+            lg.setColor(player.sightColor)
             local sightOffset = player.direction * 64
-            love.graphics.draw(self.sight, player.position.x + sightOffset.x, player.position.y + sightOffset.y, 0, 1, 1, self.sight:getWidth() / 2, self.sight:getHeight() / 2)
+            lg.draw(self.sight, player.position.x + sightOffset.x, player.position.y + sightOffset.y, 0, 1, 1, self.sight:getWidth() / 2, self.sight:getHeight() / 2)
 
             -- draw player loading bar
             self.sinsin = 1 - math.abs(math.sin(player.time * 2.5))
-            local dposX, dposY = love.graphics.getWidth() * 0.5 + minusPosX * 100, love.graphics.getHeight() * 0.5 + minusPosY * 100
-            love.graphics.push()
-            love.graphics.translate(dposX, dposY)
-            love.graphics.rotate(-math.pi / 2)
-            love.graphics.translate(-dposX, -dposY)
+            local dposX, dposY = lg.getWidth() * 0.5 + minusPosX * 128, lg.getHeight() * 0.5 + minusPosY * 128
 
             local mod = self.sinsin
-            love.graphics.setColor(playerColor)
 
             if player.reloadTime > 0 then
-                love.graphics.setColor(0.75, 0.75, 0.75)
+                lg.setColor(0.75, 0.75, 0.75)
                 mod = player.reloadTime
+            else
+                local r, g, b, a = vivid.HSVtoRGB((1 - mod) / 3, 1, 1, 255 * 0.75)
+                lg.setColor(r / 255, g / 255, b / 255, a / 255)
             end
 
-            love.graphics.arc("fill", dposX, dposY, 32, 0, 2 * math.pi * mod)
-            love.graphics.pop()
+            lg.arc("fill", dposX, dposY, 32, math.pi, math.pi + 0.5 * math.pi * mod)
+
+            local fnt = assets.font.caviarDreamsBold_16
+            lg.setColor(0, 0, 0)
+            lg.setFont(fnt)
+            local labelWidth = 300
+            lg.printf((player.reloadTime > 0) and "RELOADING" or "SPREADING POWER", dposX - labelWidth / 2 - 16, dposY - fnt:getHeight() / 2 + minusPosY * 48 - 16, labelWidth, "center")
         end
     end,
 
@@ -179,8 +169,8 @@ return {
                 local minMaxMarginX = 40
                 local minMaxMarginY = 64
 
-                local minPosX, maxPosX = 0.5 * posX * love.graphics.getWidth() + minMaxMarginX, (0.5 * posX + 0.5) * love.graphics.getWidth() - minMaxMarginX
-                local minPosY, maxPosY = 0.5 * posY * love.graphics.getHeight() + minMaxMarginY, (0.5 * posY + 0.5) * love.graphics.getHeight() - minMaxMarginY
+                local minPosX, maxPosX = 0.5 * posX * lg.getWidth() + minMaxMarginX, (0.5 * posX + 0.5) * lg.getWidth() - minMaxMarginX
+                local minPosY, maxPosY = 0.5 * posY * lg.getHeight() + minMaxMarginY, (0.5 * posY + 0.5) * lg.getHeight() - minMaxMarginY
 
                 if math.abs(moveX) > 0.05 or math.abs(moveY) > 0.05 then
                     player.direction = vector(moveX, moveY):normalized()

@@ -10,7 +10,7 @@
 - **DONE** asynchroniczne ładowanie assetów
 - **TERAZ DONE** MENU
   - animacja "Press Start" w menu (delikatne powiększanie)
-- **BOLEC** WIOSNA
+- **DONE, oczekiwanie na grafiki** WIOSNA
   - podpis "Spreading Power" koło wskaźnika mocy
   - nowy wskaźnik mocy rozrzutu: wypełnienie od 0 do 90 stopni od koloru zielonego (MIN) przez źółty do czerwonego (MAX)
   - napis "Cooling Down" (w miejsce "Spreading Power") przy wychładzaniu się bazooki

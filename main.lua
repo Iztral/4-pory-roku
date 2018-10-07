@@ -18,6 +18,7 @@ bump = require "lib.bump"
 moonshine = require "lib.moonshine"
 lily = require "lib.lily"
 inspect = require "lib.inspect"
+vivid = require "lib.vivid"
 
 assets = {
     font = {}
