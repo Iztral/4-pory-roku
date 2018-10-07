@@ -4,7 +4,7 @@
 - **DONE ALE WYMAGA TESTÓW Z ZIMĄ ORAZ WPLYW NA PODIUM** tutoriale tuż przed poziomami
 - znaczniki graczy podczas gry
 - **DONE** dodanie flagi -debug podczas uruchomienia gry do włączenia opcji debugowych (np. ręczne przejścia pomiędzy poziomami)
-- **REWORK** ekran wyboru postaci po głównym menu z jasnym oznaczeniem, kto jest którym graczem 
+- **DONE** ekran wyboru postaci po głównym menu z jasnym oznaczeniem, kto jest którym graczem 
 - naprawa innych znalezionych błędów
 - animowany splash screen
 - **DONE** asynchroniczne ładowanie assetów
