@@ -1,4 +1,8 @@
 return function(self, dt)
+    self.countdown:update(dt)
+
+    if not self.gameStarted then return end
+
     -- updating players
     self.players:update(dt)
 

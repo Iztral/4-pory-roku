@@ -1,5 +1,7 @@
 return {
     enter = function(self)
+        self.countdown = require "layers.countdown" :init()
+
         -- image loading
         self.img = {
             background = assets.bazooka.bazooka_bg,
@@ -24,6 +26,11 @@ return {
         self.spring = assets.music.spring
         self.spring:setLooping(true)
         self.spring:play()
+
+        self.gameStarted = false
+        signal.register("countdown layer: go", function()
+            self.gameStarted = true
+        end)
     end,
     draw = require "states.bazooka.draw",
     update = require "states.bazooka.update",

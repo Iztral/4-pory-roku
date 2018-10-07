@@ -1,5 +1,12 @@
 return {
     enter = function(self)
+        self.countdown = require "layers.countdown" :init({1, 1, 1})
+
+        self.gameStarted = false
+        signal.register("countdown layer: go", function()
+            self.gameStarted = true
+        end)
+
         self.img = {
             backgrounds = {
                 assets.pumpkins.tlo_pumpkins_1,

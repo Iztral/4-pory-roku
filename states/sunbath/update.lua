@@ -1,4 +1,8 @@
 return function(self,dt)
+    self.countdown:update(dt)
+    
+    if not self.gameStarted then return end
+
     --timer function--
     if self.timer and self.timer > 0 then
         self.timer = self.timer - dt

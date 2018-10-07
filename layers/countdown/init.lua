@@ -1,10 +1,12 @@
 return {
-    init = function(self)
+    init = function(self, color)
         self.startTimer = 3
         self.goTimer = nil
         self.startTimerActive = false
         self.startTimerFinished = false
         self.startTimerXPosition = lg.getWidth() * 0.75
+
+        self.color = color or {0, 0, 0}
 
         timer.tween(1, self, {startTimerXPosition = 0}, "out-quart", function()
             self.startTimerActive = true
@@ -32,7 +34,7 @@ return {
                 lg.scale(timerTextScale)
                 lg.translate(-lg.getWidth() * 0.5, -lg.getHeight() * 0.5)
             end
-            lg.setColor(0, 0, 0)
+            lg.setColor(self.color)
             lg.setFont(self.fnt)
             lg.printf(
                 timerText,

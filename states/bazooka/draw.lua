@@ -1,20 +1,23 @@
 return function(self)
-    love.graphics.setBackgroundColor(0, 0, 0)
+    lg.setBackgroundColor(0, 0, 0)
 
-    love.graphics.setColor(1, 1, 1)
-    love.graphics.draw(self.img.background, lg.getWidth() * 0.5, lg.getHeight() * 0.5, 0, 1, 1, self.img.background:getWidth() * 0.5, self.img.background:getHeight() * 0.5)
+    lg.setColor(1, 1, 1)
+    lg.draw(self.img.background, lg.getWidth() * 0.5, lg.getHeight() * 0.5, 0, 1, 1, self.img.background:getWidth() * 0.5, self.img.background:getHeight() * 0.5)
 
     self.players:draw()
 
-    love.graphics.setColor(1, 1, 1)
-    love.graphics.draw(self.plotkiHorizontal, lg.getWidth() * 0.5 - 18, lg.getHeight() * 0.5, 0, 1, 1, self.plotkiHorizontal:getWidth() * 0.5, self.plotkiHorizontal:getHeight() * 0.5)
+    lg.setColor(1, 1, 1)
+    lg.draw(self.plotkiHorizontal, lg.getWidth() * 0.5 - 4, lg.getHeight() * 0.5, 0, 1, 1, self.plotkiHorizontal:getWidth() * 0.5, self.plotkiHorizontal:getHeight() * 0.5)
 
-    love.graphics.setColor(1, 1, 1)
-    love.graphics.draw(self.img.timer, love.graphics.getWidth() * 0.5, love.graphics.getHeight() * 0.5 - 24, 0, 0.3, 0.3, self.img.timer:getWidth() / 2, self.img.timer:getHeight() / 2)
+    if self.gameStarted then
+        lg.setColor(1, 1, 1)
+        lg.draw(self.img.timer, lg.getWidth() * 0.5, lg.getHeight() * 0.5 - 24, 0, 0.3, 0.3, self.img.timer:getWidth() / 2, self.img.timer:getHeight() / 2)
 
-    love.graphics.setColor(0, 0, 0)
-    love.graphics.setFont(self.font)
-    love.graphics.printf(string.format("%d", math.ceil(self.timer)), 0, love.graphics.getHeight() * 0.5 - self.fontHeight * 0.5, love.graphics.getWidth(), "center")
+        lg.setColor(0, 0, 0)
+        lg.setFont(self.font)
+        lg.printf(string.format("%d", math.ceil(self.timer)), 0, lg.getHeight() * 0.5 - self.fontHeight * 0.5, lg.getWidth(), "center")
+    end
 
-    love.graphics.setColor(1, 1, 1)
+    lg.setColor(1, 1, 1)
+    self.countdown:draw()
 end

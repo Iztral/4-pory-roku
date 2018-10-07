@@ -75,4 +75,6 @@ return function(self)
 
     -- draw players
     self.players:draw()
+
+    self.countdown:draw()
 end

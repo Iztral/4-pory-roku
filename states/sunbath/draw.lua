@@ -99,10 +99,13 @@ return function(self)
     end
 
     --timer--
-    lg.setColor(1, 1, 1)
-    lg.setFont(self.font_big)
-    lg.draw(self.clock,lg.getWidth()*0.5,10,0,0.3,0.3,self.clock:getWidth()/2,self.clock:getHeight()/100)
-    lg.setColor(0, 0, 0)
-    lg.printf(string.format("%.0f", self.timer or 0),0, 75, lg.getWidth(),"center")
-    --debug--
+    if self.gameStarted then
+        lg.setColor(1, 1, 1)
+        lg.setFont(self.font_big)
+        lg.draw(self.clock,lg.getWidth()*0.5,10,0,0.3,0.3,self.clock:getWidth()/2,self.clock:getHeight()/100)
+        lg.setColor(0, 0, 0)
+        lg.printf(string.format("%d", self.timer or 0),0, 75, lg.getWidth(),"center")
+    end
+    
+    self.countdown:draw()
 end

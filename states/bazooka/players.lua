@@ -110,8 +110,8 @@ return {
             for batchIndex, batch in pairs(player.flowerSpriteBatches) do
                 lg.draw(batch)
             end
-
             lg.setScissor()
+
             -- draw player animations
             lg.setColor(1, 1, 1)
 
@@ -150,6 +150,9 @@ return {
             }
 
             local angleSet = angleSets[playerIndex]
+            
+            lg.push()
+            lg.translate(arcRadius * 0.5, arcRadius * 0.5)
 
             lg.arc("fill", dposX - posX * arcRadius, dposY - posY * arcRadius, arcRadius, angleSet[1], angleSet[1] + angleSet[2] * mod)
 
@@ -171,6 +174,8 @@ return {
             lg.setFont(fnt)
             local labelWidth = 300
             lg.printf((player.reloadTime > 0) and "RELOADING" or "SPREADING POWER", dposX - labelWidth / 2 - arcRadius / 2, dposY - fnt:getHeight() / 2 + minusPosY * 48 - arcRadius / 2, labelWidth, "center")
+
+            lg.pop()
         end
     end,
 

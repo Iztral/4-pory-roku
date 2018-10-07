@@ -1,5 +1,12 @@
 return {
     enter = function(self)
+        self.countdown = require "layers.countdown" :init()
+
+        self.gameStarted = false
+        signal.register("countdown layer: go", function()
+            self.gameStarted = true
+        end)
+
     --music--
         self.summer = assets.music.summer
         self.summer:play()

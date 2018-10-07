@@ -41,12 +41,14 @@ competitionOrderIndex = 1
 standings = {}
 
 function love.load(args)
-    love.audio.setVolume(1)
-
     tick.framerate = 60
     tick.rate = 1 / 60
 
     isDebug = lume.find(args, "-debug") ~= nil
+
+    local masterVolume = 1
+    if isDebug then masterVolume = 0 end
+    love.audio.setVolume(masterVolume)
 
     gamestate.registerEvents()
     
