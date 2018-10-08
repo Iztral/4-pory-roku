@@ -5,8 +5,8 @@
 - **DONE** znaczniki graczy podczas gry (wiosna, jesień)
 - **DONE** dodanie flagi -debug podczas uruchomienia gry do włączenia opcji debugowych (np. ręczne przejścia pomiędzy poziomami)
 - **DONE** ekran wyboru postaci po głównym menu z jasnym oznaczeniem, kto jest którym graczem 
-- naprawa innych znalezionych błędów
-- animowany splash screen
+- *well... probably...* naprawa innych znalezionych błędów
+- **DONE** animowany splash screen
 - **DONE** asynchroniczne ładowanie assetów
 - **DONE** MENU
   - animacja "Press Start" w menu (delikatne powiększanie)
