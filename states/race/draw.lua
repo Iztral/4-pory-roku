@@ -97,6 +97,11 @@ return function(self)
                 snowAnimation = player.snowAnimationIdle
             end
             snowAnimation:draw(player.snowGridImage, pX - sW * snowAnimScale, pY, 0, snowAnimScale, snowAnimScale, sW / 2, sH - player.playerHeight / 2)
+
+            -- player label drawing
+            lg.setColor(0, 0, 0)
+            lg.setFont(assets.font.caviarDreams_24)
+            lg.printf("P" .. player.index, pX - 100, pY + 32, 200, "center")
         elseif sprite.data and sprite.data.type == "obstacle" then
             body = sprite
             local obstacleType = sprite.data.id
