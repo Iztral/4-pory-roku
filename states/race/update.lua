@@ -158,7 +158,7 @@ return function(self, dt)
 
         self.finishBlinkTimer = self.maxFinishBlinkTimer
         timer.after(self.finishBlinkTimer, function()
-            gamestate.switch(states.summary, self.finishPlayerPositions)
+            gamestate.switch(states.stateswitcher, self, states.summary, self.finishPlayerPositions)
         end)
     end
 

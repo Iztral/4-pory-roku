@@ -93,7 +93,7 @@ return {
                 end)
 
                 timer.after(0.25, function()
-                    gamestate.switch(states.menu)
+                    gamestate.switch(states.stateswitcher, self, states.menu)
                 end)
             end)
         end)

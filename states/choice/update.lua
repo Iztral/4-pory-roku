@@ -49,7 +49,7 @@ return function(self,dt)
 		
 		if self.light_timer <= 0 then
 			love.audio.stop( )
-			gamestate.switch(states.tutorial)
+			gamestate.switch(states.stateswitcher, self, states.tutorial)
 		end
 	end
 end

@@ -26,7 +26,7 @@ return function(self, dt)
 	
 	if self.timer <= 0 then
 		if competitionOrder[competitionOrderIndex] then
-			gamestate.switch(states[competitionOrder[competitionOrderIndex]])
+			gamestate.switch(states.stateswitcher, self, states[competitionOrder[competitionOrderIndex]])
 			self.timer = 10
 		else
 			love.event.quit()

@@ -49,7 +49,7 @@ return function(self, dt)
 
     if lume.count(self.playerOrder) == lume.count(self.playerPaths) then
         love.audio.stop()
-        gamestate.switch(states.summary, self.playerOrder)
+        gamestate.switch(states.stateswitcher, self, states.summary, self.playerOrder)
     end
 
     self.backgroundTimer = self.backgroundTimer - dt

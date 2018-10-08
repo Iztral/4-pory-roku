@@ -52,7 +52,7 @@ return function(self)
         -- rotation arrows
         local leftArrow, rightArrow = assets.sunbath.bar_arrow_empty, assets.sunbath.bar_arrow_full
         local leftColor, rightColor = {0.7, 0.7, 0.7, 0.4}, {1, 1, 1}
-        if player.angle_difference < 0 then
+        if player.currentPerfectAngle < 0 then
             leftArrow, rightArrow = assets.sunbath.bar_arrow_full, assets.sunbath.bar_arrow_empty
             leftColor, rightColor = {1, 1, 1}, {0.7, 0.7, 0.7, 0.4}
         end

@@ -38,7 +38,7 @@ return function(self,dt)
     self.controls:update(dt)
     if self.controls:pressed("start") then
         love.audio.stop()
-        gamestate.switch(states.choice)
+        gamestate.switch(states.stateswitcher, self, states.choice)
     end
     if self.controls:pressed("quit") then
         love.event.quit()

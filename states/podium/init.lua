@@ -1,5 +1,5 @@
 return {
-    init = function(self)
+    enter = function(self)
         love.audio.stop()
         self.polka = assets.music.polka
         self.polka:setLooping(true)
@@ -26,7 +26,7 @@ return {
 			love.audio.stop()
             states.summary.scores = {}
             states.summary.addScores = {}
-            gamestate.switch(states.menu)
+            gamestate.switch(states.stateswitcher, self, states.menu)
         end)
     end,
 

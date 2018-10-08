@@ -23,6 +23,6 @@ return function(self, dt)
         
         local sortedBatchCounts = lume.sort(spriteBatchCounts, function(a, b) return a.count > b.count end)
 		love.audio.stop()
-        gamestate.switch(states.summary, lume.map(sortedBatchCounts, "index"))
+        gamestate.switch(states.stateswitcher, self, states.summary, lume.map(sortedBatchCounts, "index"))
     end
 end

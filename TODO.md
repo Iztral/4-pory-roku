@@ -1,6 +1,6 @@
 - **DONE** tryb zimy -> wyścig kto pierwszy do mety / ostatni przy życiu
 - **DONE** dopracowanie, ułatwienie i naprawa trybu jesieni
-- **BOLEC** przejścia pomiędzy stanami
+- **DONE** przejścia pomiędzy stanami
 - **DONE** tutoriale tuż przed poziomami
 - **DONE** znaczniki graczy podczas gry (wiosna, jesień)
 - **DONE** dodanie flagi -debug podczas uruchomienia gry do włączenia opcji debugowych (np. ręczne przejścia pomiędzy poziomami)

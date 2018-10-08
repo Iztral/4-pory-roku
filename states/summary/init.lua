@@ -29,9 +29,9 @@ return {
         timer.after(5, function()
             competitionOrderIndex = competitionOrderIndex + 1
             if competitionOrder[competitionOrderIndex] and competitionOrderIndex < 5 then
-                gamestate.switch(states.tutorial)
+                gamestate.switch(states.stateswitcher, self, states.tutorial)
 			elseif competitionOrder[5] then
-				gamestate.switch(states.podium)
+				gamestate.switch(states.stateswitcher, self, states.podium)
             else
                 love.event.quit()
             end

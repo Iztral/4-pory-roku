@@ -18,7 +18,7 @@ return function(self,dt)
             table.insert(sorted_scores_keys, playerKey)
         end
 
-        gamestate.switch(states.summary, sorted_scores_keys)
+        gamestate.switch(states.stateswitcher, self, states.summary, sorted_scores_keys)
     end
     
     --anim timer--
